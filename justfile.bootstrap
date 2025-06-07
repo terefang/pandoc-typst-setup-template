@@ -1,0 +1,414 @@
+#!/usr/bin/env -S just --justfile
+#
+#
+# https://github.com/casey/just/releases/download/1.40.0/just-1.40.0-x86_64-unknown-linux-musl.tar.gz
+
+XDIR := justfile_directory()
+XBIN := '{{XDIR}}/xbin'
+XFNT := '{{XDIR}}/fonts'
+
+TYPST_BASE := 'https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-unknown-linux-musl.tar.xz'
+PANDOC_BASE := 'https://github.com/jgm/pandoc/releases/download/3.7.0.2/pandoc-3.7.0.2-linux-amd64.tar.gz'
+
+LUCIOLE_BASE := 'https://luciole-vision.com/fonts/Luciole.zip'
+
+OPENSANS_BASE := 'https://github.com/googlefonts/opensans/raw/main/fonts/noto-set/ttf'
+OPENSANS_LIST := 'OpenSans-Bold.ttf OpenSans-BoldItalic.ttf OpenSans-CondensedBold.ttf ' \
+    + 'OpenSans-CondensedBoldItalic.ttf OpenSans-CondensedExtraBold.ttf ' \
+    + 'OpenSans-CondensedExtraBoldItalic.ttf OpenSans-CondensedItalic.ttf ' \
+    + 'OpenSans-CondensedLight.ttf OpenSans-CondensedLightItalic.ttf ' \
+    + 'OpenSans-CondensedRegular.ttf OpenSans-CondensedSemiBold.ttf ' \
+    + 'OpenSans-CondensedSemiBoldItalic.ttf OpenSans-ExtraBold.ttf ' \
+    + 'OpenSans-ExtraBoldItalic.ttf OpenSans-Italic.ttf OpenSans-Light.ttf ' \
+    + 'OpenSans-LightItalic.ttf OpenSans-Regular.ttf OpenSans-SemiBold.ttf ' \
+    + 'OpenSans-SemiBoldItalic.ttf'
+
+GOOGLE_LIST := 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6_PLrOZCLtce-og.ttf?/Overpass-Thin.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6fPPrOZCLtce-og.ttf?/Overpass-ExtraLight.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6ovPrOZCLtce-og.ttf?/Overpass-Light.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6_PPrOZCLtce-og.ttf?/Overpass-Regular.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6zvPrOZCLtce-og.ttf?/Overpass-Medium.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6IvTrOZCLtce-og.ttf?/Overpass-SemiBold.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6G_TrOZCLtce-og.ttf?/Overpass-Bold.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6fPTrOZCLtce-og.ttf?/Overpass-ExtraBold.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6VfTrOZCLtce-og.ttf?/Overpass-Black.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFdU35WCmI96Ajtm81GgSdXCNs-VMF0vNLADe5qPl8Kuosgz.ttf?/Overpass-ThinItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFdU35WCmI96Ajtm81GgSdXCNs-VMF0vNLCDepqPl8Kuosgz.ttf?/Overpass-ExtraLightItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFdU35WCmI96Ajtm81GgSdXCNs-VMF0vNLBdepqPl8Kuosgz.ttf?/Overpass-LightItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFdU35WCmI96Ajtm81GgSdXCNs-VMF0vNLADepqPl8Kuosgz.ttf?/Overpass-Italic.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFdU35WCmI96Ajtm81GgSdXCNs-VMF0vNLAxepqPl8Kuosgz.ttf?/Overpass-MediumItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFdU35WCmI96Ajtm81GgSdXCNs-VMF0vNLDdfZqPl8Kuosgz.ttf?/Overpass-SemiBoldItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFdU35WCmI96Ajtm81GgSdXCNs-VMF0vNLDkfZqPl8Kuosgz.ttf?/Overpass-BoldItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFdU35WCmI96Ajtm81GgSdXCNs-VMF0vNLCDfZqPl8Kuosgz.ttf?/Overpass-ExtraBoldItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFdU35WCmI96Ajtm81GgSdXCNs-VMF0vNLCqfZqPl8Kuosgz.ttf?/Overpass-BlackItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GfYaxzVjArrOeNFYbCvkZ8C28IyGwp26UHdIteaLxWgMKfbBlLNQ.ttf?/AlumniSansSC-Thin.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GfYaxzVjArrOeNFYbCvkZ8C28IyGwp26UHdIte6L1WgMKfbBlLNQ.ttf?/AlumniSansSC-ExtraLight.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GfYaxzVjArrOeNFYbCvkZ8C28IyGwp26UHdIteNr1WgMKfbBlLNQ.ttf?/AlumniSansSC-Light.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GfYaxzVjArrOeNFYbCvkZ8C28IyGwp26UHdIteaL1WgMKfbBlLNQ.ttf?/AlumniSansSC-Regular.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GfYaxzVjArrOeNFYbCvkZ8C28IyGwp26UHdIteWr1WgMKfbBlLNQ.ttf?/AlumniSansSC-Medium.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GfYaxzVjArrOeNFYbCvkZ8C28IyGwp26UHdItetrpWgMKfbBlLNQ.ttf?/AlumniSansSC-SemiBold.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GfYaxzVjArrOeNFYbCvkZ8C28IyGwp26UHdItej7pWgMKfbBlLNQ.ttf?/AlumniSansSC-Bold.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GfYaxzVjArrOeNFYbCvkZ8C28IyGwp26UHdIte6LpWgMKfbBlLNQ.ttf?/AlumniSansSC-ExtraBold.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GfYaxzVjArrOeNFYbCvkZ8C28IyGwp26UHdItewbpWgMKfbBlLNQ.ttf?/AlumniSansSC-Black.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GdYaxzVjArrOeNFYbCvkZ8C0UB-pPxss6d2oxLoP6-wsibThxbNRJQ.ttf?/AlumniSansSC-ThinItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GdYaxzVjArrOeNFYbCvkZ8C0UB-pPxss6d2oxLoP4-w8ibThxbNRJQ.ttf?/AlumniSansSC-ExtraLightItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GdYaxzVjArrOeNFYbCvkZ8C0UB-pPxss6d2oxLoP7gw8ibThxbNRJQ.ttf?/AlumniSansSC-LightItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GdYaxzVjArrOeNFYbCvkZ8C0UB-pPxss6d2oxLoP6-w8ibThxbNRJQ.ttf?/AlumniSansSC-Italic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GdYaxzVjArrOeNFYbCvkZ8C0UB-pPxss6d2oxLoP6Mw8ibThxbNRJQ.ttf?/AlumniSansSC-MediumItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GdYaxzVjArrOeNFYbCvkZ8C0UB-pPxss6d2oxLoP5gxMibThxbNRJQ.ttf?/AlumniSansSC-SemiBoldItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GdYaxzVjArrOeNFYbCvkZ8C0UB-pPxss6d2oxLoP5ZxMibThxbNRJQ.ttf?/AlumniSansSC-BoldItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GdYaxzVjArrOeNFYbCvkZ8C0UB-pPxss6d2oxLoP4-xMibThxbNRJQ.ttf?/AlumniSansSC-ExtraBoldItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisanssc/v2/Y4GdYaxzVjArrOeNFYbCvkZ8C0UB-pPxss6d2oxLoP4XxMibThxbNRJQ.ttf?/AlumniSansSC-BlackItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpHtKqkOwdO2aOIwhWudEWpx_zq_Xna-Xd9OO5QqFsJ3C8qng.ttf?/AlumniSans-Thin.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpHtKqkOwdO2aOIwhWudEWpx_zq_Xna-Xd9uO9QqFsJ3C8qng.ttf?/AlumniSans-ExtraLight.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpHtKqkOwdO2aOIwhWudEWpx_zq_Xna-Xd9Zu9QqFsJ3C8qng.ttf?/AlumniSans-Light.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpHtKqkOwdO2aOIwhWudEWpx_zq_Xna-Xd9OO9QqFsJ3C8qng.ttf?/AlumniSans-Regular.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpHtKqkOwdO2aOIwhWudEWpx_zq_Xna-Xd9Cu9QqFsJ3C8qng.ttf?/AlumniSans-Medium.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpHtKqkOwdO2aOIwhWudEWpx_zq_Xna-Xd95uhQqFsJ3C8qng.ttf?/AlumniSans-SemiBold.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpHtKqkOwdO2aOIwhWudEWpx_zq_Xna-Xd93-hQqFsJ3C8qng.ttf?/AlumniSans-Bold.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpHtKqkOwdO2aOIwhWudEWpx_zq_Xna-Xd9uOhQqFsJ3C8qng.ttf?/AlumniSans-ExtraBold.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpHtKqkOwdO2aOIwhWudEWpx_zq_Xna-Xd9kehQqFsJ3C8qng.ttf?/AlumniSans-Black.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpBtKqkOwdO2aOIwhWudG-g9QMylBJAV3Bo8Ky46lEN_io6npfB.ttf?/AlumniSans-ThinItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpBtKqkOwdO2aOIwhWudG-g9QMylBJAV3Bo8Kw461EN_io6npfB.ttf?/AlumniSans-ExtraLightItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpBtKqkOwdO2aOIwhWudG-g9QMylBJAV3Bo8Kzm61EN_io6npfB.ttf?/AlumniSans-LightItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpBtKqkOwdO2aOIwhWudG-g9QMylBJAV3Bo8Ky461EN_io6npfB.ttf?/AlumniSans-Italic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpBtKqkOwdO2aOIwhWudG-g9QMylBJAV3Bo8KyK61EN_io6npfB.ttf?/AlumniSans-MediumItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpBtKqkOwdO2aOIwhWudG-g9QMylBJAV3Bo8Kxm7FEN_io6npfB.ttf?/AlumniSans-SemiBoldItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpBtKqkOwdO2aOIwhWudG-g9QMylBJAV3Bo8Kxf7FEN_io6npfB.ttf?/AlumniSans-BoldItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpBtKqkOwdO2aOIwhWudG-g9QMylBJAV3Bo8Kw47FEN_io6npfB.ttf?/AlumniSans-ExtraBoldItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/alumnisans/v19/nwpBtKqkOwdO2aOIwhWudG-g9QMylBJAV3Bo8KwR7FEN_io6npfB.ttf?/AlumniSans-BlackItalic.ttf ' \
+    + 'https://fonts.gstatic.com/s/bonanova/v11/B50NF7ZCpX7fcHfvIUBJi6hqHK-CLA.ttf?/BonaNova-Regular.ttf ' \
+    + 'https://fonts.gstatic.com/s/bonanova/v11/B50LF7ZCpX7fcHfvIUB5iaJuPqqSLJYf.ttf?/BonaNova-Italic.ttf ' \
+    + 'https://fonts.gstatic.com/s/bonanova/v11/B50IF7ZCpX7fcHfvIUBxN4dOFISeJY8GgQ.ttf?/BonaNova-Bold.ttf ' \
+    + 'https://fonts.gstatic.com/s/bonanovasc/v1/mem5YaShyGWDiYdPG_c1Af4-VeJoCqeDjg.ttf?/BonaNovaSC-Regular.ttf ' \
+    + 'https://fonts.gstatic.com/s/bonanovasc/v1/memnYaShyGWDiYdPG_c1Af4OV-hsKKKTjrPW.ttf?/BonaNovaSC-Italic.ttf ' \
+    + 'https://fonts.gstatic.com/s/bonanovasc/v1/memmYaShyGWDiYdPG_c1Af4G6c1MAoyfh6rPXA.ttf?/BonaNovaSC-Bold.ttf '
+
+OPENSYMBOL := 'http://cgit.freedesktop.org/libreoffice/core/plain/extras/source/truetype/symbol/OpenSymbol'
+
+JUNICODE_BASE := 'https://github.com/psb1558/Junicode-font/releases/download/v2.211/Junicode_2.211.zip'
+
+NOTOSYM_BASE := 'https://github.com/notofonts/symbols/releases/download/NotoSansSymbols2-v2.008/NotoSansSymbols2-v2.008.zip'
+
+NOTO_BASE := 'https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSans-v2.015/NotoSans-v2.015.zip'
+NOTO_LIST := 'NotoSans-BoldItalic.ttf ' \
+    + 'NotoSans-Bold.ttf ' \
+    + 'NotoSans-SemiBold.ttf ' \
+    + 'NotoSans-SemiBoldItalic.ttf ' \
+    + 'NotoSans-Italic.ttf ' \
+    + 'NotoSans-Regular.ttf ' \
+    + 'NotoSans-Black.ttf ' \
+    + 'NotoSans-BlackItalic.ttf ' \
+    + 'NotoSans-CondensedBlack.ttf ' \
+    + 'NotoSans-CondensedBlackItalic.ttf ' \
+    + 'NotoSans-CondensedBoldItalic.ttf ' \
+    + 'NotoSans-CondensedBold.ttf ' \
+    + 'NotoSans-CondensedSemiBoldItalic.ttf ' \
+    + 'NotoSans-CondensedSemiBold.ttf ' \
+    + 'NotoSans-CondensedItalic.ttf ' \
+    + 'NotoSans-Condensed.ttf ' \
+    + 'NotoSans-ExtraCondensedBlack.ttf ' \
+    + 'NotoSans-ExtraCondensedBlackItalic.ttf ' \
+    + 'NotoSans-ExtraCondensedBoldItalic.ttf ' \
+    + 'NotoSans-ExtraCondensedBold.ttf ' \
+    + 'NotoSans-ExtraCondensedSemiBoldItalic.ttf ' \
+    + 'NotoSans-ExtraCondensedSemiBold.ttf ' \
+    + 'NotoSans-ExtraCondensedItalic.ttf ' \
+    + 'NotoSans-ExtraCondensed.ttf ' \
+    + 'NotoSans-SemiCondensedBlack.ttf ' \
+    + 'NotoSans-SemiCondensedBlackItalic.ttf ' \
+    + 'NotoSans-SemiCondensedBoldItalic.ttf ' \
+    + 'NotoSans-SemiCondensedBold.ttf ' \
+    + 'NotoSans-SemiCondensedSemiBoldItalic.ttf ' \
+    + 'NotoSans-SemiCondensedSemiBold.ttf ' \
+    + 'NotoSans-SemiCondensedItalic.ttf ' \
+    + 'NotoSans-SemiCondensed.ttf '
+
+ADF_BASE := 'https://arkandis.tuxfamily.org/fonts'
+ADF_LIST := 'Accanthis-Std-20101124.zip ' \
+    + 'AurelisNo2-Std-20110311.zip ' \
+    + 'Baskervald-Std-20150322.zip ' \
+    + 'Berenis-Pro-20150322.zip ' \
+    + 'Electrum-Exp-20100711.zip ' \
+    + 'Gillius-Collection-20110312.zip ' \
+    + 'Ikarius-Serie-20111024.zip ' \
+    + 'Irianis-Std-20100729.zip ' \
+    + 'Keypad-20101223.zip ' \
+    + 'Libris-Std-20110117.zip ' \
+    + 'Mekanus-Std-20111025.zip ' \
+    + 'MintSpirit-20150322.zip ' \
+    + 'Mintysis-20120623.zip ' \
+    + 'NeoGothis-Std-20150405.tar.gz ' \
+    + 'Oldania-Std-20150406.tar.gz ' \
+    + 'OrnementsADF.zip ' \
+    + 'Romande-Collection-20110730.zip ' \
+    + 'Solothurn-Std-20111228.zip ' \
+    + 'Switzera-Collection-20110305.zip ' \
+    + 'SymbolADF.zip ' \
+    + 'SymbolsSup.otf.zip ' \
+    + 'Tribun-Std-20120228.zip ' \
+    + 'Universalis-Std-20110904.zip ' \
+    + 'Unversalis-Pro.zip ' \
+    + 'Venturis-Math.zip ' \
+    + 'Venturis-Serie-20100704.zip ' \
+    + 'Verana-20110731.zip ' \
+    + 'VeranaSans-20110731.zip '
+
+MONTSERRAT_BASE := 'https://github.com/googlefonts/Montserrat/raw/refs/heads/master/fonts/otf'
+MONTSERRAT_LIST := \
+    'Montserrat-Black.otf ' \
+    + 'Montserrat-BlackItalic.otf ' \
+    + 'Montserrat-Bold.otf ' \
+    + 'Montserrat-BoldItalic.otf ' \
+    + 'Montserrat-ExtraBold.otf ' \
+    + 'Montserrat-ExtraBoldItalic.otf ' \
+    + 'Montserrat-ExtraLight.otf ' \
+    + 'Montserrat-ExtraLightItalic.otf ' \
+    + 'Montserrat-Italic.otf ' \
+    + 'Montserrat-Light.otf ' \
+    + 'Montserrat-LightItalic.otf ' \
+    + 'Montserrat-Medium.otf ' \
+    + 'Montserrat-MediumItalic.otf ' \
+    + 'Montserrat-Regular.otf ' \
+    + 'Montserrat-SemiBold.otf ' \
+    + 'Montserrat-SemiBoldItalic.otf ' \
+    + 'Montserrat-Thin.otf ' \
+    + 'Montserrat-ThinItalic.otf'
+
+LF_BASE := 'https://github.com/googlefonts/Libre-Franklin/raw/refs/heads/master/fonts/otf'
+LF_LIST := 'LibreFranklin-Black.otf ' \
+    + 'LibreFranklin-BlackItalic.otf ' \
+    + 'LibreFranklin-Bold.otf ' \
+    + 'LibreFranklin-BoldItalic.otf ' \
+    + 'LibreFranklin-ExtraBold.otf ' \
+    + 'LibreFranklin-ExtraBoldItalic.otf ' \
+    + 'LibreFranklin-ExtraLight.otf ' \
+    + 'LibreFranklin-ExtraLightItalic.otf ' \
+    + 'LibreFranklin-Italic.otf ' \
+    + 'LibreFranklin-Light.otf ' \
+    + 'LibreFranklin-LightItalic.otf ' \
+    + 'LibreFranklin-Medium.otf ' \
+    + 'LibreFranklin-MediumItalic.otf ' \
+    + 'LibreFranklin-Regular.otf ' \
+    + 'LibreFranklin-SemiBold.otf ' \
+    + 'LibreFranklin-SemiBoldItalic.otf ' \
+    + 'LibreFranklin-Thin.otf ' \
+    + 'LibreFranklin-ThinItalic.otf'
+
+LB_BASE := 'https://github.com/googlefonts/Libre-Baskerville/raw/refs/heads/master/fonts/ttf'
+LB_LIST := 'LibreBaskerville-Bold.ttf ' \
+    + 'LibreBaskerville-Italic.ttf ' \
+    + 'LibreBaskerville-Regular.ttf'
+
+LC_BASE := 'https://github.com/thundernixon/Libre-Caslon/raw/refs/heads/master/fonts/static'
+LC_LIST := 'LibreCaslonText-Bold.ttf ' \
+    + 'LibreCaslonText-BoldItalic.ttf ' \
+    + 'LibreCaslonText-Italic.ttf ' \
+    + 'LibreCaslonText-Medium.ttf ' \
+    + 'LibreCaslonText-MediumItalic.ttf ' \
+    + 'LibreCaslonText-Regular.ttf ' \
+    + 'LibreCaslonText-SemiBold.ttf ' \
+    + 'LibreCaslonText-SemiBoldItalic.ttf'
+
+TG_BASE := 'https://github.com/debian-tex/tex-gyre/raw/refs/heads/master/fonts/opentype/public/tex-gyre'
+TG_LIST := 'texgyreadventor-bold.otf ' \
+    + 'texgyreadventor-bolditalic.otf ' \
+    + 'texgyreadventor-italic.otf ' \
+    + 'texgyreadventor-regular.otf ' \
+    + 'texgyrebonum-bold.otf ' \
+    + 'texgyrebonum-bolditalic.otf ' \
+    + 'texgyrebonum-italic.otf ' \
+    + 'texgyrebonum-regular.otf ' \
+    + 'texgyrechorus-mediumitalic.otf ' \
+    + 'texgyrecursor-bold.otf ' \
+    + 'texgyrecursor-bolditalic.otf ' \
+    + 'texgyrecursor-italic.otf ' \
+    + 'texgyrecursor-regular.otf ' \
+    + 'texgyreheros-bold.otf ' \
+    + 'texgyreheros-bolditalic.otf ' \
+    + 'texgyreheros-italic.otf ' \
+    + 'texgyreheros-regular.otf ' \
+    + 'texgyreheroscn-bold.otf ' \
+    + 'texgyreheroscn-bolditalic.otf ' \
+    + 'texgyreheroscn-italic.otf ' \
+    + 'texgyreheroscn-regular.otf ' \
+    + 'texgyrepagella-bold.otf ' \
+    + 'texgyrepagella-bolditalic.otf ' \
+    + 'texgyrepagella-italic.otf ' \
+    + 'texgyrepagella-regular.otf ' \
+    + 'texgyreschola-bold.otf ' \
+    + 'texgyreschola-bolditalic.otf ' \
+    + 'texgyreschola-italic.otf ' \
+    + 'texgyreschola-regular.otf ' \
+    + 'texgyretermes-bold.otf ' \
+    + 'texgyretermes-bolditalic.otf ' \
+    + 'texgyretermes-italic.otf ' \
+    + 'texgyretermes-regular.otf'
+
+AGN_BASE := 'https://github.com/ryanoasis/nerd-fonts/raw/refs/heads/master/patched-fonts/Agave'
+AGN_LIST := 'AgaveNerdFont-Bold.ttf ' \
+    + 'AgaveNerdFont-Regular.ttf ' \
+    + 'AgaveNerdFontMono-Bold.ttf ' \
+    + 'AgaveNerdFontMono-Regular.ttf ' \
+    + 'AgaveNerdFontPropo-Bold.ttf ' \
+    + 'AgaveNerdFontPropo-Regular.ttf'
+
+default: fetch-fonts fetch-xbin
+
+show:
+    @echo 'XDG CACHE = {{ cache_directory() }} '
+    @echo 'XDG CONFIG = {{ config_directory() }} '
+    @echo 'XDG LOCAL CONFIG = {{ config_local_directory() }} '
+    @echo 'XDG DATA = {{ data_directory() }} '
+    @echo 'XDG LOCAL DATA = {{ data_local_directory() }} '
+    @echo 'XDG EXECUTABLE = {{ executable_directory() }} '
+    @echo 'HOME = {{ home_directory() }} '
+
+fonts-list:
+    {{XBIN}}/typst fonts --ignore-system-fonts --font-path {{XFNT}}
+
+fonts-variants:
+    {{XBIN}}/typst fonts --ignore-system-fonts --font-path {{XFNT}} --variants
+
+fetch-typst:
+    #!/bin/sh
+    mkdir -p {{XBIN}}/tmp
+    wget -O {{XBIN}}/tmp/typst.tar.xz {{TYPST_BASE}}
+    (cd {{XBIN}}/tmp && tar -xf typst.tar.xz)
+    cp $(find {{XBIN}}/tmp -type f -name typst) {{XBIN}}/
+    chmod +x {{XBIN}}/typst
+    rm -rf {{XBIN}}/tmp
+    {{XBIN}}/typst --version
+
+fetch-pandoc:
+    #!/bin/sh
+    mkdir -p {{XBIN}}/tmp
+    wget -O {{XBIN}}/tmp/pandoc.tar.gz {{PANDOC_BASE}}
+    (cd {{XBIN}}/tmp && tar -xf pandoc.tar.gz)
+    cp $(find {{XBIN}}/tmp -type f -name pandoc) {{XBIN}}/
+    chmod +x {{XBIN}}/pandoc
+    rm -rf {{XBIN}}/tmp
+    {{XBIN}}/pandoc --version
+
+install: install-xbin install-fonts
+
+install-xbin: fetch-typst fetch-pandoc
+
+install-fonts: fetch-opensans fetch-montserrat fetch-lf fetch-lb fetch-lc fetch-tg \
+                fetch-agn fetch-adf fetch-noto fetch-google fetch-junicode fetch-luciole
+
+fetch-noto:
+    #!/bin/sh
+    echo "{{XDIR}}"
+    mkdir -p {{XFNT}}/noto/tmp
+    for x in {{NOTO_BASE}}; do
+        (cd {{XFNT}}/noto/tmp && wget $x && unzip -o -j *.zip)
+    done
+    for x in {{NOTO_LIST}}; do
+        cp {{XFNT}}/noto/tmp/$x {{XFNT}}/noto/
+    done
+    rm -rf {{XFNT}}/noto/tmp
+    mkdir -p {{XFNT}}/noto/tmp
+    for x in {{NOTOSYM_BASE}}; do
+        (cd {{XFNT}}/noto/tmp && wget $x && unzip -o *.zip '*/full/otf/*.otf')
+    done
+    (cd {{XFNT}}/noto/tmp && cp */full/otf/*.otf {{XFNT}}/noto/)
+    rm -rvf {{XFNT}}/noto/tmp
+
+fetch-luciole:
+    #!/bin/sh
+    echo "{{XDIR}}"
+    mkdir -p {{XFNT}}/luciole/tmp
+    for x in {{LUCIOLE_BASE}}; do
+        (cd {{XFNT}}/luciole/tmp && wget $x && unzip -o -j *.zip L*.ttf)
+    done
+    (cd {{XFNT}}/luciole/tmp && cp *.ttf {{XFNT}}/luciole/)
+    rm -rvf {{XFNT}}/luciole/tmp
+
+fetch-junicode:
+    #!/bin/sh
+    echo "{{XDIR}}"
+    mkdir -p {{XFNT}}/junicode/tmp
+    for x in {{JUNICODE_BASE}}; do
+        (cd {{XFNT}}/junicode/tmp && wget $x && unzip -o -j *.zip)
+    done
+    (cd {{XFNT}}/junicode/tmp && cp *.otf ../)
+    rm -rvf {{XFNT}}/junicode/tmp
+
+fetch-adf:
+    #!/bin/sh
+    mkdir -p {{XFNT}}/adf/tmp
+    for x in {{ADF_LIST}}; do
+        [ -f {{XFNT}}/adf/tmp/$x ] || wget -O {{XFNT}}/adf/tmp/$x {{ADF_BASE}}/$x
+        case "$x" in
+            *.zip)
+                (cd {{XFNT}}/adf/tmp && unzip -o -j $x)
+                ;;
+            *.tar.gz)
+                (cd {{XFNT}}/adf/tmp && tar -xvf $x --strip 1)
+                ;;
+        esac
+    done
+    cp $(find {{XFNT}}/adf/tmp/ -name '*.otf') {{XFNT}}/adf/
+    rm -rvf {{XFNT}}/adf/tmp
+
+fetch-agn:
+    #!/bin/sh
+    mkdir -p {{XFNT}}/nerd
+    for x in {{AGN_LIST}}; do
+        [ -f {{XFNT}}/nerd/$x ] || wget -O {{XFNT}}/nerd/$x {{AGN_BASE}}/$x
+    done
+
+fetch-tg:
+    #!/bin/sh
+    mkdir -p {{XFNT}}/texgyre
+    for x in {{TG_LIST}}; do
+        [ -f {{XFNT}}/texgypre/$x ] || wget -O {{XFNT}}/texgyre/$x {{TG_BASE}}/$x
+    done
+
+fetch-lc:
+    #!/bin/sh
+    mkdir -p {{XFNT}}/libre
+    for x in {{LC_LIST}}; do
+        [ -f {{XFNT}}/libre/$x ] || wget -O {{XFNT}}/libre/$x {{LC_BASE}}/$x
+    done
+
+fetch-lf:
+    #!/bin/sh
+    mkdir -p {{XFNT}}/libre
+    for x in {{LF_LIST}}; do
+        [ -f {{XFNT}}/libre/$x ] || wget -O {{XFNT}}/libre/$x {{LF_BASE}}/$x
+    done
+
+fetch-lb:
+    #!/bin/sh
+    mkdir -p {{XFNT}}/libre
+    for x in {{LB_LIST}}; do
+        [ -f {{XFNT}}/libre/$x ] || wget -O {{XFNT}}/libre/$x {{LB_BASE}}/$x
+    done
+
+fetch-montserrat:
+    #!/bin/sh
+    mkdir -p {{XFNT}}/google
+    for x in {{MONTSERRAT_LIST}}; do
+        [ -f {{XFNT}}/google/$x ] || wget -O {{XFNT}}/google/$x {{MONTSERRAT_BASE}}/$x
+    done
+
+fetch-google:
+    #!/bin/sh
+    mkdir -p {{XFNT}}/google
+    for x in {{GOOGLE_LIST}}; do
+        y=$(basename "$x")
+        [ -f {{XFNT}}/google/$y ] || wget -O {{XFNT}}/google/$y "$x"
+    done
+
+fetch-opensans:
+    #!/bin/sh
+    mkdir -p {{XFNT}}/opensans
+    for x in {{OPENSANS_LIST}}; do
+        [ -f {{XFNT}}/opensans/$x ] || wget -O {{XFNT}}/opensans/$x {{OPENSANS_BASE}}/$x
+    done
+    wget -O {{XFNT}}/opensans/OpenSymbol.sfd {{OPENSYMBOL}}.sfd
+    wget -O {{XFNT}}/opensans/OpenSymbol2.sfd {{OPENSYMBOL}}2.sfd
+    fontforge -lang=ff -c 'Open($1); Generate($2)' {{XFNT}}/opensans/OpenSymbol.sfd {{XFNT}}/opensans/OpenSymbol.ttf    
+    fontforge -lang=ff -c 'Open($1); Generate($2)' {{XFNT}}/opensans/OpenSymbol2.sfd {{XFNT}}/opensans/OpenSymbol2.ttf
