@@ -8,7 +8,7 @@
 local function process(div)
     if FORMAT:match 'typst' then
         if div.classes[1] == 'credits' then
-            local cmargin = "10pt"
+            local cmargin = "50pt"
             if div.attributes['margin'] ~= nil then
                 cmargin = div.attributes['margin']
             end

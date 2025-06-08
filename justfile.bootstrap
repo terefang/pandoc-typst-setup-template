@@ -303,6 +303,7 @@ install-fonts: fetch-opensans fetch-montserrat fetch-lf fetch-lb fetch-lc fetch-
 
 fetch-rpgicons:
     #!/bin/sh
+    rm -f {{XFNT}}/RpgGameIcons.otf {{XTMPL}}/diceset.typ
     wget -O {{XFNT}}/RpgGameIcons.otf {{ICONS_FONT}}
     wget -O {{XTMPL}}/diceset.typ {{ICONS_SET}}
 

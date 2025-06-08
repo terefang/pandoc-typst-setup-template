@@ -13,7 +13,7 @@ a template to setup a pandoc and typst project for pdf publication
 ```
 $ git clone https://github.com/terefang/pandoc-typst-setup-template
 $ cd pandoc-typst-setup-template
-$ just -f justfile.bootstrap install
+$ just bootstrap
 ```
 
 this will download common fonts, and well known versions of typst and pandoc.

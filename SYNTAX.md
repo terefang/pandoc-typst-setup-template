@@ -30,7 +30,11 @@ if a cell consists solely of either the character "`<`" or "`>`" then the cell i
 
 #### cell align
 
-if a cell starts with the strings "`<:`", "`:>`", or "`<::>`" — the cells alignment is set to left, right, or center.
+if a cell starts with the strings "`<:`", "`:>`", or "`<:>`" — the cells alignment is set to left, right, or center.
+
+### credits page
+
+a simple credits page
 
 ### gentle-clues aka. alerts
 

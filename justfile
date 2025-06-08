@@ -51,6 +51,10 @@ build-typst:
         {{TYPSTEXE}} compile {{TYPSTOPT}}  --root ./ $x ./out/$y.pdf
     done
 
+bootstrap:
+    #!/bin/sh
+    (cd {{XDIR}} && just -f justfile.bootstrap install)
+
 #dump-template:
 #    {{PANDOCEXE}} --print-default-template=typst > ./template/default.typ
 

@@ -4,11 +4,12 @@ this is the credits page
 like front/backmatter is does not follow the normal markdown pageflow
 but tries to make better usage of the pandoc-markdown formatting capabilities
 
+/credits/ is a special /fenced div/ rewritten by a lua filter.
+
 -->
 
-<page paper="a4" columns="1" margin="0pt" flipped="false">
-<place pos="bottom + left" scope='"parent"' dx="50pt" dy="-100pt" float="true">
-<box width="495pt">
+::: {.credits}
+
 <set cmd='text' arg='font:"TeX Gyre Heros", size:12pt,' />
 
 #### CREDITS
@@ -52,6 +53,4 @@ https://creativecommons.org/licenses/by-sa/4.0<br/>
 
 * Typst – https://github.com/typst/typst
 
-</box>
-</place>
-</page>
+:::
