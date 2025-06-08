@@ -80,5 +80,8 @@ drel-version:
     L=$(echo $VER |cut -f3 -d.)
     shtool version --set "$(date +%Y).$(date +%m).$L" version.txt
     shtool version -i l version.txt
+
+package:
+    #!/bin/sh
     VER=$(shtool version version.txt)
-    zip -9 -r pandoc-typst-setup-template-$VER.zip justfile assets fonts templates xbin
+    zip -9 -r pandoc-typst-setup-template-$VER-$(shtool platform -t build).zip justfile assets filters fonts templates xbin
