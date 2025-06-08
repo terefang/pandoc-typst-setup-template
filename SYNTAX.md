@@ -34,7 +34,15 @@ if a cell starts with the strings "`<:`", "`:>`", or "`<:>`" — the cells align
 
 ### credits page
 
-a simple credits page
+a simple credits page, bottom-left aigned.
+
+```
+::: {.credits}
+
+credits content.
+
+:::
+```
 
 ### gentle-clues aka. alerts
 
@@ -82,3 +90,35 @@ Some content.
 
 :::
 ```
+
+### html/xml macros
+
+* br — line break
+* brj — line break + justified
+* pbr — page break (weak)
+* pbe — page break (weak, to even)
+* pbo — page break (weak, to odd)
+* np — page break (hard)
+* cbr — column break (weak)
+* nc — column break (hard)
+* lc — lower case (spanner)
+* uc — upper case (spanner)
+* sc — small caps (spanner)
+* font or fnt — wraps the typst /text/ function  (spanner)
+* page — wraps the typst /page/ function  (spanner)
+* place — wraps the typst /place/ function  (spanner)
+* block — wraps the typst /block/ function  (spanner)
+* box — wraps the typst /box/ function  (spanner)
+* align — wraps the typst /align/ function  (spanner)
+* scale — wraps the typst /scale/ function  (spanner)
+* par — wraps the typst /par/ function  (spanner)
+* toc or outline — wraps the typst /outline/ function
+* tbl — wraps the typst /table/ function
+* thead — wraps the typst /table.header/ function
+* tcell — wraps the typst /table.cell/ function
+* thline — wraps the typst /table.hline/ function
+* tvline — wraps the typst /table.vline/ function
+* grid — wraps the typst /grid/ function
+* cell — wraps the typst /grid.cell/ function
+* hline — wraps the typst /grid.hline/ function
+* vline — wraps the typst /grid.vline/ function
