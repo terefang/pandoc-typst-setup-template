@@ -30,6 +30,12 @@ $ just build
 
 this will build and output the result document into `out/document.pdf`.
 
+```
+$ just pacakge
+```
+
+this will zip up an archive for offline usage.
+
 ## Features
 
 TODO
