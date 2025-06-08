@@ -1,0 +1,6 @@
+
+  version.txt -- Version Information for unknown (syntax: Text)
+  [automatically generated and maintained by GNU shtool]
+
+  This is unknown, Version 2025.06.34 (08-Jun-2025)
+

@@ -4,12 +4,15 @@
 # https://github.com/casey/just/releases/download/1.40.0/just-1.40.0-x86_64-unknown-linux-musl.tar.gz
 
 XDIR := justfile_directory()
-XBIN := '{{XDIR}}/xbin'
-XFNT := '{{XDIR}}/fonts'
+XBIN := XDIR+"/xbin"
+XFNT := XDIR+"/fonts"
+XTMPL := XDIR+"/templates"
+
+ICONS_FONT := 'https://github.com/terefang/rpg-icons-font/raw/refs/heads/main/static/RpgGameIcons.otf'
+ICONS_SET := 'https://github.com/terefang/rpg-icons-font/raw/refs/heads/main/static/diceset.typ'
 
 TYPST_BASE := 'https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-unknown-linux-musl.tar.xz'
 PANDOC_BASE := 'https://github.com/jgm/pandoc/releases/download/3.7.0.2/pandoc-3.7.0.2-linux-amd64.tar.gz'
-
 LUCIOLE_BASE := 'https://luciole-vision.com/fonts/Luciole.zip'
 
 OPENSANS_BASE := 'https://github.com/googlefonts/opensans/raw/main/fonts/noto-set/ttf'
@@ -253,7 +256,7 @@ AGN_LIST := 'AgaveNerdFont-Bold.ttf ' \
     + 'AgaveNerdFontPropo-Bold.ttf ' \
     + 'AgaveNerdFontPropo-Regular.ttf'
 
-default: fetch-fonts fetch-xbin
+default:
 
 show:
     @echo 'XDG CACHE = {{ cache_directory() }} '
@@ -295,7 +298,13 @@ install: install-xbin install-fonts
 install-xbin: fetch-typst fetch-pandoc
 
 install-fonts: fetch-opensans fetch-montserrat fetch-lf fetch-lb fetch-lc fetch-tg \
-                fetch-agn fetch-adf fetch-noto fetch-google fetch-junicode fetch-luciole
+                fetch-agn fetch-adf fetch-noto fetch-google fetch-junicode \
+                fetch-luciole  fetch-rpgicons
+
+fetch-rpgicons:
+    #!/bin/sh
+    wget -O {{XFNT}}/RpgGameIcons.otf {{ICONS_FONT}}
+    wget -O {{XTMPL}}/diceset.typ {{ICONS_SET}}
 
 fetch-noto:
     #!/bin/sh

@@ -4,13 +4,13 @@
 # --include-after-body
 
 XDIR := justfile_directory()
-XBIN := '{{XDIR}}/xbin'
-XFNT := '{{XDIR}}/fonts'
+XBIN := XDIR+"/xbin"
+XFNT := XDIR+"/fonts"
 
 PANDOCOPT := ' --from markdown+pipe_tables+raw_attribute+raw_html+fenced_divs+yaml_metadata_block-tex_math_dollars ' \
         + ' --columns=60 ' \
-        + ' --data-dir={{XDIR}} ' \
-        + ' --resource-path={{XDIR}} ' \
+        + ' --data-dir='+XDIR+' ' \
+        + ' --resource-path='+XDIR+' ' \
         + ' --include-before-body=templates/diceset.typ ' \
         + ' --include-before-body=templates/zapfding.typ ' \
         + ' --include-before-body=templates/nerdfont.typ ' \
@@ -24,13 +24,13 @@ PANDOCOPT := ' --from markdown+pipe_tables+raw_attribute+raw_html+fenced_divs+ya
         + ' --lua-filter=typst-entities.lua ' \
         + ' --embed-resources --standalone ' \
         + ' --ascii ' \
-        + ' --template=./templates/template.typ '
+        + ' --template='+XDIR+'/templates/template.typ '
 
-PANDOCEXE := '{{XBIN}}/pandoc'
+PANDOCEXE := XBIN+'/pandoc'
 
-TYPSTOPT := '--ignore-system-fonts --font-path {{XFNT}}'
+TYPSTOPT := '--ignore-system-fonts --font-path '+XFNT
 
-TYPSTEXE := '{{XBIN}}/typst'
+TYPSTEXE := XBIN+'/typst'
 
 default: build
 
@@ -59,3 +59,26 @@ fonts:
 
 fonts-variants:
     {{TYPSTEXE}} fonts {{TYPSTOPT}} --variants
+
+set-version ver:
+    #!/bin/sh
+    shtool version --set {{ver}} version.txt
+
+show-version:
+    #!/bin/sh
+    shtool version version.txt
+
+inc-version:
+    #!/bin/sh
+    shtool version -i l version.txt
+
+drel-version:
+    #!/bin/sh
+    VER=$(shtool version version.txt)
+    V=$(echo $VER |cut -f1 -d.)
+    R=$(echo $VER |cut -f2 -d.)
+    L=$(echo $VER |cut -f3 -d.)
+    shtool version --set "$(date +%Y).$(date +%m).$L" version.txt
+    shtool version -i l version.txt
+    VER=$(shtool version version.txt)
+    zip -9 -r pandoc-typst-setup-template-$VER.zip justfile assets fonts templates xbin
