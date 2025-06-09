@@ -13,7 +13,7 @@ the base markdown syntax is pandocs with the following options:
 
 ### html/xml-entities
 
-all html/xml entity references work normally, except if the entity name is in the format "`\&<namespace>-<glyphname>\;".
+all html/xml entity references work normally, except if the entity name is in the format "`\&[namespace]-[glyphname]\;".
 
 namespaces glyphs are mapped to glyph-names as given in the registration files:
 
@@ -54,7 +54,7 @@ box content.
 :::
 ```
 
-title-less boxes can also use the shortcut "`<color>box`"
+title-less boxes can also use the shortcut "`[color]box`"
 
 ```
 ::: {.redbox font="" font-size=""}
