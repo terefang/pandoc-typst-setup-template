@@ -1,5 +1,5 @@
 .idea
 fonts
-out
+out/*.typ
 icons
 tmp
