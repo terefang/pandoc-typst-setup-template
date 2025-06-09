@@ -11,9 +11,11 @@ the base markdown syntax is pandocs with the following options:
 
 ## markdown extensions
 
+you can find examples in the `markdown/` folder and the `document.pdf`.
+
 ### html/xml-entities
 
-all html/xml entity references work normally, except if the entity name is in the format "`\&[namespace]-[glyphname]\;".
+all html/xml entity references work normally, except if the entity name is in the format "`\&[namespace]-[glyphname]\;`".
 
 namespaces glyphs are mapped to glyph-names as given in the registration files:
 
