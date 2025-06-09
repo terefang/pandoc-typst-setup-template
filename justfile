@@ -16,10 +16,11 @@ PANDOCOPT := ' --from markdown+pipe_tables+raw_attribute+raw_html+fenced_divs+ya
         + ' --include-before-body=templates/nerdfont.typ ' \
         + ' --include-before-body=templates/unicode.typ ' \
         + ' --include-before-body=templates/boxes.typ ' \
+        + ' --lua-filter=typst-colorboxes.lua ' \
+        + ' --lua-filter=typst-tabledivs.lua ' \
         + ' --lua-filter=typst-alerts.lua ' \
         + ' --lua-filter=typst-htmlfunc.lua ' \
         + ' --lua-filter=typst-pagebreak.lua ' \
-        + ' --lua-filter=typst-tabledivs.lua ' \
         + ' --lua-filter=typst-tablespan.lua ' \
         + ' --lua-filter=typst-entities.lua ' \
         + ' --embed-resources --standalone ' \

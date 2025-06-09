@@ -42,6 +42,8 @@
 
 #let colorbox(
   title: none,
+  font: none,
+  font-size: none,
   subtitle: "subtitle",
   box-colors: box-colors,
   color: "default",
@@ -65,12 +67,20 @@
               inset: inset,
               width:100%,
               radius: (top-left: radius, top-right: radius),
+              {
+              set text(font: font) if(font!=none)
+              set text(size: font-size) if(font-size!=none)
               text(fill: box-colors.at(color).title, weight: "bold", title)
+              }
             ),
         block(
           width: 100%,
           inset: (x: inset, bottom: inset, top: if title == none { inset } else { inset/2 }),
+          {
+          set text(font: font) if(font!=none)
+          set text(size: font-size) if(font-size!=none)
           body
+          }
         ),
       )
     )
@@ -81,7 +91,11 @@
     inset: inset,
     radius: radius,
     width: width,
-  )[#body]
+  )[
+  #set text(font: font) if(font!=none)
+  #set text(size: font-size) if(font-size!=none)
+  #body
+  ]
 }
 
 #let outline-colorbox(

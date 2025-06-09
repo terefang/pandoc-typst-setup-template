@@ -182,6 +182,11 @@ function RawInline(elem)
 				attr[n] = e2u(v)
                 anum = anum + 1
 			end
+            -- lorem ipsum
+            if(cap1 == 'lorem') then
+                _, v = firstpair(attr)
+                return pandoc.RawInline('typst', '#lorem('..(v)..')')
+            end
             -- align
             if(cap1 == 'align') then
                 _, v = firstpair(attr)

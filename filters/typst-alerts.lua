@@ -34,12 +34,8 @@ specialStyles['purple'] = "header-color:purple.lighten(60%), border-color:gray, 
 specialStyles['aqua'] = "header-color:aqua.lighten(60%), border-color:gray, accent-color:aqua,"
 specialStyles['magenta'] = "header-color:cmyk(0%, 100%, 0%, 0%).lighten(60%), border-color:gray, accent-color:aqua,"
 
-
-
-
-local alerts = pandoc.List({'note', 'tip', 'important', 'warning', 'caution'})
-local preIcon = pandoc.List({"💡","🔦","🤚","🚨","❗"})
-local gentleClues = pandoc.List{'idea','abstract', 'info', 'question', 'memo', 'task', 
+local alerts = pandoc.List({'note', 'tip', 'important', 'warning', 'caution', 'clue'})
+local gentleClues = pandoc.List{'idea','abstract', 'info', 'question', 'memo', 'task',
 	'tip', 'success', 'warning', 'error', 'example', 'experiment', 'conclusion', 'quotation', 
     'goal', 'notify', 'code', 'danger'}
 
@@ -51,47 +47,27 @@ local function titleCase(input)
 	return input:gsub("(%w)(%w*)",function(firstChar, rest) return pandoc.text.upper(firstChar) .. rest end)
 end
 
--- Check if the given value is a pandoc.List or pandoc.Inlines.
---
--- @param input item
--- @return true / false
-local function isPandocList(input)
-	return pdType(input) == 'List' or pdType(input) == 'Inlines'
-end
-
--- Inject alert Title text into the content
---
--- @param content the content of the alert
--- @param alert the alert name
--- @param customTitle the [optional] custom title
--- @return modified content
-local function injectTitle(content, alert, customTitle)
-	local _,alertidx = alerts:find(alert)
-	if not alerts:includes(alert) then alert,alertidx = alerts[1],1 end
-	if isPandocList(customTitle) then customTitle = stringify(customTitle) end
-	
-	local thisTitle = preIcon[alertidx] .. " " .. (customTitle or titleCase(alert))
-	
-	if isPandocList(content) then
-		content:insert(1, pandoc.Str(thisTitle))
-		content:insert(2, pandoc.LineBreak())
-	end
-	return content
-end
-
 -- Create the gentle clues prefix from the alert name and optional custom title
 --
 -- @param alert the alert name
 -- @param customTitle the [optional] custom title
 -- @return the prefix string
-local function createTypstPrefix(alert, customTitle, customStyle)
+local function createTypstPrefix(alert, customTitle, customStyle, customIcon)
 	local adjustedAlert = alert
 	local adjustedTitle = titleCase(alert)
 	local adjustedStyle = customStyle or ""
 
-    if(specialStyles[adjustedStyle] ~= nil) then
-        adjustedStyle = specialStyles[adjustedStyle]
-    end
+	if(specialStyles[adjustedStyle] ~= nil) then
+		adjustedStyle = specialStyles[adjustedStyle]
+	end
+
+	if(customIcon ~= nil) then
+		if(string.sub(customIcon,1,1) == '@') then
+			adjustedStyle = adjustedStyle .. 'icon:'..string.sub(customIcon, 2, #customIcon-1)..'-g, '
+		else
+			adjustedStyle = adjustedStyle .. 'icon:"'..customIcon..'", '
+		end
+	end
 
 	if alert == 'note' then
 		adjustedAlert = 'info'
@@ -125,8 +101,8 @@ end
 -- @param alert the alert name
 -- @param customTitle the [optional] custom title
 -- @return the wrapped content
-local function wrapTypst(content, alert, customTitle, customStyle)
-	local prefix = createTypstPrefix(alert, customTitle, customStyle)
+local function wrapTypst(content, alert, customTitle, customStyle, customIcon)
+	local prefix = createTypstPrefix(alert, customTitle, customStyle, customIcon)
 	-- local rawcontent = pandoc.write(pandoc.Pandoc(content),'typst'):gsub("\n$","")
 	-- return pandoc.RawBlock('typst', prefix .. rawcontent .. "]\n\n")
     local ret = {}
@@ -142,12 +118,13 @@ end
 function Div(d)
 	local alert = d.classes[1]
 	local customTitle = d.attributes['title']
+	local customIcon = d.attributes['icon']
 	if not alerts:includes(alert) and not gentleClues:includes(alert) then return end
 	
 	if d.content[1].classes and d.content[1].classes:includes('title') then
 		d.content:remove(1) -- remove title paragraph to give us more flexibility
 	end
 	
-	return wrapTypst(d.content, alert, customTitle, d.attributes['style'])
+	return wrapTypst(d.content, alert, customTitle, d.attributes['style'], customIcon)
 end
 
