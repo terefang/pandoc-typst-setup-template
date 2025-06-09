@@ -44,6 +44,27 @@ credits content.
 :::
 ```
 
+### color-boxes
+
+```
+::: {.colorbox title="this title" color="black|red|green|blue|yellow|purple|cyan|magenta|orange" font="" font-size=""}
+
+box content.
+
+:::
+```
+
+title-less boxes can also use the shortcut "`<color>box`"
+
+```
+::: {.redbox font="" font-size=""}
+
+box content.
+
+:::
+```
+
+
 ### gentle-clues aka. alerts
 
 the following clue names are supported:
