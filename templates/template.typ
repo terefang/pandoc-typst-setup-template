@@ -1,6 +1,21 @@
 $-- // https://github.com/jomaway/typst-gentle-clues/blob/main/docs.pdf
 #import "@preview/gentle-clues:1.2.0": *
 
+$-- #import "@preview/elembic:1.0.0" as e: field, types
+$--
+$-- #let fbox = e.element.declare(
+$--   "fbox",
+$--   prefix: "@preview/my-package,v1",
+$--   doc: "My box",
+$--   display: it => block(fill: it.fill, inset: 5pt, it.body),
+$--   fields: (
+$--     field("body", content, doc: "In", required: true),
+$--     field("fill", types.option(types.paint), doc: "Fills"),
+$--   )
+$-- )
+$--
+$-- #show: e.set_(fbox, fill: purple)
+$-- #fbox[elembic 1.0]
 
 #show terms: it => {
   it.children

@@ -95,4 +95,30 @@ this will insert inline non-floating
 
 <lorem s="50" />
 
+::: {.whitebox .float-bottom}
+
+```
+output 1d{ 0, 0, 0, 1}  named "d4"
+output 1d{ 0, 0, 0, 1,1,2}   named "d6"
+output 1d{ 0, 0, 0, 1,1,2,2,3}   named "d8"
+output 1d{ 0, 0, 0, 1,1,2,2,3,3,4}   named "d10"
+output 1d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5} named "d12"
+
+output 1d{ 0, 0, 0, 1} + 1d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5}  named "d4+d12"
+output 1d{ 0, 0, 0, 1,1,2} + 1d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5}  named "d6+d12"
+output 1d{ 0, 0, 0, 1,1,2,2,3} + 1d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5}  named "d8+d12"
+output 1d{ 0, 0, 0, 1,1,2,2,3,3,4} + 1d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5}  named "d10+d12"
+output 1d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5} + 1d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5}  named "d12+d12"
+
+output 1d{ 0, 0, 0, 1} + 2d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5}  named "d4+2d12"
+output 1d{ 0, 0, 0, 1,1,2} + 2d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5}  named "d6+2d12"
+output 1d{ 0, 0, 0, 1,1,2,2,3} + 2d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5}  named "d8+2d12"
+output 1d{ 0, 0, 0, 1,1,2,2,3,3,4} + 2d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5}  named "d10+2d12"
+output 1d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5} + 2d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5}  named "d12+2d12"
+```
+
+this will insert inline non-floating
+:::
+
+
 </page>

@@ -14,6 +14,7 @@ specialStyles['purplebox'] = "purple"
 specialStyles['cyanbox'] = "cyan"
 specialStyles['magentabox'] = "magenta"
 specialStyles['orangebox'] = "orange"
+specialStyles['whitebox'] = "white"
 
 local function process(div)
     if FORMAT:match 'typst' then
@@ -37,6 +38,10 @@ local function process(div)
 
             if (div.classes[2] == 'float') then
                 table.insert(ret, pandoc.RawBlock('typst', "#place(bottom+left,float:true,[\n"))
+            elseif (div.classes[2] == 'float-top') then
+                table.insert(ret, pandoc.RawBlock('typst', "#place(top+left,scope:\"parent\",float:true,[\n"))
+            elseif (div.classes[2] == 'float-bottom') then
+                table.insert(ret, pandoc.RawBlock('typst', "#place(bottom+left,scope:\"parent\",float:true,[\n"))
             end
 
             table.insert(ret, pandoc.RawBlock('typst', "\n#" .. type .. "["))
@@ -48,6 +53,10 @@ local function process(div)
             table.insert(ret, pandoc.RawBlock('typst', "\n]\n"))
 
             if (div.classes[2] == 'float') then
+                table.insert(ret, pandoc.RawBlock('typst', '])\n'))
+            elseif (div.classes[2] == 'float-top') then
+                table.insert(ret, pandoc.RawBlock('typst', '])\n'))
+            elseif (div.classes[2] == 'float-bottom') then
                 table.insert(ret, pandoc.RawBlock('typst', '])\n'))
             end
 

@@ -86,4 +86,8 @@
 <lorem s="10"/>
 :::
 
+::: {.whitebox}
+<lorem s="10"/>
+:::
+
 </fnt>

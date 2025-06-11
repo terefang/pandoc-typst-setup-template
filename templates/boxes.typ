@@ -38,6 +38,7 @@
   cyan: (stroke: rgb(0, 238, 238), fill: rgb(221, 255, 255), title: black),
   magenta: (stroke: rgb(255, 0, 128), fill: rgb(255, 192, 221), title: white),
   orange: (stroke: rgb(255, 115, 0), fill: rgb(255, 221, 204), title: white),
+  white: (stroke: rgb(0, 0, 0), fill: white, title: black),
 )
 
 #let colorbox(

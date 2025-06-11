@@ -1,10 +1,8 @@
-<page columns="2" >
-
-# RAW TYPST
-
-the following is a raw typst code block. <br/>
-it is used to setup a header formatting system. <br/>
-this would usually go into the `template.typ` file.
+<page 
+    columns="2" 
+    numbering='"1"' 
+    header='text(font: "TeX Gyre Heros",)[ #context{ if calc.even(here().page()) [_Lisa Strassners Thesis_ #h(1fr)] else [#h(1fr) National Academy of Sciences] } ]'
+>
 
 ```{=typst}
 
@@ -23,6 +21,12 @@ this would usually go into the `template.typ` file.
 #set par(justify:true)
 
 ```
+
+# RAW TYPST
+
+the above is a raw typst code block. <br/>
+it is used to setup a header formatting system. <br/>
+this would usually go into the `template.typ` file.
 
 # big page header 1
 
@@ -57,3 +61,6 @@ this would usually go into the `template.typ` file.
 <lorem s="20" />
 
 </page>
+
+
+
