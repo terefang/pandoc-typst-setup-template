@@ -50,7 +50,8 @@
 
 <lorem s="200" />
 
-::: {.float-bottom}
+::: {.yellowbox .float-bottom font="gillius adf" font-size="9pt" }
+**Modifiers due to Size:**
 
 | Size       |Modifier | Health |Size Min|Size Max|Wgt Min|Wgt Max|Space|Reach (Tall)|Reach (Long) |Biped(\*)|Quad(\*)|
 |:--------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-------:|:-------:|:-------:|:-------:|
@@ -117,7 +118,7 @@ output 1d{ 0, 0, 0, 1,1,2,2,3,3,4} + 2d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5}  named "d10
 output 1d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5} + 2d{ 0, 0, 0, 1,1,2,2,3,3,4,4,5}  named "d12+2d12"
 ```
 
-this will insert inline non-floating
+this will insert bottom floating cross-column
 :::
 
 

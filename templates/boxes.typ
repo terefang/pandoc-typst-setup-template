@@ -33,7 +33,7 @@
   red: (stroke: rgb(237, 32, 84), fill: rgb(253, 228, 224), title: white),
   green: (stroke: rgb(102, 174, 62), fill: rgb(235, 244, 222), title: white),
   blue: (stroke: rgb(0, 64, 255), fill: rgb(221, 238, 255), title: white),
-  yellow: (stroke: rgb(238, 238, 0), fill: rgb(255, 255, 192), title: black),
+  yellow: (stroke: rgb(238, 238, 0), fill: rgb(255, 255, 216), title: black),
   purple: (stroke: rgb(238, 0, 238), fill: rgb(255, 221, 255), title: white),
   cyan: (stroke: rgb(0, 238, 238), fill: rgb(221, 255, 255), title: black),
   magenta: (stroke: rgb(255, 0, 128), fill: rgb(255, 192, 221), title: white),
@@ -80,6 +80,7 @@
           {
           set text(font: font) if(font!=none)
           set text(size: font-size) if(font-size!=none)
+          set par(leading: font-size * 0.1) if(font-size!=none)
           body
           }
         ),
@@ -95,6 +96,7 @@
   )[
   #set text(font: font) if(font!=none)
   #set text(size: font-size) if(font-size!=none)
+  #set par(leading: font-size * 0.1) if(font-size!=none)
   #body
   ]
 }

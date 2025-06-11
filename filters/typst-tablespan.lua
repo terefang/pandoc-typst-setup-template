@@ -13,7 +13,7 @@ local function process_table(tab)
             local td = {}
             -- check for span to the left
             for n, cell in ipairs(row.cells) do
-                if #cell.contents == 1 and cell.contents[1].content[1].text == '<' then
+                if #cell.contents == 1 and #cell.contents[1].content == 1 and cell.contents[1].content[1].text == '<' then
                     table.insert(td, n)
                 end
             end
@@ -28,7 +28,7 @@ local function process_table(tab)
             td = {}
             -- check for span to the right
             for n, cell in ipairs(row.cells) do
-                if #cell.contents == 1 and cell.contents[1].content[1].text == '>' then
+                if #cell.contents == 1 and #cell.contents[1].content == 1 and cell.contents[1].content[1].text == '>' then
                     table.insert(td, n)
                     local newalign = tab.colspecs[n+1]
                     newalign = newalign[1]
