@@ -7,28 +7,12 @@
 
 local function process(div)
     if FORMAT:match 'typst' then
-        if div.classes[1] == 'credits' then
-            local cmargin = "50pt"
-            if div.attributes['margin'] ~= nil then
-                cmargin = div.attributes['margin']
-            end
-
-            return {
-                pandoc.RawBlock('typst',
-                    "\n#page(columns:1,margin:" ..
-                    cmargin ..
-                    ",header:none,grid(align:bottom+left,columns:(1fr),rows:(1fr),[#set heading(outlined: false, bookmarked: false)"),
-                div,
-                pandoc.RawBlock('typst', "\n]))\n")
-            }
-        end
 
         if div.attributes['full-width'] == 'true' then
             div.attributes['typst:width'] = '100%'
         end
-
         -- must wrap a table
-        if (div.content[1].t == "Table") and (div.classes[1] ~= nil) then
+        if (div.content[1] ~= nil) and (div.content[1].t == "Table") and (div.classes[1] ~= nil) then
             -- old code
             -- -- set kind to first class, template will take care of the rest
             -- div.content[1].attributes['typst:figure:kind'] = '"'..div.classes[1]..'"'

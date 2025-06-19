@@ -45,6 +45,7 @@
   title: none,
   font: none,
   font-size: none,
+  leading: none,
   subtitle: "subtitle",
   box-colors: box-colors,
   color: "default",
@@ -80,7 +81,7 @@
           {
           set text(font: font) if(font!=none)
           set text(size: font-size) if(font-size!=none)
-          set par(leading: font-size * 0.1) if(font-size!=none)
+          set par(leading: leading) if(leading!=none)
           body
           }
         ),
@@ -96,7 +97,7 @@
   )[
   #set text(font: font) if(font!=none)
   #set text(size: font-size) if(font-size!=none)
-  #set par(leading: font-size * 0.1) if(font-size!=none)
+  #set par(leading: leading) if(leading!=none)
   #body
   ]
 }

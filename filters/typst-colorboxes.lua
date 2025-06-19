@@ -38,6 +38,8 @@ local function process(div)
 
             if (div.classes[2] == 'float') then
                 table.insert(ret, pandoc.RawBlock('typst', "#place(bottom+left,float:true,[\n"))
+            elseif (div.classes[2] == 'float-right') then
+                table.insert(ret, pandoc.RawBlock('typst', "#place(bottom+right,float:true,[\n"))
             elseif (div.classes[2] == 'float-top') then
                 table.insert(ret, pandoc.RawBlock('typst', "#place(top+left,scope:\"parent\",float:true,[\n"))
             elseif (div.classes[2] == 'float-bottom') then

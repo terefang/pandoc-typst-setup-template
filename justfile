@@ -5,6 +5,7 @@
 
 XDIR := justfile_directory()
 XBIN := XDIR+"/xbin"
+ABIN := XBIN+"/"+arch()+"-"+os()
 XFNT := XDIR+"/fonts"
 
 PANDOCOPT := ' --from markdown+pipe_tables+raw_attribute+raw_html+fenced_divs+yaml_metadata_block-tex_math_dollars ' \
@@ -16,8 +17,11 @@ PANDOCOPT := ' --from markdown+pipe_tables+raw_attribute+raw_html+fenced_divs+ya
         + ' --include-before-body=templates/nerdfont.typ ' \
         + ' --include-before-body=templates/unicode.typ ' \
         + ' --include-before-body=templates/boxes.typ ' \
+        + ' --lua-filter=typst-header.lua ' \
         + ' --lua-filter=typst-colorboxes.lua ' \
         + ' --lua-filter=typst-tabledivs.lua ' \
+        + ' --lua-filter=typst-customdivs.lua ' \
+        + ' --lua-filter=typst-pf2-div-styles.lua ' \
         + ' --lua-filter=typst-alerts.lua ' \
         + ' --lua-filter=typst-htmlfunc.lua ' \
         + ' --lua-filter=typst-pagebreak.lua ' \
@@ -36,6 +40,7 @@ TYPSTEXE := XBIN+'/typst'
 default: build
 
 build: build-pandoc build-typst
+    @echo "{{ABIN}}"
 
 build-pandoc:
     #!/bin/sh

@@ -5,14 +5,43 @@
 
 XDIR := justfile_directory()
 XBIN := XDIR+"/xbin"
+ABIN := XBIN+"/"+arch()+"-"+os()
 XFNT := XDIR+"/fonts"
 XTMPL := XDIR+"/templates"
 
 ICONS_FONT := 'https://github.com/terefang/rpg-icons-font/raw/refs/heads/main/static/RpgGameIcons.otf'
 ICONS_SET := 'https://github.com/terefang/rpg-icons-font/raw/refs/heads/main/static/diceset.typ'
 
-TYPST_BASE := 'https://github.com/typst/typst/releases/download/v0.13.1/typst-x86_64-unknown-linux-musl.tar.xz'
-PANDOC_BASE := 'https://github.com/jgm/pandoc/releases/download/3.7.0.2/pandoc-3.7.0.2-linux-amd64.tar.gz'
+TYPST_RELEASE := 'v0.13.1'
+TYPST_BASE := if os() == "linux" {
+if arch() == "x86_64" {
+  'https://github.com/typst/typst/releases/download/'+TYPST_RELEASE+'/typst-x86_64-unknown-linux-musl.tar.xz'
+} else {
+ 'https://github.com/typst/typst/releases/download/'+TYPST_RELEASE+'/typst-aarch64-unknown-linux-musl.tar.xz'
+}
+} else if os() == "macos" {
+if arch() == "x86_64" {
+  'https://github.com/typst/typst/releases/download/'+TYPST_RELEASE+'/typst-x86_64-apple-darwin.tar.xz'
+} else {
+ 'https://github.com/typst/typst/releases/download/'+TYPST_RELEASE+'/typst-aarch64-apple-darwin.tar.xz'
+}
+} else { "." }
+
+PANDOC_RELEASE := '3.7.0.2'
+PANDOC_BASE := if os() == "linux" {
+if arch() == "x86_64" {
+   'https://github.com/jgm/pandoc/releases/download/'+PANDOC_RELEASE+'/pandoc-'+PANDOC_RELEASE+'-linux-amd64.tar.gz'
+} else {
+  'https://github.com/jgm/pandoc/releases/download/'+PANDOC_RELEASE+'/pandoc-'+PANDOC_RELEASE+'-linux-arm64.tar.gz'
+}
+} else if os() == "macos" {
+if arch() == "x86_64" {
+   'https://github.com/jgm/pandoc/releases/download/'+PANDOC_RELEASE+'/pandoc-'+PANDOC_RELEASE+'-x86_64-macOS.zip'
+} else {
+  'https://github.com/jgm/pandoc/releases/download/'+PANDOC_RELEASE+'/pandoc-'+PANDOC_RELEASE+'-arm64-macOS.zip'
+}
+} else { "." }
+
 LUCIOLE_BASE := 'https://luciole-vision.com/fonts/Luciole.zip'
 
 OPENSANS_BASE := 'https://github.com/googlefonts/opensans/raw/main/fonts/noto-set/ttf'
@@ -26,7 +55,8 @@ OPENSANS_LIST := 'OpenSans-Bold.ttf OpenSans-BoldItalic.ttf OpenSans-CondensedBo
     + 'OpenSans-LightItalic.ttf OpenSans-Regular.ttf OpenSans-SemiBold.ttf ' \
     + 'OpenSans-SemiBoldItalic.ttf'
 
-GOOGLE_LIST := 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6_PLrOZCLtce-og.ttf?/Overpass-Thin.ttf ' \
+GOOGLE_LIST := 'https://fonts.gstatic.com/s/bebasneue/v15/JTUSjIg69CK48gW7PXooxW5rygbi49c.ttf?/BebasNeue-Regular.ttf ' \
+    + 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6_PLrOZCLtce-og.ttf?/Overpass-Thin.ttf ' \
     + 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6fPPrOZCLtce-og.ttf?/Overpass-ExtraLight.ttf ' \
     + 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6ovPrOZCLtce-og.ttf?/Overpass-Light.ttf ' \
     + 'https://fonts.gstatic.com/s/overpass/v16/qFda35WCmI96Ajtm83upeyoaX6QPnlo6_PPrOZCLtce-og.ttf?/Overpass-Regular.ttf ' \
@@ -276,20 +306,52 @@ fonts-variants:
 fetch-typst:
     #!/bin/sh
     mkdir -p {{XBIN}}/tmp
-    wget -O {{XBIN}}/tmp/typst.tar.xz {{TYPST_BASE}}
-    (cd {{XBIN}}/tmp && tar -xf typst.tar.xz)
-    cp $(find {{XBIN}}/tmp -type f -name typst) {{XBIN}}/
-    chmod +x {{XBIN}}/typst
+    case "{{PANDOC_BASE}}" in
+        *.tar.*)
+            wget -O {{XBIN}}/tmp/typst.tar.xz {{TYPST_BASE}}
+            (cd {{XBIN}}/tmp && tar -xf typst.tar.xz)
+            ;;
+        *.zip)
+            wget -O {{XBIN}}/tmp/typst.zip  {{TYPST_BASE}}
+            (cd {{XBIN}}/tmp && unzip -o -j typst.zip)
+        ;;
+    esac
+    case "{{os()}}" in
+        windows)
+            cp $(find {{XBIN}}/tmp -type f -name typst.exe) {{XBIN}}/
+            chmod +x {{XBIN}}/typst.exe
+            ;;
+        *)
+            cp $(find {{XBIN}}/tmp -type f -name typst) {{XBIN}}/
+            chmod +x {{XBIN}}/typst
+        ;;
+    esac
     rm -rf {{XBIN}}/tmp
     {{XBIN}}/typst --version
 
 fetch-pandoc:
     #!/bin/sh
     mkdir -p {{XBIN}}/tmp
-    wget -O {{XBIN}}/tmp/pandoc.tar.gz {{PANDOC_BASE}}
-    (cd {{XBIN}}/tmp && tar -xf pandoc.tar.gz)
-    cp $(find {{XBIN}}/tmp -type f -name pandoc) {{XBIN}}/
-    chmod +x {{XBIN}}/pandoc
+    case "{{PANDOC_BASE}}" in
+        *.tar.*)
+            wget -O {{XBIN}}/tmp/pandoc.tar.gz {{PANDOC_BASE}}
+            (cd {{XBIN}}/tmp && tar -xf pandoc.tar.gz)
+            ;;
+        *.zip)
+            wget -O {{XBIN}}/tmp/pandoc.zip {{PANDOC_BASE}}
+            (cd {{XBIN}}/tmp && unzip -o -j pandoc.zip)
+        ;;
+    esac
+    case "{{os()}}" in
+        windows)
+            cp $(find {{XBIN}}/tmp -type f -name pandoc.exe) {{XBIN}}/
+            chmod +x {{XBIN}}/pandoc.exe
+            ;;
+        *)
+            cp $(find {{XBIN}}/tmp -type f -name pandoc) {{XBIN}}/
+            chmod +x {{XBIN}}/pandoc
+        ;;
+    esac
     rm -rf {{XBIN}}/tmp
     {{XBIN}}/pandoc --version
 

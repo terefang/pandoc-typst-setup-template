@@ -143,6 +143,10 @@ function RawInline(elem)
             if(cap1 == 'thead') then
                 return pandoc.RawInline('typst', 'table.header([')
             end
+            -- horizontal filler, first attr is fill string
+            if(cap1 == 'fill' or cap1 == 'f') then
+                return pandoc.RawInline('typst', '#box(width: 1fr)')
+            end
             -- table/grid hline/vline
             if (cap1 == 'hline' or cap1 == 'vline') then
                 return pandoc.RawInline('typst', 'grid.'..cap1..'(),')
