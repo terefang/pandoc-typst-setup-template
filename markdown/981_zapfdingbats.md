@@ -4,367 +4,368 @@
 
 # ZAPFDINGBATS
 
-<fnt size="32pt">&zfd-a100;</fnt><fill c=" ."/>zfd-a100<br/>
-<fnt size="32pt">&zfd-a101;</fnt><fill c=" ."/>zfd-a101<br/>
-<fnt size="32pt">&zfd-a102;</fnt><fill c=" ."/>zfd-a102<br/>
-<fnt size="32pt">&zfd-a103;</fnt><fill c=" ."/>zfd-a103<br/>
-<fnt size="32pt">&zfd-a104;</fnt><fill c=" ."/>zfd-a104<br/>
-<fnt size="32pt">&zfd-a105;</fnt><fill c=" ."/>zfd-a105<br/>
-<fnt size="32pt">&zfd-a106;</fnt><fill c=" ."/>zfd-a106<br/>
-<fnt size="32pt">&zfd-a107;</fnt><fill c=" ."/>zfd-a107<br/>
-<fnt size="32pt">&zfd-a108;</fnt><fill c=" ."/>zfd-a108<br/>
-<fnt size="32pt">&zfd-a109;</fnt><fill c=" ."/>zfd-a109<br/>
-<fnt size="32pt">&zfd-a10;</fnt><fill c=" ."/>zfd-a10<br/>
-<fnt size="32pt">&zfd-a110;</fnt><fill c=" ."/>zfd-a110<br/>
-<fnt size="32pt">&zfd-a111;</fnt><fill c=" ."/>zfd-a111<br/>
-<fnt size="32pt">&zfd-a112;</fnt><fill c=" ."/>zfd-a112<br/>
-<fnt size="32pt">&zfd-a117;</fnt><fill c=" ."/>zfd-a117<br/>
-<fnt size="32pt">&zfd-a118;</fnt><fill c=" ."/>zfd-a118<br/>
-<fnt size="32pt">&zfd-a119;</fnt><fill c=" ."/>zfd-a119<br/>
-<fnt size="32pt">&zfd-a11;</fnt><fill c=" ."/>zfd-a11<br/>
-<fnt size="32pt">&zfd-a120;</fnt><fill c=" ."/>zfd-a120<br/>
-<fnt size="32pt">&zfd-a121;</fnt><fill c=" ."/>zfd-a121<br/>
-<fnt size="32pt">&zfd-a122;</fnt><fill c=" ."/>zfd-a122<br/>
-<fnt size="32pt">&zfd-a123;</fnt><fill c=" ."/>zfd-a123<br/>
-<fnt size="32pt">&zfd-a124;</fnt><fill c=" ."/>zfd-a124<br/>
-<fnt size="32pt">&zfd-a125;</fnt><fill c=" ."/>zfd-a125<br/>
-<fnt size="32pt">&zfd-a126;</fnt><fill c=" ."/>zfd-a126<br/>
-<fnt size="32pt">&zfd-a127;</fnt><fill c=" ."/>zfd-a127<br/>
-<fnt size="32pt">&zfd-a128;</fnt><fill c=" ."/>zfd-a128<br/>
-<fnt size="32pt">&zfd-a129;</fnt><fill c=" ."/>zfd-a129<br/>
-<fnt size="32pt">&zfd-a12;</fnt><fill c=" ."/>zfd-a12<br/>
-<fnt size="32pt">&zfd-a130;</fnt><fill c=" ."/>zfd-a130<br/>
-<fnt size="32pt">&zfd-a131;</fnt><fill c=" ."/>zfd-a131<br/>
-<fnt size="32pt">&zfd-a132;</fnt><fill c=" ."/>zfd-a132<br/>
-<fnt size="32pt">&zfd-a133;</fnt><fill c=" ."/>zfd-a133<br/>
-<fnt size="32pt">&zfd-a134;</fnt><fill c=" ."/>zfd-a134<br/>
-<fnt size="32pt">&zfd-a135;</fnt><fill c=" ."/>zfd-a135<br/>
-<fnt size="32pt">&zfd-a136;</fnt><fill c=" ."/>zfd-a136<br/>
-<fnt size="32pt">&zfd-a137;</fnt><fill c=" ."/>zfd-a137<br/>
-<fnt size="32pt">&zfd-a138;</fnt><fill c=" ."/>zfd-a138<br/>
-<fnt size="32pt">&zfd-a139;</fnt><fill c=" ."/>zfd-a139<br/>
-<fnt size="32pt">&zfd-a13;</fnt><fill c=" ."/>zfd-a13<br/>
-<fnt size="32pt">&zfd-a140;</fnt><fill c=" ."/>zfd-a140<br/>
-<fnt size="32pt">&zfd-a141;</fnt><fill c=" ."/>zfd-a141<br/>
-<fnt size="32pt">&zfd-a142;</fnt><fill c=" ."/>zfd-a142<br/>
-<fnt size="32pt">&zfd-a143;</fnt><fill c=" ."/>zfd-a143<br/>
-<fnt size="32pt">&zfd-a144;</fnt><fill c=" ."/>zfd-a144<br/>
-<fnt size="32pt">&zfd-a145;</fnt><fill c=" ."/>zfd-a145<br/>
-<fnt size="32pt">&zfd-a146;</fnt><fill c=" ."/>zfd-a146<br/>
-<fnt size="32pt">&zfd-a147;</fnt><fill c=" ."/>zfd-a147<br/>
-<fnt size="32pt">&zfd-a148;</fnt><fill c=" ."/>zfd-a148<br/>
-<fnt size="32pt">&zfd-a149;</fnt><fill c=" ."/>zfd-a149<br/>
-<fnt size="32pt">&zfd-a14;</fnt><fill c=" ."/>zfd-a14<br/>
-<fnt size="32pt">&zfd-a150;</fnt><fill c=" ."/>zfd-a150<br/>
-<fnt size="32pt">&zfd-a151;</fnt><fill c=" ."/>zfd-a151<br/>
-<fnt size="32pt">&zfd-a152;</fnt><fill c=" ."/>zfd-a152<br/>
-<fnt size="32pt">&zfd-a153;</fnt><fill c=" ."/>zfd-a153<br/>
-<fnt size="32pt">&zfd-a154;</fnt><fill c=" ."/>zfd-a154<br/>
-<fnt size="32pt">&zfd-a155;</fnt><fill c=" ."/>zfd-a155<br/>
-<fnt size="32pt">&zfd-a156;</fnt><fill c=" ."/>zfd-a156<br/>
-<fnt size="32pt">&zfd-a157;</fnt><fill c=" ."/>zfd-a157<br/>
-<fnt size="32pt">&zfd-a158;</fnt><fill c=" ."/>zfd-a158<br/>
-<fnt size="32pt">&zfd-a159;</fnt><fill c=" ."/>zfd-a159<br/>
-<fnt size="32pt">&zfd-a15;</fnt><fill c=" ."/>zfd-a15<br/>
-<fnt size="32pt">&zfd-a160;</fnt><fill c=" ."/>zfd-a160<br/>
-<fnt size="32pt">&zfd-a161;</fnt><fill c=" ."/>zfd-a161<br/>
-<fnt size="32pt">&zfd-a162;</fnt><fill c=" ."/>zfd-a162<br/>
-<fnt size="32pt">&zfd-a163;</fnt><fill c=" ."/>zfd-a163<br/>
-<fnt size="32pt">&zfd-a164;</fnt><fill c=" ."/>zfd-a164<br/>
-<fnt size="32pt">&zfd-a165;</fnt><fill c=" ."/>zfd-a165<br/>
-<fnt size="32pt">&zfd-a166;</fnt><fill c=" ."/>zfd-a166<br/>
-<fnt size="32pt">&zfd-a167;</fnt><fill c=" ."/>zfd-a167<br/>
-<fnt size="32pt">&zfd-a168;</fnt><fill c=" ."/>zfd-a168<br/>
-<fnt size="32pt">&zfd-a169;</fnt><fill c=" ."/>zfd-a169<br/>
-<fnt size="32pt">&zfd-a16;</fnt><fill c=" ."/>zfd-a16<br/>
-<fnt size="32pt">&zfd-a170;</fnt><fill c=" ."/>zfd-a170<br/>
-<fnt size="32pt">&zfd-a171;</fnt><fill c=" ."/>zfd-a171<br/>
-<fnt size="32pt">&zfd-a172;</fnt><fill c=" ."/>zfd-a172<br/>
-<fnt size="32pt">&zfd-a173;</fnt><fill c=" ."/>zfd-a173<br/>
-<fnt size="32pt">&zfd-a174;</fnt><fill c=" ."/>zfd-a174<br/>
-<fnt size="32pt">&zfd-a175;</fnt><fill c=" ."/>zfd-a175<br/>
-<fnt size="32pt">&zfd-a176;</fnt><fill c=" ."/>zfd-a176<br/>
-<fnt size="32pt">&zfd-a177;</fnt><fill c=" ."/>zfd-a177<br/>
-<fnt size="32pt">&zfd-a178;</fnt><fill c=" ."/>zfd-a178<br/>
-<fnt size="32pt">&zfd-a179;</fnt><fill c=" ."/>zfd-a179<br/>
-<fnt size="32pt">&zfd-a17;</fnt><fill c=" ."/>zfd-a17<br/>
-<fnt size="32pt">&zfd-a180;</fnt><fill c=" ."/>zfd-a180<br/>
-<fnt size="32pt">&zfd-a181;</fnt><fill c=" ."/>zfd-a181<br/>
-<fnt size="32pt">&zfd-a182;</fnt><fill c=" ."/>zfd-a182<br/>
-<fnt size="32pt">&zfd-a183;</fnt><fill c=" ."/>zfd-a183<br/>
-<fnt size="32pt">&zfd-a184;</fnt><fill c=" ."/>zfd-a184<br/>
-<fnt size="32pt">&zfd-a185;</fnt><fill c=" ."/>zfd-a185<br/>
-<fnt size="32pt">&zfd-a186;</fnt><fill c=" ."/>zfd-a186<br/>
-<fnt size="32pt">&zfd-a187;</fnt><fill c=" ."/>zfd-a187<br/>
-<fnt size="32pt">&zfd-a188;</fnt><fill c=" ."/>zfd-a188<br/>
-<fnt size="32pt">&zfd-a189;</fnt><fill c=" ."/>zfd-a189<br/>
-<fnt size="32pt">&zfd-a18;</fnt><fill c=" ."/>zfd-a18<br/>
-<fnt size="32pt">&zfd-a190;</fnt><fill c=" ."/>zfd-a190<br/>
-<fnt size="32pt">&zfd-a191;</fnt><fill c=" ."/>zfd-a191<br/>
-<fnt size="32pt">&zfd-a192;</fnt><fill c=" ."/>zfd-a192<br/>
-<fnt size="32pt">&zfd-a193;</fnt><fill c=" ."/>zfd-a193<br/>
-<fnt size="32pt">&zfd-a194;</fnt><fill c=" ."/>zfd-a194<br/>
-<fnt size="32pt">&zfd-a195;</fnt><fill c=" ."/>zfd-a195<br/>
-<fnt size="32pt">&zfd-a196;</fnt><fill c=" ."/>zfd-a196<br/>
-<fnt size="32pt">&zfd-a197;</fnt><fill c=" ."/>zfd-a197<br/>
-<fnt size="32pt">&zfd-a198;</fnt><fill c=" ."/>zfd-a198<br/>
-<fnt size="32pt">&zfd-a199;</fnt><fill c=" ."/>zfd-a199<br/>
-<fnt size="32pt">&zfd-a19;</fnt><fill c=" ."/>zfd-a19<br/>
-<fnt size="32pt">&zfd-a1;</fnt><fill c=" ."/>zfd-a1<br/>
-<fnt size="32pt">&zfd-a200;</fnt><fill c=" ."/>zfd-a200<br/>
-<fnt size="32pt">&zfd-a201;</fnt><fill c=" ."/>zfd-a201<br/>
-<fnt size="32pt">&zfd-a202;</fnt><fill c=" ."/>zfd-a202<br/>
-<fnt size="32pt">&zfd-a203;</fnt><fill c=" ."/>zfd-a203<br/>
-<fnt size="32pt">&zfd-a204;</fnt><fill c=" ."/>zfd-a204<br/>
-<fnt size="32pt">&zfd-a205;</fnt><fill c=" ."/>zfd-a205<br/>
-<fnt size="32pt">&zfd-a206;</fnt><fill c=" ."/>zfd-a206<br/>
-<fnt size="32pt">&zfd-a20;</fnt><fill c=" ."/>zfd-a20<br/>
-<fnt size="32pt">&zfd-a21;</fnt><fill c=" ."/>zfd-a21<br/>
-<fnt size="32pt">&zfd-a22;</fnt><fill c=" ."/>zfd-a22<br/>
-<fnt size="32pt">&zfd-a23;</fnt><fill c=" ."/>zfd-a23<br/>
-<fnt size="32pt">&zfd-a24;</fnt><fill c=" ."/>zfd-a24<br/>
-<fnt size="32pt">&zfd-a25;</fnt><fill c=" ."/>zfd-a25<br/>
-<fnt size="32pt">&zfd-a26;</fnt><fill c=" ."/>zfd-a26<br/>
-<fnt size="32pt">&zfd-a27;</fnt><fill c=" ."/>zfd-a27<br/>
-<fnt size="32pt">&zfd-a28;</fnt><fill c=" ."/>zfd-a28<br/>
-<fnt size="32pt">&zfd-a29;</fnt><fill c=" ."/>zfd-a29<br/>
-<fnt size="32pt">&zfd-a2;</fnt><fill c=" ."/>zfd-a2<br/>
-<fnt size="32pt">&zfd-a30;</fnt><fill c=" ."/>zfd-a30<br/>
-<fnt size="32pt">&zfd-a31;</fnt><fill c=" ."/>zfd-a31<br/>
-<fnt size="32pt">&zfd-a32;</fnt><fill c=" ."/>zfd-a32<br/>
-<fnt size="32pt">&zfd-a33;</fnt><fill c=" ."/>zfd-a33<br/>
-<fnt size="32pt">&zfd-a34;</fnt><fill c=" ."/>zfd-a34<br/>
-<fnt size="32pt">&zfd-a35;</fnt><fill c=" ."/>zfd-a35<br/>
-<fnt size="32pt">&zfd-a36;</fnt><fill c=" ."/>zfd-a36<br/>
-<fnt size="32pt">&zfd-a37;</fnt><fill c=" ."/>zfd-a37<br/>
-<fnt size="32pt">&zfd-a38;</fnt><fill c=" ."/>zfd-a38<br/>
-<fnt size="32pt">&zfd-a39;</fnt><fill c=" ."/>zfd-a39<br/>
-<fnt size="32pt">&zfd-a3;</fnt><fill c=" ."/>zfd-a3<br/>
-<fnt size="32pt">&zfd-a40;</fnt><fill c=" ."/>zfd-a40<br/>
-<fnt size="32pt">&zfd-a41;</fnt><fill c=" ."/>zfd-a41<br/>
-<fnt size="32pt">&zfd-a42;</fnt><fill c=" ."/>zfd-a42<br/>
-<fnt size="32pt">&zfd-a43;</fnt><fill c=" ."/>zfd-a43<br/>
-<fnt size="32pt">&zfd-a44;</fnt><fill c=" ."/>zfd-a44<br/>
-<fnt size="32pt">&zfd-a45;</fnt><fill c=" ."/>zfd-a45<br/>
-<fnt size="32pt">&zfd-a46;</fnt><fill c=" ."/>zfd-a46<br/>
-<fnt size="32pt">&zfd-a47;</fnt><fill c=" ."/>zfd-a47<br/>
-<fnt size="32pt">&zfd-a48;</fnt><fill c=" ."/>zfd-a48<br/>
-<fnt size="32pt">&zfd-a49;</fnt><fill c=" ."/>zfd-a49<br/>
-<fnt size="32pt">&zfd-a4;</fnt><fill c=" ."/>zfd-a4<br/>
-<fnt size="32pt">&zfd-a50;</fnt><fill c=" ."/>zfd-a50<br/>
-<fnt size="32pt">&zfd-a51;</fnt><fill c=" ."/>zfd-a51<br/>
-<fnt size="32pt">&zfd-a52;</fnt><fill c=" ."/>zfd-a52<br/>
-<fnt size="32pt">&zfd-a53;</fnt><fill c=" ."/>zfd-a53<br/>
-<fnt size="32pt">&zfd-a54;</fnt><fill c=" ."/>zfd-a54<br/>
-<fnt size="32pt">&zfd-a55;</fnt><fill c=" ."/>zfd-a55<br/>
-<fnt size="32pt">&zfd-a56;</fnt><fill c=" ."/>zfd-a56<br/>
-<fnt size="32pt">&zfd-a57;</fnt><fill c=" ."/>zfd-a57<br/>
-<fnt size="32pt">&zfd-a58;</fnt><fill c=" ."/>zfd-a58<br/>
-<fnt size="32pt">&zfd-a59;</fnt><fill c=" ."/>zfd-a59<br/>
-<fnt size="32pt">&zfd-a5;</fnt><fill c=" ."/>zfd-a5<br/>
-<fnt size="32pt">&zfd-a60;</fnt><fill c=" ."/>zfd-a60<br/>
-<fnt size="32pt">&zfd-a61;</fnt><fill c=" ."/>zfd-a61<br/>
-<fnt size="32pt">&zfd-a62;</fnt><fill c=" ."/>zfd-a62<br/>
-<fnt size="32pt">&zfd-a63;</fnt><fill c=" ."/>zfd-a63<br/>
-<fnt size="32pt">&zfd-a64;</fnt><fill c=" ."/>zfd-a64<br/>
-<fnt size="32pt">&zfd-a65;</fnt><fill c=" ."/>zfd-a65<br/>
-<fnt size="32pt">&zfd-a66;</fnt><fill c=" ."/>zfd-a66<br/>
-<fnt size="32pt">&zfd-a67;</fnt><fill c=" ."/>zfd-a67<br/>
-<fnt size="32pt">&zfd-a68;</fnt><fill c=" ."/>zfd-a68<br/>
-<fnt size="32pt">&zfd-a69;</fnt><fill c=" ."/>zfd-a69<br/>
-<fnt size="32pt">&zfd-a6;</fnt><fill c=" ."/>zfd-a6<br/>
-<fnt size="32pt">&zfd-a70;</fnt><fill c=" ."/>zfd-a70<br/>
-<fnt size="32pt">&zfd-a71;</fnt><fill c=" ."/>zfd-a71<br/>
-<fnt size="32pt">&zfd-a72;</fnt><fill c=" ."/>zfd-a72<br/>
-<fnt size="32pt">&zfd-a73;</fnt><fill c=" ."/>zfd-a73<br/>
-<fnt size="32pt">&zfd-a74;</fnt><fill c=" ."/>zfd-a74<br/>
-<fnt size="32pt">&zfd-a75;</fnt><fill c=" ."/>zfd-a75<br/>
-<fnt size="32pt">&zfd-a76;</fnt><fill c=" ."/>zfd-a76<br/>
-<fnt size="32pt">&zfd-a77;</fnt><fill c=" ."/>zfd-a77<br/>
-<fnt size="32pt">&zfd-a78;</fnt><fill c=" ."/>zfd-a78<br/>
-<fnt size="32pt">&zfd-a79;</fnt><fill c=" ."/>zfd-a79<br/>
-<fnt size="32pt">&zfd-a7;</fnt><fill c=" ."/>zfd-a7<br/>
-<fnt size="32pt">&zfd-a81;</fnt><fill c=" ."/>zfd-a81<br/>
-<fnt size="32pt">&zfd-a82;</fnt><fill c=" ."/>zfd-a82<br/>
-<fnt size="32pt">&zfd-a83;</fnt><fill c=" ."/>zfd-a83<br/>
-<fnt size="32pt">&zfd-a84;</fnt><fill c=" ."/>zfd-a84<br/>
-<fnt size="32pt">&zfd-a85;</fnt><fill c=" ."/>zfd-a85<br/>
-<fnt size="32pt">&zfd-a86;</fnt><fill c=" ."/>zfd-a86<br/>
-<fnt size="32pt">&zfd-a87;</fnt><fill c=" ."/>zfd-a87<br/>
-<fnt size="32pt">&zfd-a88;</fnt><fill c=" ."/>zfd-a88<br/>
-<fnt size="32pt">&zfd-a89;</fnt><fill c=" ."/>zfd-a89<br/>
-<fnt size="32pt">&zfd-a8;</fnt><fill c=" ."/>zfd-a8<br/>
-<fnt size="32pt">&zfd-a90;</fnt><fill c=" ."/>zfd-a90<br/>
-<fnt size="32pt">&zfd-a91;</fnt><fill c=" ."/>zfd-a91<br/>
-<fnt size="32pt">&zfd-a92;</fnt><fill c=" ."/>zfd-a92<br/>
-<fnt size="32pt">&zfd-a93;</fnt><fill c=" ."/>zfd-a93<br/>
-<fnt size="32pt">&zfd-a94;</fnt><fill c=" ."/>zfd-a94<br/>
-<fnt size="32pt">&zfd-a95;</fnt><fill c=" ."/>zfd-a95<br/>
-<fnt size="32pt">&zfd-a96;</fnt><fill c=" ."/>zfd-a96<br/>
-<fnt size="32pt">&zfd-a97;</fnt><fill c=" ."/>zfd-a97<br/>
-<fnt size="32pt">&zfd-a98;</fnt><fill c=" ."/>zfd-a98<br/>
-<fnt size="32pt">&zfd-a99;</fnt><fill c=" ."/>zfd-a99<br/>
-<fnt size="32pt">&zfd-a9;</fnt><fill c=" ."/>zfd-a9<br/>
+<icon size="32pt" name="zfd-a100"/><fill c=" ."/>zfd-a100<br/>
+<icon size="32pt" name="zfd-a101"/><fill c=" ."/>zfd-a101<br/>
+<icon size="32pt" name="zfd-a102"/><fill c=" ."/>zfd-a102<br/>
+<icon size="32pt" name="zfd-a103"/><fill c=" ."/>zfd-a103<br/>
+<icon size="32pt" name="zfd-a104"/><fill c=" ."/>zfd-a104<br/>
+<icon size="32pt" name="zfd-a105"/><fill c=" ."/>zfd-a105<br/>
+<icon size="32pt" name="zfd-a106"/><fill c=" ."/>zfd-a106<br/>
+<icon size="32pt" name="zfd-a107"/><fill c=" ."/>zfd-a107<br/>
+<icon size="32pt" name="zfd-a108"/><fill c=" ."/>zfd-a108<br/>
+<icon size="32pt" name="zfd-a109"/><fill c=" ."/>zfd-a109<br/>
+<icon size="32pt" name="zfd-a10"/><fill c=" ."/>zfd-a10<br/>
+<icon size="32pt" name="zfd-a110"/><fill c=" ."/>zfd-a110<br/>
+<icon size="32pt" name="zfd-a111"/><fill c=" ."/>zfd-a111<br/>
+<icon size="32pt" name="zfd-a112"/><fill c=" ."/>zfd-a112<br/>
+<icon size="32pt" name="zfd-a117"/><fill c=" ."/>zfd-a117<br/>
+<icon size="32pt" name="zfd-a118"/><fill c=" ."/>zfd-a118<br/>
+<icon size="32pt" name="zfd-a119"/><fill c=" ."/>zfd-a119<br/>
+<icon size="32pt" name="zfd-a11"/><fill c=" ."/>zfd-a11<br/>
+<icon size="32pt" name="zfd-a120"/><fill c=" ."/>zfd-a120<br/>
+<icon size="32pt" name="zfd-a121"/><fill c=" ."/>zfd-a121<br/>
+<icon size="32pt" name="zfd-a122"/><fill c=" ."/>zfd-a122<br/>
+<icon size="32pt" name="zfd-a123"/><fill c=" ."/>zfd-a123<br/>
+<icon size="32pt" name="zfd-a124"/><fill c=" ."/>zfd-a124<br/>
+<icon size="32pt" name="zfd-a125"/><fill c=" ."/>zfd-a125<br/>
+<icon size="32pt" name="zfd-a126"/><fill c=" ."/>zfd-a126<br/>
+<icon size="32pt" name="zfd-a127"/><fill c=" ."/>zfd-a127<br/>
+<icon size="32pt" name="zfd-a128"/><fill c=" ."/>zfd-a128<br/>
+<icon size="32pt" name="zfd-a129"/><fill c=" ."/>zfd-a129<br/>
+<icon size="32pt" name="zfd-a12"/><fill c=" ."/>zfd-a12<br/>
+<icon size="32pt" name="zfd-a130"/><fill c=" ."/>zfd-a130<br/>
+<icon size="32pt" name="zfd-a131"/><fill c=" ."/>zfd-a131<br/>
+<icon size="32pt" name="zfd-a132"/><fill c=" ."/>zfd-a132<br/>
+<icon size="32pt" name="zfd-a133"/><fill c=" ."/>zfd-a133<br/>
+<icon size="32pt" name="zfd-a134"/><fill c=" ."/>zfd-a134<br/>
+<icon size="32pt" name="zfd-a135"/><fill c=" ."/>zfd-a135<br/>
+<icon size="32pt" name="zfd-a136"/><fill c=" ."/>zfd-a136<br/>
+<icon size="32pt" name="zfd-a137"/><fill c=" ."/>zfd-a137<br/>
+<icon size="32pt" name="zfd-a138"/><fill c=" ."/>zfd-a138<br/>
+<icon size="32pt" name="zfd-a139"/><fill c=" ."/>zfd-a139<br/>
+<icon size="32pt" name="zfd-a13"/><fill c=" ."/>zfd-a13<br/>
+<icon size="32pt" name="zfd-a140"/><fill c=" ."/>zfd-a140<br/>
+<icon size="32pt" name="zfd-a141"/><fill c=" ."/>zfd-a141<br/>
+<icon size="32pt" name="zfd-a142"/><fill c=" ."/>zfd-a142<br/>
+<icon size="32pt" name="zfd-a143"/><fill c=" ."/>zfd-a143<br/>
+<icon size="32pt" name="zfd-a144"/><fill c=" ."/>zfd-a144<br/>
+<icon size="32pt" name="zfd-a145"/><fill c=" ."/>zfd-a145<br/>
+<icon size="32pt" name="zfd-a146"/><fill c=" ."/>zfd-a146<br/>
+<icon size="32pt" name="zfd-a147"/><fill c=" ."/>zfd-a147<br/>
+<icon size="32pt" name="zfd-a148"/><fill c=" ."/>zfd-a148<br/>
+<icon size="32pt" name="zfd-a149"/><fill c=" ."/>zfd-a149<br/>
+<icon size="32pt" name="zfd-a14"/><fill c=" ."/>zfd-a14<br/>
+<icon size="32pt" name="zfd-a150"/><fill c=" ."/>zfd-a150<br/>
+<icon size="32pt" name="zfd-a151"/><fill c=" ."/>zfd-a151<br/>
+<icon size="32pt" name="zfd-a152"/><fill c=" ."/>zfd-a152<br/>
+<icon size="32pt" name="zfd-a153"/><fill c=" ."/>zfd-a153<br/>
+<icon size="32pt" name="zfd-a154"/><fill c=" ."/>zfd-a154<br/>
+<icon size="32pt" name="zfd-a155"/><fill c=" ."/>zfd-a155<br/>
+<icon size="32pt" name="zfd-a156"/><fill c=" ."/>zfd-a156<br/>
+<icon size="32pt" name="zfd-a157"/><fill c=" ."/>zfd-a157<br/>
+<icon size="32pt" name="zfd-a158"/><fill c=" ."/>zfd-a158<br/>
+<icon size="32pt" name="zfd-a159"/><fill c=" ."/>zfd-a159<br/>
+<icon size="32pt" name="zfd-a15"/><fill c=" ."/>zfd-a15<br/>
+<icon size="32pt" name="zfd-a160"/><fill c=" ."/>zfd-a160<br/>
+<icon size="32pt" name="zfd-a161"/><fill c=" ."/>zfd-a161<br/>
+<icon size="32pt" name="zfd-a162"/><fill c=" ."/>zfd-a162<br/>
+<icon size="32pt" name="zfd-a163"/><fill c=" ."/>zfd-a163<br/>
+<icon size="32pt" name="zfd-a164"/><fill c=" ."/>zfd-a164<br/>
+<icon size="32pt" name="zfd-a165"/><fill c=" ."/>zfd-a165<br/>
+<icon size="32pt" name="zfd-a166"/><fill c=" ."/>zfd-a166<br/>
+<icon size="32pt" name="zfd-a167"/><fill c=" ."/>zfd-a167<br/>
+<icon size="32pt" name="zfd-a168"/><fill c=" ."/>zfd-a168<br/>
+<icon size="32pt" name="zfd-a169"/><fill c=" ."/>zfd-a169<br/>
+<icon size="32pt" name="zfd-a16"/><fill c=" ."/>zfd-a16<br/>
+<icon size="32pt" name="zfd-a170"/><fill c=" ."/>zfd-a170<br/>
+<icon size="32pt" name="zfd-a171"/><fill c=" ."/>zfd-a171<br/>
+<icon size="32pt" name="zfd-a172"/><fill c=" ."/>zfd-a172<br/>
+<icon size="32pt" name="zfd-a173"/><fill c=" ."/>zfd-a173<br/>
+<icon size="32pt" name="zfd-a174"/><fill c=" ."/>zfd-a174<br/>
+<icon size="32pt" name="zfd-a175"/><fill c=" ."/>zfd-a175<br/>
+<icon size="32pt" name="zfd-a176"/><fill c=" ."/>zfd-a176<br/>
+<icon size="32pt" name="zfd-a177"/><fill c=" ."/>zfd-a177<br/>
+<icon size="32pt" name="zfd-a178"/><fill c=" ."/>zfd-a178<br/>
+<icon size="32pt" name="zfd-a179"/><fill c=" ."/>zfd-a179<br/>
+<icon size="32pt" name="zfd-a17"/><fill c=" ."/>zfd-a17<br/>
+<icon size="32pt" name="zfd-a180"/><fill c=" ."/>zfd-a180<br/>
+<icon size="32pt" name="zfd-a181"/><fill c=" ."/>zfd-a181<br/>
+<icon size="32pt" name="zfd-a182"/><fill c=" ."/>zfd-a182<br/>
+<icon size="32pt" name="zfd-a183"/><fill c=" ."/>zfd-a183<br/>
+<icon size="32pt" name="zfd-a184"/><fill c=" ."/>zfd-a184<br/>
+<icon size="32pt" name="zfd-a185"/><fill c=" ."/>zfd-a185<br/>
+<icon size="32pt" name="zfd-a186"/><fill c=" ."/>zfd-a186<br/>
+<icon size="32pt" name="zfd-a187"/><fill c=" ."/>zfd-a187<br/>
+<icon size="32pt" name="zfd-a188"/><fill c=" ."/>zfd-a188<br/>
+<icon size="32pt" name="zfd-a189"/><fill c=" ."/>zfd-a189<br/>
+<icon size="32pt" name="zfd-a18"/><fill c=" ."/>zfd-a18<br/>
+<icon size="32pt" name="zfd-a190"/><fill c=" ."/>zfd-a190<br/>
+<icon size="32pt" name="zfd-a191"/><fill c=" ."/>zfd-a191<br/>
+<icon size="32pt" name="zfd-a192"/><fill c=" ."/>zfd-a192<br/>
+<icon size="32pt" name="zfd-a193"/><fill c=" ."/>zfd-a193<br/>
+<icon size="32pt" name="zfd-a194"/><fill c=" ."/>zfd-a194<br/>
+<icon size="32pt" name="zfd-a195"/><fill c=" ."/>zfd-a195<br/>
+<icon size="32pt" name="zfd-a196"/><fill c=" ."/>zfd-a196<br/>
+<icon size="32pt" name="zfd-a197"/><fill c=" ."/>zfd-a197<br/>
+<icon size="32pt" name="zfd-a198"/><fill c=" ."/>zfd-a198<br/>
+<icon size="32pt" name="zfd-a199"/><fill c=" ."/>zfd-a199<br/>
+<icon size="32pt" name="zfd-a19"/><fill c=" ."/>zfd-a19<br/>
+<icon size="32pt" name="zfd-a1"/><fill c=" ."/>zfd-a1<br/>
+<icon size="32pt" name="zfd-a200"/><fill c=" ."/>zfd-a200<br/>
+<icon size="32pt" name="zfd-a201"/><fill c=" ."/>zfd-a201<br/>
+<icon size="32pt" name="zfd-a202"/><fill c=" ."/>zfd-a202<br/>
+<icon size="32pt" name="zfd-a203"/><fill c=" ."/>zfd-a203<br/>
+<icon size="32pt" name="zfd-a204"/><fill c=" ."/>zfd-a204<br/>
+<icon size="32pt" name="zfd-a205"/><fill c=" ."/>zfd-a205<br/>
+<icon size="32pt" name="zfd-a206"/><fill c=" ."/>zfd-a206<br/>
+<icon size="32pt" name="zfd-a20"/><fill c=" ."/>zfd-a20<br/>
+<icon size="32pt" name="zfd-a21"/><fill c=" ."/>zfd-a21<br/>
+<icon size="32pt" name="zfd-a22"/><fill c=" ."/>zfd-a22<br/>
+<icon size="32pt" name="zfd-a23"/><fill c=" ."/>zfd-a23<br/>
+<icon size="32pt" name="zfd-a24"/><fill c=" ."/>zfd-a24<br/>
+<icon size="32pt" name="zfd-a25"/><fill c=" ."/>zfd-a25<br/>
+<icon size="32pt" name="zfd-a26"/><fill c=" ."/>zfd-a26<br/>
+<icon size="32pt" name="zfd-a27"/><fill c=" ."/>zfd-a27<br/>
+<icon size="32pt" name="zfd-a28"/><fill c=" ."/>zfd-a28<br/>
+<icon size="32pt" name="zfd-a29"/><fill c=" ."/>zfd-a29<br/>
+<icon size="32pt" name="zfd-a2"/><fill c=" ."/>zfd-a2<br/>
+<icon size="32pt" name="zfd-a30"/><fill c=" ."/>zfd-a30<br/>
+<icon size="32pt" name="zfd-a31"/><fill c=" ."/>zfd-a31<br/>
+<icon size="32pt" name="zfd-a32"/><fill c=" ."/>zfd-a32<br/>
+<icon size="32pt" name="zfd-a33"/><fill c=" ."/>zfd-a33<br/>
+<icon size="32pt" name="zfd-a34"/><fill c=" ."/>zfd-a34<br/>
+<icon size="32pt" name="zfd-a35"/><fill c=" ."/>zfd-a35<br/>
+<icon size="32pt" name="zfd-a36"/><fill c=" ."/>zfd-a36<br/>
+<icon size="32pt" name="zfd-a37"/><fill c=" ."/>zfd-a37<br/>
+<icon size="32pt" name="zfd-a38"/><fill c=" ."/>zfd-a38<br/>
+<icon size="32pt" name="zfd-a39"/><fill c=" ."/>zfd-a39<br/>
+<icon size="32pt" name="zfd-a3"/><fill c=" ."/>zfd-a3<br/>
+<icon size="32pt" name="zfd-a40"/><fill c=" ."/>zfd-a40<br/>
+<icon size="32pt" name="zfd-a41"/><fill c=" ."/>zfd-a41<br/>
+<icon size="32pt" name="zfd-a42"/><fill c=" ."/>zfd-a42<br/>
+<icon size="32pt" name="zfd-a43"/><fill c=" ."/>zfd-a43<br/>
+<icon size="32pt" name="zfd-a44"/><fill c=" ."/>zfd-a44<br/>
+<icon size="32pt" name="zfd-a45"/><fill c=" ."/>zfd-a45<br/>
+<icon size="32pt" name="zfd-a46"/><fill c=" ."/>zfd-a46<br/>
+<icon size="32pt" name="zfd-a47"/><fill c=" ."/>zfd-a47<br/>
+<icon size="32pt" name="zfd-a48"/><fill c=" ."/>zfd-a48<br/>
+<icon size="32pt" name="zfd-a49"/><fill c=" ."/>zfd-a49<br/>
+<icon size="32pt" name="zfd-a4"/><fill c=" ."/>zfd-a4<br/>
+<icon size="32pt" name="zfd-a50"/><fill c=" ."/>zfd-a50<br/>
+<icon size="32pt" name="zfd-a51"/><fill c=" ."/>zfd-a51<br/>
+<icon size="32pt" name="zfd-a52"/><fill c=" ."/>zfd-a52<br/>
+<icon size="32pt" name="zfd-a53"/><fill c=" ."/>zfd-a53<br/>
+<icon size="32pt" name="zfd-a54"/><fill c=" ."/>zfd-a54<br/>
+<icon size="32pt" name="zfd-a55"/><fill c=" ."/>zfd-a55<br/>
+<icon size="32pt" name="zfd-a56"/><fill c=" ."/>zfd-a56<br/>
+<icon size="32pt" name="zfd-a57"/><fill c=" ."/>zfd-a57<br/>
+<icon size="32pt" name="zfd-a58"/><fill c=" ."/>zfd-a58<br/>
+<icon size="32pt" name="zfd-a59"/><fill c=" ."/>zfd-a59<br/>
+<icon size="32pt" name="zfd-a5"/><fill c=" ."/>zfd-a5<br/>
+<icon size="32pt" name="zfd-a60"/><fill c=" ."/>zfd-a60<br/>
+<icon size="32pt" name="zfd-a61"/><fill c=" ."/>zfd-a61<br/>
+<icon size="32pt" name="zfd-a62"/><fill c=" ."/>zfd-a62<br/>
+<icon size="32pt" name="zfd-a63"/><fill c=" ."/>zfd-a63<br/>
+<icon size="32pt" name="zfd-a64"/><fill c=" ."/>zfd-a64<br/>
+<icon size="32pt" name="zfd-a65"/><fill c=" ."/>zfd-a65<br/>
+<icon size="32pt" name="zfd-a66"/><fill c=" ."/>zfd-a66<br/>
+<icon size="32pt" name="zfd-a67"/><fill c=" ."/>zfd-a67<br/>
+<icon size="32pt" name="zfd-a68"/><fill c=" ."/>zfd-a68<br/>
+<icon size="32pt" name="zfd-a69"/><fill c=" ."/>zfd-a69<br/>
+<icon size="32pt" name="zfd-a6"/><fill c=" ."/>zfd-a6<br/>
+<icon size="32pt" name="zfd-a70"/><fill c=" ."/>zfd-a70<br/>
+<icon size="32pt" name="zfd-a71"/><fill c=" ."/>zfd-a71<br/>
+<icon size="32pt" name="zfd-a72"/><fill c=" ."/>zfd-a72<br/>
+<icon size="32pt" name="zfd-a73"/><fill c=" ."/>zfd-a73<br/>
+<icon size="32pt" name="zfd-a74"/><fill c=" ."/>zfd-a74<br/>
+<icon size="32pt" name="zfd-a75"/><fill c=" ."/>zfd-a75<br/>
+<icon size="32pt" name="zfd-a76"/><fill c=" ."/>zfd-a76<br/>
+<icon size="32pt" name="zfd-a77"/><fill c=" ."/>zfd-a77<br/>
+<icon size="32pt" name="zfd-a78"/><fill c=" ."/>zfd-a78<br/>
+<icon size="32pt" name="zfd-a79"/><fill c=" ."/>zfd-a79<br/>
+<icon size="32pt" name="zfd-a7"/><fill c=" ."/>zfd-a7<br/>
+<icon size="32pt" name="zfd-a81"/><fill c=" ."/>zfd-a81<br/>
+<icon size="32pt" name="zfd-a82"/><fill c=" ."/>zfd-a82<br/>
+<icon size="32pt" name="zfd-a83"/><fill c=" ."/>zfd-a83<br/>
+<icon size="32pt" name="zfd-a84"/><fill c=" ."/>zfd-a84<br/>
+<icon size="32pt" name="zfd-a85"/><fill c=" ."/>zfd-a85<br/>
+<icon size="32pt" name="zfd-a86"/><fill c=" ."/>zfd-a86<br/>
+<icon size="32pt" name="zfd-a87"/><fill c=" ."/>zfd-a87<br/>
+<icon size="32pt" name="zfd-a88"/><fill c=" ."/>zfd-a88<br/>
+<icon size="32pt" name="zfd-a89"/><fill c=" ."/>zfd-a89<br/>
+<icon size="32pt" name="zfd-a8"/><fill c=" ."/>zfd-a8<br/>
+<icon size="32pt" name="zfd-a90"/><fill c=" ."/>zfd-a90<br/>
+<icon size="32pt" name="zfd-a91"/><fill c=" ."/>zfd-a91<br/>
+<icon size="32pt" name="zfd-a92"/><fill c=" ."/>zfd-a92<br/>
+<icon size="32pt" name="zfd-a93"/><fill c=" ."/>zfd-a93<br/>
+<icon size="32pt" name="zfd-a94"/><fill c=" ."/>zfd-a94<br/>
+<icon size="32pt" name="zfd-a95"/><fill c=" ."/>zfd-a95<br/>
+<icon size="32pt" name="zfd-a96"/><fill c=" ."/>zfd-a96<br/>
+<icon size="32pt" name="zfd-a97"/><fill c=" ."/>zfd-a97<br/>
+<icon size="32pt" name="zfd-a98"/><fill c=" ."/>zfd-a98<br/>
+<icon size="32pt" name="zfd-a99"/><fill c=" ."/>zfd-a99<br/>
+<icon size="32pt" name="zfd-a9"/><fill c=" ."/>zfd-a9<br/>
 
 ## NAMED GLYPHS
 
-<fnt size="32pt">&zfd-upper-blade-scissors;</fnt><fill c=" ."/>zfd-upper-blade-scissors<br/>
-<fnt size="32pt">&zfd-black-scissors;</fnt><fill c=" ."/>zfd-black-scissors<br/>
-<fnt size="32pt">&zfd-lower-blade-scissors;</fnt><fill c=" ."/>zfd-lower-blade-scissors<br/>
-<fnt size="32pt">&zfd-white-scissors;</fnt><fill c=" ."/>zfd-white-scissors<br/>
-<fnt size="32pt">&zfd-telephone-location-sign;</fnt><fill c=" ."/>zfd-telephone-location-sign<br/>
-<fnt size="32pt">&zfd-tape-drive;</fnt><fill c=" ."/>zfd-tape-drive<br/>
-<fnt size="32pt">&zfd-airplane;</fnt><fill c=" ."/>zfd-airplane<br/>
-<fnt size="32pt">&zfd-envelope;</fnt><fill c=" ."/>zfd-envelope<br/>
-<fnt size="32pt">&zfd-victory-hand;</fnt><fill c=" ."/>zfd-victory-hand<br/>
-<fnt size="32pt">&zfd-writing-hand;</fnt><fill c=" ."/>zfd-writing-hand<br/>
-<fnt size="32pt">&zfd-lower-right-pencil;</fnt><fill c=" ."/>zfd-lower-right-pencil<br/>
-<fnt size="32pt">&zfd-pencil;</fnt><fill c=" ."/>zfd-pencil<br/>
-<fnt size="32pt">&zfd-upper-right-pencil;</fnt><fill c=" ."/>zfd-upper-right-pencil<br/>
-<fnt size="32pt">&zfd-white-nib;</fnt><fill c=" ."/>zfd-white-nib<br/>
-<fnt size="32pt">&zfd-black-nib;</fnt><fill c=" ."/>zfd-black-nib<br/>
-<fnt size="32pt">&zfd-check-mark;</fnt><fill c=" ."/>zfd-check-mark<br/>
-<fnt size="32pt">&zfd-heavy-check-mark;</fnt><fill c=" ."/>zfd-heavy-check-mark<br/>
-<fnt size="32pt">&zfd-multiplication-x;</fnt><fill c=" ."/>zfd-multiplication-x<br/>
-<fnt size="32pt">&zfd-heavy-multiplication-x;</fnt><fill c=" ."/>zfd-heavy-multiplication-x<br/>
-<fnt size="32pt">&zfd-ballot-x;</fnt><fill c=" ."/>zfd-ballot-x<br/>
-<fnt size="32pt">&zfd-heavy-ballot-x;</fnt><fill c=" ."/>zfd-heavy-ballot-x<br/>
-<fnt size="32pt">&zfd-outlined-greek-cross;</fnt><fill c=" ."/>zfd-outlined-greek-cross<br/>
-<fnt size="32pt">&zfd-heavy-greek-cross;</fnt><fill c=" ."/>zfd-heavy-greek-cross<br/>
-<fnt size="32pt">&zfd-open-centre-cross;</fnt><fill c=" ."/>zfd-open-centre-cross<br/>
-<fnt size="32pt">&zfd-heavy-open-centre-cross;</fnt><fill c=" ."/>zfd-heavy-open-centre-cross<br/>
-<fnt size="32pt">&zfd-latin-cross;</fnt><fill c=" ."/>zfd-latin-cross<br/>
-<fnt size="32pt">&zfd-shadowed-white-latin-cross;</fnt><fill c=" ."/>zfd-shadowed-white-latin-cross<br/>
-<fnt size="32pt">&zfd-outlined-latin-cross;</fnt><fill c=" ."/>zfd-outlined-latin-cross<br/>
-<fnt size="32pt">&zfd-maltese-cross;</fnt><fill c=" ."/>zfd-maltese-cross<br/>
-<fnt size="32pt">&zfd-star-of-david;</fnt><fill c=" ."/>zfd-star-of-david<br/>
-<fnt size="32pt">&zfd-four-teardrop-spoked-asterisk;</fnt><fill c=" ."/>zfd-four-teardrop-spoked-asterisk<br/>
-<fnt size="32pt">&zfd-four-balloon-spoked-asterisk;</fnt><fill c=" ."/>zfd-four-balloon-spoked-asterisk<br/>
-<fnt size="32pt">&zfd-heavy-four-balloon-spoked-asterisk;</fnt><fill c=" ."/>zfd-heavy-four-balloon-spoked-asterisk<br/>
-<fnt size="32pt">&zfd-four-club-spoked-asterisk;</fnt><fill c=" ."/>zfd-four-club-spoked-asterisk<br/>
-<fnt size="32pt">&zfd-black-four-pointed-star;</fnt><fill c=" ."/>zfd-black-four-pointed-star<br/>
-<fnt size="32pt">&zfd-white-four-pointed-star;</fnt><fill c=" ."/>zfd-white-four-pointed-star<br/>
-<fnt size="32pt">&zfd-stress-outlined-white-star;</fnt><fill c=" ."/>zfd-stress-outlined-white-star<br/>
-<fnt size="32pt">&zfd-circled-white-star;</fnt><fill c=" ."/>zfd-circled-white-star<br/>
-<fnt size="32pt">&zfd-open-centre-black-star;</fnt><fill c=" ."/>zfd-open-centre-black-star<br/>
-<fnt size="32pt">&zfd-black-centre-white-star;</fnt><fill c=" ."/>zfd-black-centre-white-star<br/>
-<fnt size="32pt">&zfd-outlined-black-star;</fnt><fill c=" ."/>zfd-outlined-black-star<br/>
-<fnt size="32pt">&zfd-heavy-outlined-black-star;</fnt><fill c=" ."/>zfd-heavy-outlined-black-star<br/>
-<fnt size="32pt">&zfd-pinwheel-star;</fnt><fill c=" ."/>zfd-pinwheel-star<br/>
-<fnt size="32pt">&zfd-shadowed-white-star;</fnt><fill c=" ."/>zfd-shadowed-white-star<br/>
-<fnt size="32pt">&zfd-heavy-asterisk;</fnt><fill c=" ."/>zfd-heavy-asterisk<br/>
-<fnt size="32pt">&zfd-open-centre-asterisk;</fnt><fill c=" ."/>zfd-open-centre-asterisk<br/>
-<fnt size="32pt">&zfd-eight-spoked-asterisk;</fnt><fill c=" ."/>zfd-eight-spoked-asterisk<br/>
-<fnt size="32pt">&zfd-eight-pointed-black-star;</fnt><fill c=" ."/>zfd-eight-pointed-black-star<br/>
-<fnt size="32pt">&zfd-eight-pointed-pinwheel-star;</fnt><fill c=" ."/>zfd-eight-pointed-pinwheel-star<br/>
-<fnt size="32pt">&zfd-six-pointed-black-star;</fnt><fill c=" ."/>zfd-six-pointed-black-star<br/>
-<fnt size="32pt">&zfd-eight-pointed-rectilinear-black-star;</fnt><fill c=" ."/>zfd-eight-pointed-rectilinear-black-star<br/>
-<fnt size="32pt">&zfd-heavy-eight-pointed-rectilinear-black-star;</fnt><fill c=" ."/>zfd-heavy-eight-pointed-rectilinear-black-star<br/>
-<fnt size="32pt">&zfd-twelve-pointed-black-star;</fnt><fill c=" ."/>zfd-twelve-pointed-black-star<br/>
-<fnt size="32pt">&zfd-sixteen-pointed-asterisk;</fnt><fill c=" ."/>zfd-sixteen-pointed-asterisk<br/>
-<fnt size="32pt">&zfd-teardrop-spoked-asterisk;</fnt><fill c=" ."/>zfd-teardrop-spoked-asterisk<br/>
-<fnt size="32pt">&zfd-open-centre-teardrop-spoked-asterisk;</fnt><fill c=" ."/>zfd-open-centre-teardrop-spoked-asterisk<br/>
-<fnt size="32pt">&zfd-heavy-teardrop-spoked-asterisk;</fnt><fill c=" ."/>zfd-heavy-teardrop-spoked-asterisk<br/>
-<fnt size="32pt">&zfd-six-petalled-black-and-white-florette;</fnt><fill c=" ."/>zfd-six-petalled-black-and-white-florette<br/>
-<fnt size="32pt">&zfd-black-florette;</fnt><fill c=" ."/>zfd-black-florette<br/>
-<fnt size="32pt">&zfd-white-florette;</fnt><fill c=" ."/>zfd-white-florette<br/>
-<fnt size="32pt">&zfd-eight-petalled-outlined-black-florette;</fnt><fill c=" ."/>zfd-eight-petalled-outlined-black-florette<br/>
-<fnt size="32pt">&zfd-circled-open-centre-eight-pointed-star;</fnt><fill c=" ."/>zfd-circled-open-centre-eight-pointed-star<br/>
-<fnt size="32pt">&zfd-heavy-teardrop-spoked-pinwheel-asterisk;</fnt><fill c=" ."/>zfd-heavy-teardrop-spoked-pinwheel-asterisk<br/>
-<fnt size="32pt">&zfd-snowflake;</fnt><fill c=" ."/>zfd-snowflake<br/>
-<fnt size="32pt">&zfd-tight-trifoliate-snowflake;</fnt><fill c=" ."/>zfd-tight-trifoliate-snowflake<br/>
-<fnt size="32pt">&zfd-heavy-chevron-snowflake;</fnt><fill c=" ."/>zfd-heavy-chevron-snowflake<br/>
-<fnt size="32pt">&zfd-sparkle;</fnt><fill c=" ."/>zfd-sparkle<br/>
-<fnt size="32pt">&zfd-heavy-sparkle;</fnt><fill c=" ."/>zfd-heavy-sparkle<br/>
-<fnt size="32pt">&zfd-balloon-spoked-asterisk;</fnt><fill c=" ."/>zfd-balloon-spoked-asterisk<br/>
-<fnt size="32pt">&zfd-eight-teardrop-spoked-propeller-asterisk;</fnt><fill c=" ."/>zfd-eight-teardrop-spoked-propeller-asterisk<br/>
-<fnt size="32pt">&zfd-heavy-eight-teardrop-spoked-propeller-asterisk;</fnt><fill c=" ."/>zfd-heavy-eight-teardrop-spoked-propeller-asterisk<br/>
-<fnt size="32pt">&zfd-shadowed-white-circle;</fnt><fill c=" ."/>zfd-shadowed-white-circle<br/>
-<fnt size="32pt">&zfd-lower-right-drop-shadowed-white-square;</fnt><fill c=" ."/>zfd-lower-right-drop-shadowed-white-square<br/>
-<fnt size="32pt">&zfd-upper-right-drop-shadowed-white-square;</fnt><fill c=" ."/>zfd-upper-right-drop-shadowed-white-square<br/>
-<fnt size="32pt">&zfd-lower-right-shadowed-white-square;</fnt><fill c=" ."/>zfd-lower-right-shadowed-white-square<br/>
-<fnt size="32pt">&zfd-upper-right-shadowed-white-square;</fnt><fill c=" ."/>zfd-upper-right-shadowed-white-square<br/>
-<fnt size="32pt">&zfd-black-diamond-minus-white-x;</fnt><fill c=" ."/>zfd-black-diamond-minus-white-x<br/>
-<fnt size="32pt">&zfd-light-vertical-bar;</fnt><fill c=" ."/>zfd-light-vertical-bar<br/>
-<fnt size="32pt">&zfd-medium-vertical-bar;</fnt><fill c=" ."/>zfd-medium-vertical-bar<br/>
-<fnt size="32pt">&zfd-heavy-vertical-bar;</fnt><fill c=" ."/>zfd-heavy-vertical-bar<br/>
-<fnt size="32pt">&zfd-heavy-single-turned-comma-quotation-mark-ornament;</fnt><fill c=" ."/>zfd-heavy-single-turned-comma-quotation-mark-ornament<br/>
-<fnt size="32pt">&zfd-heavy-single-comma-quotation-mark-ornament;</fnt><fill c=" ."/>zfd-heavy-single-comma-quotation-mark-ornament<br/>
-<fnt size="32pt">&zfd-heavy-double-turned-comma-quotation-mark-ornament;</fnt><fill c=" ."/>zfd-heavy-double-turned-comma-quotation-mark-ornament<br/>
-<fnt size="32pt">&zfd-heavy-double-comma-quotation-mark-ornament;</fnt><fill c=" ."/>zfd-heavy-double-comma-quotation-mark-ornament<br/>
-<fnt size="32pt">&zfd-curved-stem-paragraph-sign-ornament;</fnt><fill c=" ."/>zfd-curved-stem-paragraph-sign-ornament<br/>
-<fnt size="32pt">&zfd-heavy-exclamation-mark-ornament;</fnt><fill c=" ."/>zfd-heavy-exclamation-mark-ornament<br/>
-<fnt size="32pt">&zfd-heavy-heart-exclamation-mark-ornament;</fnt><fill c=" ."/>zfd-heavy-heart-exclamation-mark-ornament<br/>
-<fnt size="32pt">&zfd-heavy-black-heart;</fnt><fill c=" ."/>zfd-heavy-black-heart<br/>
-<fnt size="32pt">&zfd-rotated-heavy-black-heart-bullet;</fnt><fill c=" ."/>zfd-rotated-heavy-black-heart-bullet<br/>
-<fnt size="32pt">&zfd-floral-heart;</fnt><fill c=" ."/>zfd-floral-heart<br/>
-<fnt size="32pt">&zfd-rotated-floral-heart-bullet;</fnt><fill c=" ."/>zfd-rotated-floral-heart-bullet<br/>
-<fnt size="32pt">&zfd-negative-circled-digit-one;</fnt><fill c=" ."/>zfd-negative-circled-digit-one<br/>
-<fnt size="32pt">&zfd-negative-circled-digit-two;</fnt><fill c=" ."/>zfd-negative-circled-digit-two<br/>
-<fnt size="32pt">&zfd-negative-circled-digit-three;</fnt><fill c=" ."/>zfd-negative-circled-digit-three<br/>
-<fnt size="32pt">&zfd-negative-circled-digit-four;</fnt><fill c=" ."/>zfd-negative-circled-digit-four<br/>
-<fnt size="32pt">&zfd-negative-circled-digit-five;</fnt><fill c=" ."/>zfd-negative-circled-digit-five<br/>
-<fnt size="32pt">&zfd-negative-circled-digit-six;</fnt><fill c=" ."/>zfd-negative-circled-digit-six<br/>
-<fnt size="32pt">&zfd-negative-circled-digit-seven;</fnt><fill c=" ."/>zfd-negative-circled-digit-seven<br/>
-<fnt size="32pt">&zfd-negative-circled-digit-eight;</fnt><fill c=" ."/>zfd-negative-circled-digit-eight<br/>
-<fnt size="32pt">&zfd-negative-circled-digit-nine;</fnt><fill c=" ."/>zfd-negative-circled-digit-nine<br/>
-<fnt size="32pt">&zfd-negative-circled-number-ten;</fnt><fill c=" ."/>zfd-negative-circled-number-ten<br/>
-<fnt size="32pt">&zfd-circled-sans-serif-digit-one;</fnt><fill c=" ."/>zfd-circled-sans-serif-digit-one<br/>
-<fnt size="32pt">&zfd-circled-sans-serif-digit-two;</fnt><fill c=" ."/>zfd-circled-sans-serif-digit-two<br/>
-<fnt size="32pt">&zfd-circled-sans-serif-digit-three;</fnt><fill c=" ."/>zfd-circled-sans-serif-digit-three<br/>
-<fnt size="32pt">&zfd-circled-sans-serif-digit-four;</fnt><fill c=" ."/>zfd-circled-sans-serif-digit-four<br/>
-<fnt size="32pt">&zfd-circled-sans-serif-digit-five;</fnt><fill c=" ."/>zfd-circled-sans-serif-digit-five<br/>
-<fnt size="32pt">&zfd-circled-sans-serif-digit-six;</fnt><fill c=" ."/>zfd-circled-sans-serif-digit-six<br/>
-<fnt size="32pt">&zfd-circled-sans-serif-digit-seven;</fnt><fill c=" ."/>zfd-circled-sans-serif-digit-seven<br/>
-<fnt size="32pt">&zfd-circled-sans-serif-digit-eight;</fnt><fill c=" ."/>zfd-circled-sans-serif-digit-eight<br/>
-<fnt size="32pt">&zfd-circled-sans-serif-digit-nine;</fnt><fill c=" ."/>zfd-circled-sans-serif-digit-nine<br/>
-<fnt size="32pt">&zfd-circled-sans-serif-number-ten;</fnt><fill c=" ."/>zfd-circled-sans-serif-number-ten<br/>
-<fnt size="32pt">&zfd-negative-circled-sans-serif-digit-one;</fnt><fill c=" ."/>zfd-negative-circled-sans-serif-digit-one<br/>
-<fnt size="32pt">&zfd-negative-circled-sans-serif-digit-two;</fnt><fill c=" ."/>zfd-negative-circled-sans-serif-digit-two<br/>
-<fnt size="32pt">&zfd-negative-circled-sans-serif-digit-three;</fnt><fill c=" ."/>zfd-negative-circled-sans-serif-digit-three<br/>
-<fnt size="32pt">&zfd-negative-circled-sans-serif-digit-four;</fnt><fill c=" ."/>zfd-negative-circled-sans-serif-digit-four<br/>
-<fnt size="32pt">&zfd-negative-circled-sans-serif-digit-five;</fnt><fill c=" ."/>zfd-negative-circled-sans-serif-digit-five<br/>
-<fnt size="32pt">&zfd-negative-circled-sans-serif-digit-six;</fnt><fill c=" ."/>zfd-negative-circled-sans-serif-digit-six<br/>
-<fnt size="32pt">&zfd-negative-circled-sans-serif-digit-seven;</fnt><fill c=" ."/>zfd-negative-circled-sans-serif-digit-seven<br/>
-<fnt size="32pt">&zfd-negative-circled-sans-serif-digit-eight;</fnt><fill c=" ."/>zfd-negative-circled-sans-serif-digit-eight<br/>
-<fnt size="32pt">&zfd-negative-circled-sans-serif-digit-nine;</fnt><fill c=" ."/>zfd-negative-circled-sans-serif-digit-nine<br/>
-<fnt size="32pt">&zfd-negative-circled-sans-serif-number-ten;</fnt><fill c=" ."/>zfd-negative-circled-sans-serif-number-ten<br/>
-<fnt size="32pt">&zfd-heavy-wide-headed-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-wide-headed-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-heavy-south-east-arrow;</fnt><fill c=" ."/>zfd-heavy-south-east-arrow<br/>
-<fnt size="32pt">&zfd-heavy-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-heavy-north-east-arrow;</fnt><fill c=" ."/>zfd-heavy-north-east-arrow<br/>
-<fnt size="32pt">&zfd-drafting-point-rightwards-arrow;</fnt><fill c=" ."/>zfd-drafting-point-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-heavy-round-tipped-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-round-tipped-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-triangle-headed-rightwards-arrow;</fnt><fill c=" ."/>zfd-triangle-headed-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-heavy-triangle-headed-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-triangle-headed-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-dashed-triangle-headed-rightwards-arrow;</fnt><fill c=" ."/>zfd-dashed-triangle-headed-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-heavy-dashed-triangle-headed-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-dashed-triangle-headed-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-black-rightwards-arrow;</fnt><fill c=" ."/>zfd-black-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-three-d-top-lighted-rightwards-arrowhead;</fnt><fill c=" ."/>zfd-three-d-top-lighted-rightwards-arrowhead<br/>
-<fnt size="32pt">&zfd-three-d-bottom-lighted-rightwards-arrowhead;</fnt><fill c=" ."/>zfd-three-d-bottom-lighted-rightwards-arrowhead<br/>
-<fnt size="32pt">&zfd-black-rightwards-arrowhead;</fnt><fill c=" ."/>zfd-black-rightwards-arrowhead<br/>
-<fnt size="32pt">&zfd-heavy-black-curved-downwards-and-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-black-curved-downwards-and-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-heavy-black-curved-upwards-and-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-black-curved-upwards-and-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-squat-black-rightwards-arrow;</fnt><fill c=" ."/>zfd-squat-black-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-heavy-concave-pointed-black-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-concave-pointed-black-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-right-shaded-white-rightwards-arrow;</fnt><fill c=" ."/>zfd-right-shaded-white-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-left-shaded-white-rightwards-arrow;</fnt><fill c=" ."/>zfd-left-shaded-white-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-back-tilted-shadowed-white-rightwards-arrow;</fnt><fill c=" ."/>zfd-back-tilted-shadowed-white-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-front-tilted-shadowed-white-rightwards-arrow;</fnt><fill c=" ."/>zfd-front-tilted-shadowed-white-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-heavy-lower-right-shadowed-white-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-lower-right-shadowed-white-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-heavy-upper-right-shadowed-white-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-upper-right-shadowed-white-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-notched-lower-right-shadowed-white-rightwards-arrow;</fnt><fill c=" ."/>zfd-notched-lower-right-shadowed-white-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-notched-upper-right-shadowed-white-rightwards-arrow;</fnt><fill c=" ."/>zfd-notched-upper-right-shadowed-white-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-circled-heavy-white-rightwards-arrow;</fnt><fill c=" ."/>zfd-circled-heavy-white-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-white-feathered-rightwards-arrow;</fnt><fill c=" ."/>zfd-white-feathered-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-black-feathered-south-east-arrow;</fnt><fill c=" ."/>zfd-black-feathered-south-east-arrow<br/>
-<fnt size="32pt">&zfd-black-feathered-rightwards-arrow;</fnt><fill c=" ."/>zfd-black-feathered-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-black-feathered-north-east-arrow;</fnt><fill c=" ."/>zfd-black-feathered-north-east-arrow<br/>
-<fnt size="32pt">&zfd-heavy-black-feathered-south-east-arrow;</fnt><fill c=" ."/>zfd-heavy-black-feathered-south-east-arrow<br/>
-<fnt size="32pt">&zfd-heavy-black-feathered-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-black-feathered-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-heavy-black-feathered-north-east-arrow;</fnt><fill c=" ."/>zfd-heavy-black-feathered-north-east-arrow<br/>
-<fnt size="32pt">&zfd-teardrop-barbed-rightwards-arrow;</fnt><fill c=" ."/>zfd-teardrop-barbed-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-heavy-teardrop-shanked-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-teardrop-shanked-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-wedge-tailed-rightwards-arrow;</fnt><fill c=" ."/>zfd-wedge-tailed-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-heavy-wedge-tailed-rightwards-arrow;</fnt><fill c=" ."/>zfd-heavy-wedge-tailed-rightwards-arrow<br/>
-<fnt size="32pt">&zfd-open-outlined-rightwards-arrow;</fnt><fill c=" ."/>zfd-open-outlined-rightwards-arrow<br/>
+&zfd-upper-blade-scissors:32;<fill c=" ."/>zfd-upper-blade-scissors<br/>
+<icon size="32pt" name="zfd-upper-blade-scissors"/><fill c=" ."/>zfd-upper-blade-scissors<br/>
+<icon size="32pt" name="zfd-black-scissors"/><fill c=" ."/>zfd-black-scissors<br/>
+<icon size="32pt" name="zfd-lower-blade-scissors"/><fill c=" ."/>zfd-lower-blade-scissors<br/>
+<icon size="32pt" name="zfd-white-scissors"/><fill c=" ."/>zfd-white-scissors<br/>
+<icon size="32pt" name="zfd-telephone-location-sign"/><fill c=" ."/>zfd-telephone-location-sign<br/>
+<icon size="32pt" name="zfd-tape-drive"/><fill c=" ."/>zfd-tape-drive<br/>
+<icon size="32pt" name="zfd-airplane"/><fill c=" ."/>zfd-airplane<br/>
+<icon size="32pt" name="zfd-envelope"/><fill c=" ."/>zfd-envelope<br/>
+<icon size="32pt" name="zfd-victory-hand"/><fill c=" ."/>zfd-victory-hand<br/>
+<icon size="32pt" name="zfd-writing-hand"/><fill c=" ."/>zfd-writing-hand<br/>
+<icon size="32pt" name="zfd-lower-right-pencil"/><fill c=" ."/>zfd-lower-right-pencil<br/>
+<icon size="32pt" name="zfd-pencil"/><fill c=" ."/>zfd-pencil<br/>
+<icon size="32pt" name="zfd-upper-right-pencil"/><fill c=" ."/>zfd-upper-right-pencil<br/>
+<icon size="32pt" name="zfd-white-nib"/><fill c=" ."/>zfd-white-nib<br/>
+<icon size="32pt" name="zfd-black-nib"/><fill c=" ."/>zfd-black-nib<br/>
+<icon size="32pt" name="zfd-check-mark"/><fill c=" ."/>zfd-check-mark<br/>
+<icon size="32pt" name="zfd-heavy-check-mark"/><fill c=" ."/>zfd-heavy-check-mark<br/>
+<icon size="32pt" name="zfd-multiplication-x"/><fill c=" ."/>zfd-multiplication-x<br/>
+<icon size="32pt" name="zfd-heavy-multiplication-x"/><fill c=" ."/>zfd-heavy-multiplication-x<br/>
+<icon size="32pt" name="zfd-ballot-x"/><fill c=" ."/>zfd-ballot-x<br/>
+<icon size="32pt" name="zfd-heavy-ballot-x"/><fill c=" ."/>zfd-heavy-ballot-x<br/>
+<icon size="32pt" name="zfd-outlined-greek-cross"/><fill c=" ."/>zfd-outlined-greek-cross<br/>
+<icon size="32pt" name="zfd-heavy-greek-cross"/><fill c=" ."/>zfd-heavy-greek-cross<br/>
+<icon size="32pt" name="zfd-open-centre-cross"/><fill c=" ."/>zfd-open-centre-cross<br/>
+<icon size="32pt" name="zfd-heavy-open-centre-cross"/><fill c=" ."/>zfd-heavy-open-centre-cross<br/>
+<icon size="32pt" name="zfd-latin-cross"/><fill c=" ."/>zfd-latin-cross<br/>
+<icon size="32pt" name="zfd-shadowed-white-latin-cross"/><fill c=" ."/>zfd-shadowed-white-latin-cross<br/>
+<icon size="32pt" name="zfd-outlined-latin-cross"/><fill c=" ."/>zfd-outlined-latin-cross<br/>
+<icon size="32pt" name="zfd-maltese-cross"/><fill c=" ."/>zfd-maltese-cross<br/>
+<icon size="32pt" name="zfd-star-of-david"/><fill c=" ."/>zfd-star-of-david<br/>
+<icon size="32pt" name="zfd-four-teardrop-spoked-asterisk"/><fill c=" ."/>zfd-four-teardrop-spoked-asterisk<br/>
+<icon size="32pt" name="zfd-four-balloon-spoked-asterisk"/><fill c=" ."/>zfd-four-balloon-spoked-asterisk<br/>
+<icon size="32pt" name="zfd-heavy-four-balloon-spoked-asterisk"/><fill c=" ."/>zfd-heavy-four-balloon-spoked-asterisk<br/>
+<icon size="32pt" name="zfd-four-club-spoked-asterisk"/><fill c=" ."/>zfd-four-club-spoked-asterisk<br/>
+<icon size="32pt" name="zfd-black-four-pointed-star"/><fill c=" ."/>zfd-black-four-pointed-star<br/>
+<icon size="32pt" name="zfd-white-four-pointed-star"/><fill c=" ."/>zfd-white-four-pointed-star<br/>
+<icon size="32pt" name="zfd-stress-outlined-white-star"/><fill c=" ."/>zfd-stress-outlined-white-star<br/>
+<icon size="32pt" name="zfd-circled-white-star"/><fill c=" ."/>zfd-circled-white-star<br/>
+<icon size="32pt" name="zfd-open-centre-black-star"/><fill c=" ."/>zfd-open-centre-black-star<br/>
+<icon size="32pt" name="zfd-black-centre-white-star"/><fill c=" ."/>zfd-black-centre-white-star<br/>
+<icon size="32pt" name="zfd-outlined-black-star"/><fill c=" ."/>zfd-outlined-black-star<br/>
+<icon size="32pt" name="zfd-heavy-outlined-black-star"/><fill c=" ."/>zfd-heavy-outlined-black-star<br/>
+<icon size="32pt" name="zfd-pinwheel-star"/><fill c=" ."/>zfd-pinwheel-star<br/>
+<icon size="32pt" name="zfd-shadowed-white-star"/><fill c=" ."/>zfd-shadowed-white-star<br/>
+<icon size="32pt" name="zfd-heavy-asterisk"/><fill c=" ."/>zfd-heavy-asterisk<br/>
+<icon size="32pt" name="zfd-open-centre-asterisk"/><fill c=" ."/>zfd-open-centre-asterisk<br/>
+<icon size="32pt" name="zfd-eight-spoked-asterisk"/><fill c=" ."/>zfd-eight-spoked-asterisk<br/>
+<icon size="32pt" name="zfd-eight-pointed-black-star"/><fill c=" ."/>zfd-eight-pointed-black-star<br/>
+<icon size="32pt" name="zfd-eight-pointed-pinwheel-star"/><fill c=" ."/>zfd-eight-pointed-pinwheel-star<br/>
+<icon size="32pt" name="zfd-six-pointed-black-star"/><fill c=" ."/>zfd-six-pointed-black-star<br/>
+<icon size="32pt" name="zfd-eight-pointed-rectilinear-black-star"/><fill c=" ."/>zfd-eight-pointed-rectilinear-black-star<br/>
+<icon size="32pt" name="zfd-heavy-eight-pointed-rectilinear-black-star"/><fill c=" ."/>zfd-heavy-eight-pointed-rectilinear-black-star<br/>
+<icon size="32pt" name="zfd-twelve-pointed-black-star"/><fill c=" ."/>zfd-twelve-pointed-black-star<br/>
+<icon size="32pt" name="zfd-sixteen-pointed-asterisk"/><fill c=" ."/>zfd-sixteen-pointed-asterisk<br/>
+<icon size="32pt" name="zfd-teardrop-spoked-asterisk"/><fill c=" ."/>zfd-teardrop-spoked-asterisk<br/>
+<icon size="32pt" name="zfd-open-centre-teardrop-spoked-asterisk"/><fill c=" ."/>zfd-open-centre-teardrop-spoked-asterisk<br/>
+<icon size="32pt" name="zfd-heavy-teardrop-spoked-asterisk"/><fill c=" ."/>zfd-heavy-teardrop-spoked-asterisk<br/>
+<icon size="32pt" name="zfd-six-petalled-black-and-white-florette"/><fill c=" ."/>zfd-six-petalled-black-and-white-florette<br/>
+<icon size="32pt" name="zfd-black-florette"/><fill c=" ."/>zfd-black-florette<br/>
+<icon size="32pt" name="zfd-white-florette"/><fill c=" ."/>zfd-white-florette<br/>
+<icon size="32pt" name="zfd-eight-petalled-outlined-black-florette"/><fill c=" ."/>zfd-eight-petalled-outlined-black-florette<br/>
+<icon size="32pt" name="zfd-circled-open-centre-eight-pointed-star"/><fill c=" ."/>zfd-circled-open-centre-eight-pointed-star<br/>
+<icon size="32pt" name="zfd-heavy-teardrop-spoked-pinwheel-asterisk"/><fill c=" ."/>zfd-heavy-teardrop-spoked-pinwheel-asterisk<br/>
+<icon size="32pt" name="zfd-snowflake"/><fill c=" ."/>zfd-snowflake<br/>
+<icon size="32pt" name="zfd-tight-trifoliate-snowflake"/><fill c=" ."/>zfd-tight-trifoliate-snowflake<br/>
+<icon size="32pt" name="zfd-heavy-chevron-snowflake"/><fill c=" ."/>zfd-heavy-chevron-snowflake<br/>
+<icon size="32pt" name="zfd-sparkle"/><fill c=" ."/>zfd-sparkle<br/>
+<icon size="32pt" name="zfd-heavy-sparkle"/><fill c=" ."/>zfd-heavy-sparkle<br/>
+<icon size="32pt" name="zfd-balloon-spoked-asterisk"/><fill c=" ."/>zfd-balloon-spoked-asterisk<br/>
+<icon size="32pt" name="zfd-eight-teardrop-spoked-propeller-asterisk"/><fill c=" ."/>zfd-eight-teardrop-spoked-propeller-asterisk<br/>
+<icon size="32pt" name="zfd-heavy-eight-teardrop-spoked-propeller-asterisk"/><fill c=" ."/>zfd-heavy-eight-teardrop-spoked-propeller-asterisk<br/>
+<icon size="32pt" name="zfd-shadowed-white-circle"/><fill c=" ."/>zfd-shadowed-white-circle<br/>
+<icon size="32pt" name="zfd-lower-right-drop-shadowed-white-square"/><fill c=" ."/>zfd-lower-right-drop-shadowed-white-square<br/>
+<icon size="32pt" name="zfd-upper-right-drop-shadowed-white-square"/><fill c=" ."/>zfd-upper-right-drop-shadowed-white-square<br/>
+<icon size="32pt" name="zfd-lower-right-shadowed-white-square"/><fill c=" ."/>zfd-lower-right-shadowed-white-square<br/>
+<icon size="32pt" name="zfd-upper-right-shadowed-white-square"/><fill c=" ."/>zfd-upper-right-shadowed-white-square<br/>
+<icon size="32pt" name="zfd-black-diamond-minus-white-x"/><fill c=" ."/>zfd-black-diamond-minus-white-x<br/>
+<icon size="32pt" name="zfd-light-vertical-bar"/><fill c=" ."/>zfd-light-vertical-bar<br/>
+<icon size="32pt" name="zfd-medium-vertical-bar"/><fill c=" ."/>zfd-medium-vertical-bar<br/>
+<icon size="32pt" name="zfd-heavy-vertical-bar"/><fill c=" ."/>zfd-heavy-vertical-bar<br/>
+<icon size="32pt" name="zfd-heavy-single-turned-comma-quotation-mark-ornament"/><fill c=" ."/>zfd-heavy-single-turned-comma-quotation-mark-ornament<br/>
+<icon size="32pt" name="zfd-heavy-single-comma-quotation-mark-ornament"/><fill c=" ."/>zfd-heavy-single-comma-quotation-mark-ornament<br/>
+<icon size="32pt" name="zfd-heavy-double-turned-comma-quotation-mark-ornament"/><fill c=" ."/>zfd-heavy-double-turned-comma-quotation-mark-ornament<br/>
+<icon size="32pt" name="zfd-heavy-double-comma-quotation-mark-ornament"/><fill c=" ."/>zfd-heavy-double-comma-quotation-mark-ornament<br/>
+<icon size="32pt" name="zfd-curved-stem-paragraph-sign-ornament"/><fill c=" ."/>zfd-curved-stem-paragraph-sign-ornament<br/>
+<icon size="32pt" name="zfd-heavy-exclamation-mark-ornament"/><fill c=" ."/>zfd-heavy-exclamation-mark-ornament<br/>
+<icon size="32pt" name="zfd-heavy-heart-exclamation-mark-ornament"/><fill c=" ."/>zfd-heavy-heart-exclamation-mark-ornament<br/>
+<icon size="32pt" name="zfd-heavy-black-heart"/><fill c=" ."/>zfd-heavy-black-heart<br/>
+<icon size="32pt" name="zfd-rotated-heavy-black-heart-bullet"/><fill c=" ."/>zfd-rotated-heavy-black-heart-bullet<br/>
+<icon size="32pt" name="zfd-floral-heart"/><fill c=" ."/>zfd-floral-heart<br/>
+<icon size="32pt" name="zfd-rotated-floral-heart-bullet"/><fill c=" ."/>zfd-rotated-floral-heart-bullet<br/>
+<icon size="32pt" name="zfd-negative-circled-digit-one"/><fill c=" ."/>zfd-negative-circled-digit-one<br/>
+<icon size="32pt" name="zfd-negative-circled-digit-two"/><fill c=" ."/>zfd-negative-circled-digit-two<br/>
+<icon size="32pt" name="zfd-negative-circled-digit-three"/><fill c=" ."/>zfd-negative-circled-digit-three<br/>
+<icon size="32pt" name="zfd-negative-circled-digit-four"/><fill c=" ."/>zfd-negative-circled-digit-four<br/>
+<icon size="32pt" name="zfd-negative-circled-digit-five"/><fill c=" ."/>zfd-negative-circled-digit-five<br/>
+<icon size="32pt" name="zfd-negative-circled-digit-six"/><fill c=" ."/>zfd-negative-circled-digit-six<br/>
+<icon size="32pt" name="zfd-negative-circled-digit-seven"/><fill c=" ."/>zfd-negative-circled-digit-seven<br/>
+<icon size="32pt" name="zfd-negative-circled-digit-eight"/><fill c=" ."/>zfd-negative-circled-digit-eight<br/>
+<icon size="32pt" name="zfd-negative-circled-digit-nine"/><fill c=" ."/>zfd-negative-circled-digit-nine<br/>
+<icon size="32pt" name="zfd-negative-circled-number-ten"/><fill c=" ."/>zfd-negative-circled-number-ten<br/>
+<icon size="32pt" name="zfd-circled-sans-serif-digit-one"/><fill c=" ."/>zfd-circled-sans-serif-digit-one<br/>
+<icon size="32pt" name="zfd-circled-sans-serif-digit-two"/><fill c=" ."/>zfd-circled-sans-serif-digit-two<br/>
+<icon size="32pt" name="zfd-circled-sans-serif-digit-three"/><fill c=" ."/>zfd-circled-sans-serif-digit-three<br/>
+<icon size="32pt" name="zfd-circled-sans-serif-digit-four"/><fill c=" ."/>zfd-circled-sans-serif-digit-four<br/>
+<icon size="32pt" name="zfd-circled-sans-serif-digit-five"/><fill c=" ."/>zfd-circled-sans-serif-digit-five<br/>
+<icon size="32pt" name="zfd-circled-sans-serif-digit-six"/><fill c=" ."/>zfd-circled-sans-serif-digit-six<br/>
+<icon size="32pt" name="zfd-circled-sans-serif-digit-seven"/><fill c=" ."/>zfd-circled-sans-serif-digit-seven<br/>
+<icon size="32pt" name="zfd-circled-sans-serif-digit-eight"/><fill c=" ."/>zfd-circled-sans-serif-digit-eight<br/>
+<icon size="32pt" name="zfd-circled-sans-serif-digit-nine"/><fill c=" ."/>zfd-circled-sans-serif-digit-nine<br/>
+<icon size="32pt" name="zfd-circled-sans-serif-number-ten"/><fill c=" ."/>zfd-circled-sans-serif-number-ten<br/>
+<icon size="32pt" name="zfd-negative-circled-sans-serif-digit-one"/><fill c=" ."/>zfd-negative-circled-sans-serif-digit-one<br/>
+<icon size="32pt" name="zfd-negative-circled-sans-serif-digit-two"/><fill c=" ."/>zfd-negative-circled-sans-serif-digit-two<br/>
+<icon size="32pt" name="zfd-negative-circled-sans-serif-digit-three"/><fill c=" ."/>zfd-negative-circled-sans-serif-digit-three<br/>
+<icon size="32pt" name="zfd-negative-circled-sans-serif-digit-four"/><fill c=" ."/>zfd-negative-circled-sans-serif-digit-four<br/>
+<icon size="32pt" name="zfd-negative-circled-sans-serif-digit-five"/><fill c=" ."/>zfd-negative-circled-sans-serif-digit-five<br/>
+<icon size="32pt" name="zfd-negative-circled-sans-serif-digit-six"/><fill c=" ."/>zfd-negative-circled-sans-serif-digit-six<br/>
+<icon size="32pt" name="zfd-negative-circled-sans-serif-digit-seven"/><fill c=" ."/>zfd-negative-circled-sans-serif-digit-seven<br/>
+<icon size="32pt" name="zfd-negative-circled-sans-serif-digit-eight"/><fill c=" ."/>zfd-negative-circled-sans-serif-digit-eight<br/>
+<icon size="32pt" name="zfd-negative-circled-sans-serif-digit-nine"/><fill c=" ."/>zfd-negative-circled-sans-serif-digit-nine<br/>
+<icon size="32pt" name="zfd-negative-circled-sans-serif-number-ten"/><fill c=" ."/>zfd-negative-circled-sans-serif-number-ten<br/>
+<icon size="32pt" name="zfd-heavy-wide-headed-rightwards-arrow"/><fill c=" ."/>zfd-heavy-wide-headed-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-heavy-south-east-arrow"/><fill c=" ."/>zfd-heavy-south-east-arrow<br/>
+<icon size="32pt" name="zfd-heavy-rightwards-arrow"/><fill c=" ."/>zfd-heavy-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-heavy-north-east-arrow"/><fill c=" ."/>zfd-heavy-north-east-arrow<br/>
+<icon size="32pt" name="zfd-drafting-point-rightwards-arrow"/><fill c=" ."/>zfd-drafting-point-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-heavy-round-tipped-rightwards-arrow"/><fill c=" ."/>zfd-heavy-round-tipped-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-triangle-headed-rightwards-arrow"/><fill c=" ."/>zfd-triangle-headed-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-heavy-triangle-headed-rightwards-arrow"/><fill c=" ."/>zfd-heavy-triangle-headed-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-dashed-triangle-headed-rightwards-arrow"/><fill c=" ."/>zfd-dashed-triangle-headed-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-heavy-dashed-triangle-headed-rightwards-arrow"/><fill c=" ."/>zfd-heavy-dashed-triangle-headed-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-black-rightwards-arrow"/><fill c=" ."/>zfd-black-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-three-d-top-lighted-rightwards-arrowhead"/><fill c=" ."/>zfd-three-d-top-lighted-rightwards-arrowhead<br/>
+<icon size="32pt" name="zfd-three-d-bottom-lighted-rightwards-arrowhead"/><fill c=" ."/>zfd-three-d-bottom-lighted-rightwards-arrowhead<br/>
+<icon size="32pt" name="zfd-black-rightwards-arrowhead"/><fill c=" ."/>zfd-black-rightwards-arrowhead<br/>
+<icon size="32pt" name="zfd-heavy-black-curved-downwards-and-rightwards-arrow"/><fill c=" ."/>zfd-heavy-black-curved-downwards-and-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-heavy-black-curved-upwards-and-rightwards-arrow"/><fill c=" ."/>zfd-heavy-black-curved-upwards-and-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-squat-black-rightwards-arrow"/><fill c=" ."/>zfd-squat-black-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-heavy-concave-pointed-black-rightwards-arrow"/><fill c=" ."/>zfd-heavy-concave-pointed-black-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-right-shaded-white-rightwards-arrow"/><fill c=" ."/>zfd-right-shaded-white-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-left-shaded-white-rightwards-arrow"/><fill c=" ."/>zfd-left-shaded-white-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-back-tilted-shadowed-white-rightwards-arrow"/><fill c=" ."/>zfd-back-tilted-shadowed-white-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-front-tilted-shadowed-white-rightwards-arrow"/><fill c=" ."/>zfd-front-tilted-shadowed-white-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-heavy-lower-right-shadowed-white-rightwards-arrow"/><fill c=" ."/>zfd-heavy-lower-right-shadowed-white-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-heavy-upper-right-shadowed-white-rightwards-arrow"/><fill c=" ."/>zfd-heavy-upper-right-shadowed-white-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-notched-lower-right-shadowed-white-rightwards-arrow"/><fill c=" ."/>zfd-notched-lower-right-shadowed-white-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-notched-upper-right-shadowed-white-rightwards-arrow"/><fill c=" ."/>zfd-notched-upper-right-shadowed-white-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-circled-heavy-white-rightwards-arrow"/><fill c=" ."/>zfd-circled-heavy-white-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-white-feathered-rightwards-arrow"/><fill c=" ."/>zfd-white-feathered-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-black-feathered-south-east-arrow"/><fill c=" ."/>zfd-black-feathered-south-east-arrow<br/>
+<icon size="32pt" name="zfd-black-feathered-rightwards-arrow"/><fill c=" ."/>zfd-black-feathered-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-black-feathered-north-east-arrow"/><fill c=" ."/>zfd-black-feathered-north-east-arrow<br/>
+<icon size="32pt" name="zfd-heavy-black-feathered-south-east-arrow"/><fill c=" ."/>zfd-heavy-black-feathered-south-east-arrow<br/>
+<icon size="32pt" name="zfd-heavy-black-feathered-rightwards-arrow"/><fill c=" ."/>zfd-heavy-black-feathered-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-heavy-black-feathered-north-east-arrow"/><fill c=" ."/>zfd-heavy-black-feathered-north-east-arrow<br/>
+<icon size="32pt" name="zfd-teardrop-barbed-rightwards-arrow"/><fill c=" ."/>zfd-teardrop-barbed-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-heavy-teardrop-shanked-rightwards-arrow"/><fill c=" ."/>zfd-heavy-teardrop-shanked-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-wedge-tailed-rightwards-arrow"/><fill c=" ."/>zfd-wedge-tailed-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-heavy-wedge-tailed-rightwards-arrow"/><fill c=" ."/>zfd-heavy-wedge-tailed-rightwards-arrow<br/>
+<icon size="32pt" name="zfd-open-outlined-rightwards-arrow"/><fill c=" ."/>zfd-open-outlined-rightwards-arrow<br/>

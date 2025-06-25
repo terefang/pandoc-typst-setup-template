@@ -205,6 +205,15 @@ function RawInline(elem)
                     return pandoc.RawInline('typst', '#box(width: '..(attr['size'])..', repeat("'..(attr['text'])..'"))')
                 end
             end
+            -- icons
+            if(cap1 == 'icon' or cap1 == 'i') then
+                if(anum == 1) then
+                    _, v = firstpair(attr)
+                    return pandoc.RawInline('typst', '#{'..v..'-g}')
+                else
+                    return pandoc.RawInline('typst', '#text(size: '..(attr['size'])..', [#{'..(attr['name'])..'-g}])')
+                end
+            end
             -- toc/outline
             if(cap1 == 'outline' or cap1 == 'toc') then
                 local opts = ""

@@ -112,27 +112,27 @@ or Acrobatics roll (DC 15) or be grappled.
 
 **ACTIONS**
 
-***Multiattack.*** 
-The horror makes one Bite attack and two Rotating Saw attacks, 
+***Multiattack.***
+The horror makes one Bite attack and two Rotating Saw attacks,
 or it makes two Lightning Jolt attacks.
 
-***Bite.*** 
-*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. 
+***Bite.***
+*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target.
 *Hit:* 6 (1d8 + 2) piercing damage.
 
-***Rotating Saw.*** 
-*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target. 
+***Rotating Saw.***
+*Melee Weapon Attack:* +4 to hit, reach 5 ft., one target.
 *Hit:* 4 (1d4 + 2) slashing damage.
 
-***Lightning Jolt.*** 
-*Ranged Spell Attack:* +4 to hit, range 120 ft., one target. 
+***Lightning Jolt.***
+*Ranged Spell Attack:* +4 to hit, range 120 ft., one target.
 *Hit:* 7 (1d10 + 2) lightning damage.
 
-***Spelljamming Helm Interface.*** The horror attaches to a *spelljamming helm* 
-it can see within 5 feet of itself and attunes to the helm instantly. If another 
-creature is already attuned to the helm, that creature’s attunement to the helm 
-ends when the horror’s attunement begins. The horror can operate the helm even 
-though it isn’t a spellcaster. The horror can detach from the helm as a bonus 
+***Spelljamming Helm Interface.*** The horror attaches to a *spelljamming helm*
+it can see within 5 feet of itself and attunes to the helm instantly. If another
+creature is already attuned to the helm, that creature’s attunement to the helm
+ends when the horror’s attunement begins. The horror can operate the helm even
+though it isn’t a spellcaster. The horror can detach from the helm as a bonus
 action, which ends its attunement to the helm.
 
 </cell>
@@ -141,6 +141,21 @@ action, which ends its attunement to the helm.
 :::
 
 <lorem s="100" />
+
+::: {.whitebox font="Gillius ADF" font-size="9pt" leading="none"}
+
+<uc>**Clockwork Horror**</uc><f/>CL 2 | 450 XP<br/>
+<f/>*Small Construct, Typically Lawful Evil*<br/>
+
+::::{.x1}
+
+| **St** | **Ag** | **To** | **In** | **Aw** | **Wp** | **Pr** | **Fe** | **Re** |
+|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| d10    | d10    | d12+1  |  d8    | d10    | d10    |  d6    | d6     |  d6    | 
+
+::::
+
+:::
 
 <lorem s="100" />
 

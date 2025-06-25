@@ -16,9 +16,9 @@ function Str(elem)
 
         -- match
         --print(">"..string.sub(elem.text,i,j).."<",i,j)
-        i2,j2,cap3,cap4 = string.find(cap2, "^([%d]+%.[%d]+)-([^;]+)")
+        i2,j2,cap3,cap4 = string.find(cap2, "^([%w-]+):(%d+)")
         if (i2 ~= nil) then
-            table.insert(_capture, pandoc.RawInline('typst', '#{text(size:'..cap3..'em,'..cap1..'-'..cap4..'-g)}'))
+            table.insert(_capture, pandoc.RawInline('typst', '#{text(size:'..cap4..'pt,'..cap1..'-'..cap3..'-g)}'))
         else
             i2,j2,cap3,cap4 = string.find(cap2, "^(%d+)-([^;]+)")
             if (i2 ~= nil) then

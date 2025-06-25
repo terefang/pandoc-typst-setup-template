@@ -13,7 +13,7 @@ the base markdown syntax is pandocs with the following options:
 
 you can find examples in the `markdown/` folder and the `document.pdf`.
 
-### html/xml-entities
+### design decision 1 – html/xml-entities
 
 all html/xml entity references work normally, except if the entity name is in the format "`\&[namespace]-[glyphname]\;`".
 
@@ -23,6 +23,14 @@ namespaces glyphs are mapped to glyph-names as given in the registration files:
 * nerdfont.typ
 * unicode.typ
 * zapfding.typ
+
+*Alternative Syntax:*
+
+```
+&zfd-101:20;
+<i n="zfd-101"/>
+<icon size="12pt" name="zfd-101"/>
+```
 
 ### pipe-tables
 
@@ -127,6 +135,7 @@ Some content.
 * lc — lower case (spanner)
 * uc — upper case (spanner)
 * sc — small caps (spanner)
+* i or icon — displays font-iCons
 * font or fnt — wraps the typst /text/ function  (spanner)
 * page — wraps the typst /page/ function  (spanner)
 * place — wraps the typst /place/ function  (spanner)
