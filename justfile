@@ -48,6 +48,12 @@ build-pandoc:
     echo "... executing pandoc"
     {{PANDOCEXE}} {{PANDOCOPT}} ./markdown/*.md -o ./out/document.typ
 
+debug-pandoc:
+    #!/bin/sh
+    mkdir -p ./out
+    echo "... debug pandoc"
+    {{PANDOCEXE}} {{PANDOCOPT}} ./markdown/*.md -t native -o ./out/document.native
+
 build-typst:
     #!/bin/sh
     mkdir -p ./out

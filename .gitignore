@@ -1,5 +1,6 @@
 .idea
 fonts
 out/*.typ
+out/*.native
 icons
 tmp

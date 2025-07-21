@@ -71,10 +71,10 @@ or Acrobatics roll (DC 15) or be grappled.
 <uc>**Clockwork Horror**</uc><f/>CL 2 | 450 XP<br/>
 <f/>*Small Construct, Typically Lawful Evil*<br/>
 
-<grid columns="(100%,)" inset="(top:8pt,bottom:3pt)" row-gutter="8pt">
+<g:grid columns="(100%,)" inset="(top:8pt,bottom:3pt)" row-gutter="8pt">
 
-<hline/>
-<cell>
+<g:hl/>
+<g:c>
 
 **Armor Class** 18 (natural armor)
 
@@ -98,17 +98,17 @@ or Acrobatics roll (DC 15) or be grappled.
 **Languages** Thri-kreen, Ziklight
 
 **Proficiency Bonus** +2
-</cell>
-<hline/>
-<cell>
+</g:c>
+<g:hl/>
+<g:c>
 
 ***Shutdown.*** If targeted by *dispel magic*, the horror must succeed on a Constitution saving throw against the caster’s spell save DC or fall unconscious for 1 minute or until it takes any damage.
 
 ***Unusual Nature.*** The horror doesn’t require air, food, drink, or sleep.
 
-</cell>
-<hline/>
-<cell>
+</g:c>
+<g:hl/>
+<g:c>
 
 **ACTIONS**
 
@@ -135,8 +135,8 @@ ends when the horror’s attunement begins. The horror can operate the helm even
 though it isn’t a spellcaster. The horror can detach from the helm as a bonus
 action, which ends its attunement to the helm.
 
-</cell>
-</grid>
+</g:c>
+</g:grid>
 
 :::
 

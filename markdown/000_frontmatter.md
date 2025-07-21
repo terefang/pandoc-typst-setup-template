@@ -11,13 +11,13 @@ it relys heavy on xml/html macros that are mapped to typst functions
 <place pos="top + left" scope='"parent"' dx="50pt" dy="50pt" float="true">
 <box width="495pt" height="100pt" stroke="none">
 <align t="top + center">
-<fnt name="TeX Gyre Heros" size="120pt" weight="700" fill="white" stroke="0.1pt">
+<f:fnt name="TeX Gyre Heros" size="120pt" weight="700" fill="white" stroke="0.1pt">
 <scale x="60%" reflow="true">
 <par leading="10pt">
 Sample Document.
 </par>
 </scale>
-</fnt>
+</f:fnt>
 </align>
 </box>
 </place>
@@ -25,11 +25,11 @@ Sample Document.
 <place pos="bottom + left" scope='"parent"' dx="50pt" dy="-50pt" float="true">
 <box width="495pt" height="100pt" stroke="none">
 <align t="top + center">
-<fnt name="TeX Gyre Heros" size="60pt" weight="700" fill="white" stroke="0.1pt">
+<f:f name="TeX Gyre Heros" size="60pt" weight="700" fill="white" stroke="0.1pt">
 <par leading="10pt">
 And Here Goes The Author
 </par>
-</fnt>
+</f:f>
 </align>
 </box>
 </place>

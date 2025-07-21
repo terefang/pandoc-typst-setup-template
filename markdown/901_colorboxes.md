@@ -48,7 +48,7 @@
 
 <cbr/>
 
-<fnt name="Open Sans">
+<f:fnt name="Open Sans">
 
 ::: {.blackbox}
 <lorem s="10"/>
@@ -90,4 +90,4 @@
 <lorem s="10"/>
 :::
 
-</fnt>
+</f:fnt>

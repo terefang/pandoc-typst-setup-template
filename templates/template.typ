@@ -31,6 +31,7 @@ $-- #fbox[elembic 1.0]
 
 #set list(marker:text(font:"Agave Nerd Font",size:8pt,"\u{ea71}")) // circle
 
+#let horizontalrule = ""
 
 #show figure.where(
   kind: "float-bottom"

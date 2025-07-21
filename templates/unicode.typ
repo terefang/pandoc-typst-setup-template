@@ -3,6 +3,62 @@
 #let uni-yen-g = text(str.from-unicode(0x00a5));
 #let uni-florin-g = text(str.from-unicode(0x0192));
 
+#let uni-comb(x,y) = y+str.from-unicode(x);
+
+// TODO
+
+#let uni-comb-grave(x)      = uni-comb(0x0300,x);   // U+0300	◌̀	Combining Grave Accent
+#let uni-comb-acute(x)      = uni-comb(0x0301,x);   // U+0301	◌́	Combining Acute Accent
+#let uni-comb-circ(x)       = uni-comb(0x0302,x);   // U+0302	◌̂	Combining Circumflex Accent
+#let uni-comb-tilde(x)      = uni-comb(0x0303,x);   // U+0303	◌̃	Combining Tilde
+#let uni-comb-macron(x)     = uni-comb(0x0304,x);   // U+0304	◌̄	Combining Macron
+#let uni-comb-overline(x)   = uni-comb(0x0305,x);   // U+0305	◌̅	Combining Overline
+#let uni-comb-breve(x)      = uni-comb(0x0306,x);   // U+0306	◌̆	Combining Breve
+#let uni-comb-dot-above(x)  = uni-comb(0x0307,x);   // U+0307	◌̇	Combining Dot Above
+#let uni-comb-diaeresis(x)  = uni-comb(0x0308,x);   // U+0308	◌̈	Combining Diaeresis
+#let uni-comb-hook-above(x) = uni-comb(0x0309,x);   // U+0309	◌̉	Combining Hook Above
+#let uni-comb-ring-above(x) = uni-comb(0x030A,x);   // U+030A	◌̊	Combining Ring Above
+#let uni-comb-double-acute(x) = uni-comb(0x030B,x); // U+030B	◌̋	Combining Double Acute Accent
+#let uni-comb-caron(x)      = uni-comb(0x030C,x);   // U+030C	◌̌	Combining Caron
+#let uni-comb-vert-line-above(x) = uni-comb(0x030D,x); // U+030D	◌̍	Combining Vertical Line Above
+#let uni-comb-double-vert-line-above(x) = uni-comb(0x030E,x); // U+030E	◌̎	Combining Double Vertical Line Above
+#let uni-comb-double-grave(x) = uni-comb(0x030F,x); // U+030F	◌̏	Combining Double Grave Accent
+// #let uni-comb-(x) = uni-comb(0x0310,x); // U+0310	◌̐	Combining Candrabindu
+#let uni-comb-inv-breve(x)  = uni-comb(0x0311,x);   // U+0311	◌̑	Combining Inverted Breve
+// #let uni-comb-(x) = uni-comb(0x0312,x); // U+0312	◌̒	Combining Turned Comma Above
+// #let uni-comb-(x) = uni-comb(0x0313,x); // U+0313	◌̓	Combining Comma Above
+// #let uni-comb-(x) = uni-comb(0x0314,x); // U+0314	◌̔	Combining Reversed Comma Above
+// #let uni-comb-(x) = uni-comb(0x033D,x); // U+033D	◌̽	Combining X Above
+// #let uni-comb-(x) = uni-comb(0x033E,x); // U+033E	◌̾	Combining Vertical Tilde
+// #let uni-comb-(x) = uni-comb(0x033F,x); // U+033F	◌̿	Combining Double Overline
+// #let uni-comb-(x) = uni-comb(0x0340,x); // U+0340	◌̀	Combining Grave Tone Mark
+// #let uni-comb-(x) = uni-comb(0x0341,x); // U+0341	◌́	Combining Acute Tone Mark
+// #let uni-comb-(x) = uni-comb(0x0342,x); // U+0342	◌͂	Combining Greek Perispomeni
+// #let uni-comb-(x) = uni-comb(0x0343,x); // U+0343	◌̓	Combining Greek Koronis
+// #let uni-comb-(x) = uni-comb(0x0344,x); // U+0344	◌̈́	Combining Greek Dialytika Tonos
+// #let uni-comb-(x) = uni-comb(0x0346,x); // U+0346	◌͆	Combining Bridge Above
+// #let uni-comb-(x) = uni-comb(0x034A,x); // U+034A	◌͊	Combining Not Tilde Above
+// #let uni-comb-(x) = uni-comb(0x034B,x); // U+034B	◌͋	Combining Homothetic Above
+// #let uni-comb-(x) = uni-comb(0x034C,x); // U+034C	◌͌	Combining Almost Equal to Above
+// #let uni-comb-(x) = uni-comb(0x0350,x); // U+0350	◌͐	Combining Right Arrowhead Above
+// #let uni-comb-(x) = uni-comb(0x0351,x); // U+0351	◌͑	Combining Left Half Ring Above
+// #let uni-comb-(x) = uni-comb(0x0352,x); // U+0352	◌͒	Combining Fermata
+// #let uni-comb-(x) = uni-comb(0x0357,x); // U+0357	◌͗	Combining Right Half Ring Above
+// #let uni-comb-(x) = uni-comb(0x035B,x); // U+035B	◌͛	Combining Zigzag Above
+#let uni-comb-small-a(x)    = uni-comb(0x0363,x);   // U+0363	◌ͣ	Combining Latin Small Letter A
+#let uni-comb-small-e(x)    = uni-comb(0x0364,x);   // U+0364	◌ͤ	Combining Latin Small Letter E
+#let uni-comb-small-i(x)    = uni-comb(0x0365,x);   // U+0365	◌ͥ	Combining Latin Small Letter I
+#let uni-comb-small-o(x)    = uni-comb(0x0366,x);   // U+0366	◌ͦ	Combining Latin Small Letter O
+#let uni-comb-small-u(x)    = uni-comb(0x0367,x);   // U+0367	◌ͧ	Combining Latin Small Letter U
+#let uni-comb-small-c(x)    = uni-comb(0x0368,x);   // U+0368	◌ͨ	Combining Latin Small Letter C
+#let uni-comb-small-d(x)    = uni-comb(0x0369,x);   // U+0369	◌ͩ	Combining Latin Small Letter D
+#let uni-comb-small-h(x)    = uni-comb(0x036A,x);   // U+036A	◌ͪ	Combining Latin Small Letter H
+#let uni-comb-small-m(x)    = uni-comb(0x036B,x);   // U+036B	◌ͫ	Combining Latin Small Letter M
+#let uni-comb-small-r(x)    = uni-comb(0x036C,x);   // U+036C	◌ͬ	Combining Latin Small Letter R
+#let uni-comb-small-t(x)    = uni-comb(0x036D,x);   // U+036D	◌ͭ	Combining Latin Small Letter T
+#let uni-comb-small-v(x)    = uni-comb(0x036E,x);   // U+036E	◌ͮ	Combining Latin Small Letter V
+#let uni-comb-small-x(x)    = uni-comb(0x036F,x);   // U+036F	◌ͯ	Combining Latin Small Letter X
+
 // --- html entities
 #let html-lt-g = text(str.from-unicode(0x003C));        // XML 1.0  HTML 5.0    HTMLspecial	ISOnum	less-than sign
 #let html-gt-g = text(str.from-unicode(0x003E));        // XML 1.0  HTML 5.0    HTMLspecial	ISOnum	greater-than sign
