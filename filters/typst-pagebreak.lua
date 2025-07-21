@@ -24,22 +24,39 @@ function RawBlock (el)
   -- check that the block is TeX or LaTeX and contains only
   if el.format:match 'tex' then
     if (el.text:match '^\\newpage%{?%}?$') or (el.text:match '^\\np%{?%}?$') then
-    return pandoc.RawBlock('typst', '#pagebreak(weak:false)\n\n')
+      return pandoc.RawBlock('typst', '#pagebreak(weak:false)\n\n')
     end
+    if (el.text:match '^\\newpage1%{?%}?$') or (el.text:match '^\\np1%{?%}?$') then
+      return pandoc.RawBlock('typst', '#pagebreak(weak:false)\n#set page(columns:1)\n')
+    end
+    if (el.text:match '^\\newpage2%{?%}?$') or (el.text:match '^\\np2%{?%}?$') then
+      return pandoc.RawBlock('typst', '#pagebreak(weak:false)\n#set page(columns:2)\n')
+    end
+
     if (el.text:match '^\\pagebreak%{?%}?$') or (el.text:match '^\\pb%{?%}?$') then
     return pandoc.RawBlock('typst', '#pagebreak(weak:true)\n\n')
     end
+
     if (el.text:match '^\\pagebreakodd%{?%}?$') or (el.text:match '^\\pbo%{?%}?$') then
     return pandoc.RawBlock('typst', "#pagebreak(weak:true,to:'odd')\n\n")
     end
+
     if (el.text:match '^\\pagebreakeven%{?%}?$') or (el.text:match '^\\pbe%{?%}?$') then
     return pandoc.RawBlock('typst', "#pagebreak(weak:true,to:'even')\n\n")
     end
+
     if (el.text:match '^\\colbreak%{?%}?$') or (el.text:match '^\\cb%{?%}?$') then
     return pandoc.RawBlock('typst', '#colbreak(weak:true)\n\n')
     end
+
     if (el.text:match '^\\newcolumn%{?%}?$') or (el.text:match '^\\nc%{?%}?$') then
-    return pandoc.RawBlock('typst', '#colbreak(weak:false)\n\n')
+      return pandoc.RawBlock('typst', '#colbreak(weak:false)\n\n')
+    end
+    if (el.text:match '^\\newcolumn1%{?%}?$') or (el.text:match '^\\nc1%{?%}?$') then
+      return pandoc.RawBlock('typst', '#colbreak(weak:false)\n#set page(columns:1)\n')
+    end
+    if (el.text:match '^\\newcolumn2%{?%}?$') or (el.text:match '^\\nc2%{?%}?$') then
+      return pandoc.RawBlock('typst', '#colbreak(weak:false)\n#set page(columns:2)\n')
     end
   end
   -- otherwise, leave the block unchanged

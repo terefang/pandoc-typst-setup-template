@@ -35,7 +35,6 @@ local function convert_to_cell( typ, ret, cell)
         table.insert(ret, pandoc.RawBlock('typst', "colspan:"..cell.col_span..","))
     end
     table.insert(ret, pandoc.RawBlock('typst', "["))
-    print(cell)
     for _, cnt in ipairs(cell.content) do
         table.insert(ret, cnt)
     end
@@ -131,7 +130,8 @@ local function process(div)
             end
 
             local close_font = false
-            if(div.attributes['font']~=nil) or (div.attributes['font-size']~=nil) or (div.attributes['font-weight']~=nil) then
+            if(div.attributes['font']~=nil) or (div.attributes['font-size']~=nil)
+                    or (div.attributes['font-weight']~=nil) or (div.attributes['font-stretch']~=nil) then
                 local attropts = "#text("
                 if(div.attributes['font']~=nil) then
                     attropts = attropts..'font:"'..div.attributes['font']..'",'
@@ -141,6 +141,9 @@ local function process(div)
                 end
                 if(div.attributes['font-weight']~=nil) then
                     attropts = attropts..'weight:'..div.attributes['font-weight']..','
+                end
+                if(div.attributes['font-stretch']~=nil) then
+                    attropts = attropts..'stretch:'..div.attributes['font-stretch']..','
                 end
                 attropts = attropts..'['
                 table.insert(ret, pandoc.RawBlock('typst', attropts))
