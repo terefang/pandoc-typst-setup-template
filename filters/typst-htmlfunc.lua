@@ -521,3 +521,46 @@ end
 -- //   scale(x: x-scale * 100%, y: y-scale * 100%, body, reflow: true)
 -- // }
 -- // #scale-to-width(15cm, 3cm, fromtext)
+-- //
+-- // TODO ----------------------------------------------------
+-- // #let stretchy(text, max: 100%) = layout(container => {
+-- //   let x-scale = container.width / measure(text).width * 100%
+-- //   if max != none { x-scale = calc.min(max, x-scale) }
+-- //   box(scale(x: x-scale, origin: start, reflow: true, text))
+-- // })
+-- //
+-- // #block(width: 4cm, stack(spacing: 1em,
+-- //   stretchy(max: none)[hello],
+-- //   stretchy[wow so very nice!!! this is so very nice!!!! so incredibly cool],
+-- //   stretchy[hello]
+-- // ))
+-- //
+-- // TODO ----------------------------------------------------
+-- // #set par(justify: true)
+-- // #set linebreak(justify: true)
+-- // #set align(center)
+-- //
+-- // #let shrinking-box(body, iterations: 10) = context layout(size => {
+-- // let width = size.width;
+-- // let candidate_width = size.width / 2;
+-- //
+-- // let initial-height = measure(width: size.width, body).height;
+-- // for _ in range(0, iterations) {
+-- // // does the tested height surpass the initial height?
+-- // if measure(width: candidate_width, body).height > initial-height {
+-- // // the candidate_width is too small. Try a value closer to the initial width
+-- // candidate_width = (candidate_width+width)/2
+-- // } else {
+-- // // the candidate width works. save our result and keep on searching for smaller candidates.
+-- // width = candidate_width;
+-- // candidate_width = candidate_width/2;
+-- // }
+-- // }
+-- //
+-- // box(width: width, body)
+-- // })
+-- //
+-- // #block(width: 20em, lorem(16))
+-- // #block(width: 20em, lorem(16)+linebreak())
+-- // #block(width: 20em, shrinking-box(lorem(16)))
+-- //

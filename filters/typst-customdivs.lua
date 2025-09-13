@@ -59,6 +59,22 @@ local function process(div)
             return ret
         end
 
+        -- a foreach/forin container
+        if div.classes[1] == 'foreach' then
+
+            local _var = div.attributes['var']
+            local _arg = div.attributes['arg']
+
+            local ret = {}
+            table.insert(ret,pandoc.RawBlock('typst',"\n#for ".._var.." in ".._arg.." ["))
+            for _, v in ipairs(div.content) do
+                table.insert(ret, v)
+            end
+            table.insert(ret,pandoc.RawBlock('typst', "\n]\n"))
+
+            return ret
+        end
+
         -- a container closing with a horizontal rule
         if div.classes[1] == 'hr' then
             local attr = {}

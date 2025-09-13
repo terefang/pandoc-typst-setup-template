@@ -25,6 +25,15 @@ adjusted 2025 -- Alfred Reibenschuh for Gentle Clues 1.2.0
 stringify = pandoc.utils.stringify
 pdType = pandoc.utils.type
 
+local function slurp(path)
+	local f = io.open(path)
+	local s = f:read("*a")
+	f:close()
+	return s
+end
+
+-- print(pandoc.system.get_working_directory())
+
 local specialStyles = {}
 specialStyles['yellow'] = "header-color:yellow.lighten(60%), border-color:gray, accent-color:yellow,"
 specialStyles['red'] = "header-color:red.lighten(60%), border-color:gray, accent-color:red,"
@@ -105,26 +114,68 @@ local function wrapTypst(content, alert, customTitle, customStyle, customIcon)
 	local prefix = createTypstPrefix(alert, customTitle, customStyle, customIcon)
 	-- local rawcontent = pandoc.write(pandoc.Pandoc(content),'typst'):gsub("\n$","")
 	-- return pandoc.RawBlock('typst', prefix .. rawcontent .. "]\n\n")
-    local ret = {}
-    table.insert(ret,pandoc.RawBlock('typst', prefix))
-    for _, v in ipairs(content) do
-        table.insert(ret, v)
-    end
+	local ret = {}
+	table.insert(ret,pandoc.RawBlock('typst', prefix))
+	for _, v in ipairs(content) do
+		table.insert(ret, v)
+	end
     table.insert(ret,pandoc.RawBlock('typst', "]\n\n"))
+	return ret
+end
+
+local function wrapAdmons(_div, _alert)
+	local ret = {}
+
+	_alert = _alert.."("
+
+	if _div.attributes['title'] ~= nil then
+		_alert = _alert..'title:"'..(_div.attributes['title'])..'",'
+	end
+
+	if _div.attributes['title-font'] ~= nil then
+		_alert = _alert..'title-font:"'..(_div.attributes['title-font'])..'",'
+	end
+
+	if _div.attributes['color'] ~= nil then
+	_alert = _alert..'color:'..(_div.attributes['color'])..','
+	end
+
+	if _div.attributes['foreground-color'] ~= nil then
+	_alert = _alert..'foreground-color:'..(_div.attributes['foreground-color'])..','
+	end
+
+	if _div.attributes['background-color'] ~= nil then
+	_alert = _alert..'background-color:'..(_div.attributes['background-color'])..','
+	end
+
+	table.insert(ret,pandoc.RawBlock('typst', "\n\n#".._alert..")["))
+
+	for _, v in ipairs(_div.content) do
+		table.insert(ret, v)
+	end
+
+	table.insert(ret,pandoc.RawBlock('typst', "]\n\n"))
+
 	return ret
 end
 
 -- Pandoc converts GFM alerts to classed Divs, and fenced divs with the same class also get processed here
 function Div(d)
 	local alert = d.classes[1]
+
+	if alert == nil then return end
+
+	if(string.sub(alert,1,8) == 'gh-admon') then
+		-- print(alert)
+		return wrapAdmons(d, alert)
+	end
 	local customTitle = d.attributes['title']
 	local customIcon = d.attributes['icon']
 	if not alerts:includes(alert) and not gentleClues:includes(alert) then return end
-	
+
 	if d.content[1].classes and d.content[1].classes:includes('title') then
 		d.content:remove(1) -- remove title paragraph to give us more flexibility
 	end
-	
+
 	return wrapTypst(d.content, alert, customTitle, d.attributes['style'], customIcon)
 end
-
