@@ -1,7 +1,7 @@
-<page 
-    columns="2" 
-    numbering='"1"' 
-    header='text(font: "TeX Gyre Heros",)[ #context{ if calc.even(here().page()) [_Lisa Strassners Thesis_ #h(1fr)] else [#h(1fr) National Academy of Sciences] } ]'
+<page
+columns="2"
+numbering='"1"'
+header='text(font: "TeX Gyre Heros",)[ #context{ if calc.even(here().page()) [_Lisa Strassners Thesis_ #h(1fr)] else [#h(1fr) National Academy of Sciences] } ]'
 >
 
 ```{=typst}
@@ -61,6 +61,4 @@ this would usually go into the `template.typ` file.
 <lorem s="20" />
 
 </page>
-
-
 
