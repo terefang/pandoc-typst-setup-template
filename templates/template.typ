@@ -66,6 +66,9 @@ $header-includes$
 $endfor$
 // --- END pandoc header-includes
 
+#import "/templates/unicode.typ": *
+
+
 #set document(
 $if(title)$
   title: [$title$],
@@ -73,7 +76,7 @@ $endif$
 $if(author)$
   author: "$author$",
 $endif$
-  date: auto,
+  date: datetime.today(),
 )
 
 $for(include-before)$

@@ -5,7 +5,7 @@
 
 #let uni-comb(x,y) = y+str.from-unicode(x);
 
-// TODO
+// TODO https://www.unicode.org/Public/UCD/latest/ucd/NamesList.txt
 
 #let uni-comb-grave(x)      = uni-comb(0x0300,x);   // U+0300	◌̀	Combining Grave Accent
 #let uni-comb-acute(x)      = uni-comb(0x0301,x);   // U+0301	◌́	Combining Acute Accent

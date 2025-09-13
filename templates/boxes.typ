@@ -139,3 +139,32 @@
     ]
   ]
 }
+
+
+// #let mybox(icon:emoji.face, radius: 10pt,border:2pt, title: "Definition", body) = {
+//     rect(
+//         width: 100%,
+//         radius: radius,
+//         inset: (top:radius, rest:border),
+//         fill: blue,
+//         [
+//         #h(radius)#text(fill:white,weight:"bold",[#icon#h(1em)#title])
+//         #v(-5pt)
+//         #rect(
+//             width: 100%,
+//             radius: (top:0pt, bottom:radius),
+//             fill: white,
+//             inset: radius,
+//             body
+//         )
+//         ]
+//     )
+// }
+//
+// #mybox(icon:"X", title:"Example", radius: 10pt)[
+// #lorem(20)
+// ]
+//
+// #mybox(icon:"X", title:"Example", radius: 5pt)[
+// #lorem(20)
+// ]
