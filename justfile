@@ -1,12 +1,6 @@
 #!/usr/bin/env -S just --justfile
 
-# --include-before-body
-# --include-after-body
-
-XDIR := justfile_directory()
-XBIN := XDIR+"/xbin"
-ABIN := XBIN+"/"+arch()+"-"+os()
-XFNT := XDIR+"/fonts"
+import 'justfile.bootstrap'
 
 PANDOCOPT := ' --from markdown+pipe_tables+grid_tables+raw_attribute+raw_html+fenced_divs+yaml_metadata_block-tex_math_dollars ' \
         + ' --columns=60 ' \
@@ -15,7 +9,7 @@ PANDOCOPT := ' --from markdown+pipe_tables+grid_tables+raw_attribute+raw_html+fe
         + ' --include-before-body=templates/diceset.typ ' \
         + ' --include-before-body=templates/zapfding.typ ' \
         + ' --include-before-body=templates/nerdfont.typ ' \
-        + ' --include-before-body=templates/unicode.typ ' \
+        + ' --include-before-body=templates/admons.typ ' \
         + ' --include-before-body=templates/boxes.typ ' \
         + ' --lua-filter=typst-header.lua ' \
         + ' --lua-filter=typst-colorboxes.lua ' \
@@ -30,6 +24,8 @@ PANDOCOPT := ' --from markdown+pipe_tables+grid_tables+raw_attribute+raw_html+fe
         + ' --embed-resources --standalone ' \
         + ' --ascii ' \
         + ' --template='+XDIR+'/templates/template.typ '
+
+##         + ' --include-before-body=templates/unicode.typ ' \
 
 PANDOCEXE := XBIN+'/pandoc'
 
@@ -60,7 +56,28 @@ build-typst:
     for x in ./out/*.typ; do
         y=$(basename $x .typ)
         echo "... executing typst with '$y'"
-        {{TYPSTEXE}} compile {{TYPSTOPT}}  --root ./ $x ./out/$y.pdf
+        time {{TYPSTEXE}} compile {{TYPSTOPT}}  --root {{XDIR}} $x ./out/$y.pdf
+    done
+
+build-pdf _file:
+    #!/bin/sh
+    mkdir -p {{XDIR}}/out/tmp
+    echo "... executing pandoc {{_file}}"
+    _dir=$(dirname {{_file}})
+    _name=$(basename {{_file}} .md)
+    cp {{_file}} {{XDIR}}/out/tmp/
+    {{PANDOCEXE}} {{PANDOCOPT}} {{XDIR}}/out/tmp/$_name.md -o {{XDIR}}/out/tmp/$_name.typ
+    echo "... executing typst $_name.typ"
+    {{TYPSTEXE}} compile {{TYPSTOPT}}  --root {{XDIR}} {{XDIR}}/out/tmp/$_name.typ $_dir/$_name.pdf
+    rm {{XDIR}}/out/tmp/$_name.md {{XDIR}}/out/tmp/$_name.typ
+
+test-typst:
+    #!/bin/sh
+    mkdir -p ./out
+    for x in {{XDIR}}/out/*.typ; do
+        y=$(basename $x .typ)
+        echo "... executing typst with '$y'"
+        {{TYPSTEXE}} compile {{TYPSTOPT}}  --root {{XDIR}} --timings ./out/$y.time.json $x ./out/$y.pdf
     done
 
 bootstrap:
@@ -70,10 +87,16 @@ bootstrap:
 #dump-template:
 #    {{PANDOCEXE}} --print-default-template=typst > ./template/default.typ
 
-fonts:
+list-font-dir _dir:
+    {{TYPSTEXE}} fonts --ignore-system-fonts --font-path {{_dir}}
+
+list-font-dir-variants _dir:
+    {{TYPSTEXE}} fonts --ignore-system-fonts --font-path {{_dir}} --variants
+
+list-fonts:
     {{TYPSTEXE}} fonts {{TYPSTOPT}}
 
-fonts-variants:
+list-fonts-variants:
     {{TYPSTEXE}} fonts {{TYPSTOPT}} --variants
 
 set-version ver:

@@ -9,7 +9,7 @@ it relys heavy on xml/html macros that are mapped to typst functions
 <page paper="a4" columns="1" margin="0pt" flipped="false">
 
 <place pos="top + left" scope='"parent"' dx="50pt" dy="50pt" float="true">
-<box width="495pt" height="100pt" stroke="none">
+<box width="495pt" height="100pt" stroke="red">
 <align t="top + center">
 <f:fnt name="TeX Gyre Heros" size="120pt" weight="700" fill="white" stroke="0.1pt">
 <scale x="60%" reflow="true">

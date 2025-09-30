@@ -22,16 +22,13 @@ Cover Design: Alfred Reibenschuh
 
 #### FONTS
 
-* Nerd Fonts — Agave Nerd Font<br/>
-  https://github.com/ryanoasis/nerd-fonts/<br/>
+* Nerd Fonts — https://github.com/ryanoasis/nerd-fonts/<br/>
   used under MIT License
 
-* TeX Gyre Fonts — Adventor, Bonum, Chorus, Cursor, Heros, Pagella, Schola, Termes<br/>
-  http://www.gust.org.pl/projects/e-foundry/tex-gyre/<br/>
+* TeX Gyre Fonts — http://www.gust.org.pl/projects/e-foundry/tex-gyre/<br/>
   used under the GUST Font License (GFL)
 
-* Google Fonts — Libre Baskerville, Libre Caslon, Libre Franklin, Montserrat, OpenSans<br/>
-  https://fonts.google.com/<br/>
+* Google Fonts — https://fonts.google.com/<br/>
   used under the SIL Open Font License
 
 #### RIGHTS

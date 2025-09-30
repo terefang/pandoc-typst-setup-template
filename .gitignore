@@ -2,5 +2,6 @@
 fonts
 out/*.typ
 out/*.native
+lib/typst
 icons
 tmp

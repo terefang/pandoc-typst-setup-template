@@ -1,6 +1,7 @@
 # Libre Fonts
 
-:::{.foreach var="f-name" arg='("Garamond Libre","Libre Baskerville","Libre Caslon Text","Libre Franklin")'}
+:::{.foreach var="f-name" arg='("Garamond Libre","Libre Baskerville","Libre Caslon Text","Libre Franklin","Libertinus Keyboard","Libertinus Math","Libertinus Mono","Libertinus Sans","Libertinus Serif","Libertinus Serif Display","Libertinus Serif Initials","Linux Libertine Display O","Linux Libertine Initials O","Linux Libertine Mono O","Linux Libertine O")'}
+
 
 ```{=typst}
 === #{f-name}

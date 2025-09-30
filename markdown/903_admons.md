@@ -22,7 +22,7 @@
 
 :::gh-admons-tip
 
-<f:fnt name="Verana Sans" size="10pt">
+<f:fnt name="Libre Franklin" size="10pt">
 <lorem s="35"/>
 </f:fnt>
 
@@ -30,7 +30,7 @@
 
 ::: {.gh-admons-tip title="Example"}
 
-<f:fnt name="Universalis ADF Std" size="10pt">
+<f:fnt name="Libre Franklin" size="10pt">
 <lorem s="35"/>
 </f:fnt>
 
@@ -38,7 +38,7 @@
 
 :::gh-admons-warning
 
-<f:fnt name="Switzera ADF" size="10pt">
+<f:fnt name="Libre Franklin" size="10pt">
 <lorem s="35"/>
 </f:fnt>
 
@@ -46,7 +46,7 @@
 
 :::{.gh-admons-caution  background-color="rgb(208,208,208)"}
 
-<f:fnt name="VenturisSans ADF" size="10pt">
+<f:fnt name="Libre Franklin" size="10pt">
 <lorem s="35"/>
 </f:fnt>
 
