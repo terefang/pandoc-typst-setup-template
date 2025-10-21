@@ -172,3 +172,96 @@
   background-color: background-color,
   children
 )
+
+// https://github.com/analytics-labs/typst-admonitions
+// MIT License
+//
+// Copyright (c) 2025 Open Source Contributor
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+#let adoc-admonition(
+  type: none, // the admonition type, e.g. Tip, Info, Note, Warning, ...
+  title: none, // bold title in first line
+  icon: none, // admonition icon
+  align-icon: center + top, // how to align the admonition icon
+  icon-color: luma(0%), // admonition icon for textual icons
+  icon-size: 30pt, // admonition icon for textual icons
+  bar: none, // right-side bar of the icon
+  background-color: none, // the background color of the entire admonition block
+  border: (:), // border around the entire admonition block
+  radius: (:), // border radius
+  inset: (:), // inset of the entire admonition block
+  breakable: true, // whether the admonition block is breakable
+  text-color: luma(0%), // main body text color
+  text-spacing: 1.2em, // spacing between paragraphs in content
+  body // actual admonition content
+) = {
+  // admonitions that are not colored can have inset = 0em
+  if background-color != none or border != (:) { inset = 1em }
+  block(fill: background-color, radius: radius, stroke: border, inset: inset, breakable: breakable,
+    grid(
+      columns: (icon-size * 1.5, 1fr),
+      grid.cell(
+        stroke: (right: bar),
+        inset: (left: -0.25em),
+        align(align-icon, text(bottom-edge: "descender", fill: icon-color, size: icon-size, icon))
+      ),
+      grid.cell(
+        inset: (left: 1em),
+        text(fill: text-color, [
+          #set par(spacing: text-spacing)
+          #strong(smallcaps(type))#if title != none and type != none [:] #title
+
+          #body
+        ])
+      )
+    )
+  )
+}
+
+#let adoc-admon-tip(type: "Tip", title: none, icon: nf-fa-lightbulb-g, align-icon: center + top, icon-color: luma(0%), bar: gray, background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-tip-colored(type: "Tip", title: none, icon: nf-fa-lightbulb-g, align-icon: center + top, icon-color: luma(0%), bar: yellow, background-color: yellow.lighten(60%), border: yellow, radius: 1em, inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-info(type: "Info", title: none, icon: emoji.info, align-icon: center + top, icon-color: blue, bar: blue, background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-info-colored(type: "Info", title: none, icon: emoji.info, align-icon: center + top, icon-color: blue, bar: blue, background-color: blue.lighten(80%), border: blue, radius: 1em, inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-important(type: "Important", title: none, icon: emoji.excl, align-icon: center + top, icon-color: luma(0%), bar: red, background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: red, text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-important-colored(type: "Important", title: none, icon: emoji.excl, align-icon: center + top, icon-color: luma(0%), bar: red, background-color: red.lighten(80%), border: red, radius: 1em, inset: (:), breakable: true, text-color: red, text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-warning(type: "Warning", title: none, icon: emoji.warning, align-icon: center + top, icon-color: luma(0%), bar: luma(0%), background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-warning-colored(type: "Warning", title: none, icon: emoji.warning, align-icon: center + top, icon-color: luma(0%), bar: luma(0%), background-color: yellow.lighten(40%), border: luma(0%), radius: 1em, inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-caution(type: "Caution", title: none, icon: nf-md-sign_caution-g, align-icon: center + top, icon-color: luma(0%), bar: orange, background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-caution-colored(type: "Caution", title: none, icon: nf-md-sign_caution-g, align-icon: center + top, icon-color: luma(0%), bar: orange, background-color: orange.lighten(60%), border: orange, radius: 1em, inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-danger(type: "Danger", title: none, icon: emoji.bomb, align-icon: center + top, icon-color: luma(0%), bar: luma(0%), background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-danger-colored(type: "Danger", title: none, icon: emoji.bomb, align-icon: center + top, icon-color: luma(0%), bar: luma(0%), background-color: black.lighten(60%), border: luma(0%), radius: 1em, inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-construction(type: "Under Construction", title: none, icon: nsy-building-construction-g, align-icon: center + top, icon-color: luma(0%), bar: luma(0%), background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-construction-colored(type: "Under Construction", title: none, icon: nsy-building-construction-g, align-icon: center + top, icon-color: luma(0%), bar: yellow, background-color: black.lighten(80%), border: yellow, radius: 1em, inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-note(type: "Note", title: none, icon: nsy-lower-left-ballpoint-pen-g, align-icon: center + top, icon-color: luma(0%), bar: gray, background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-note-colored(type: "Note", title: none, icon: nsy-lower-left-ballpoint-pen-g, align-icon: center + top, icon-color: luma(0%), bar: gray, background-color: gray.lighten(60%), border: gray, radius: 1em, inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-talk(type: "Talk", title: none, icon: emoji.bubble.speech, align-icon: center + top, icon-color: luma(0%), bar: aqua, background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-talk-colored(type: "Talk", title: none, icon: emoji.bubble.speech, align-icon: center + top, icon-color: luma(0%), bar: aqua, background-color: aqua.lighten(80%), border: aqua, radius: 1em, inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-alert(type: "Alert", title: none, icon: nsy-warning-sign-g, align-icon: center + top, icon-color: luma(0%), bar: red, background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-alert-colored(type: "Alert", title: none, icon: nsy-warning-sign-g, align-icon: center + top, icon-color: luma(0%), bar: red, background-color: red.lighten(80%), border: red, radius: 1em, inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-experiment(type: "Experiment", title: none, icon: nf-md-test_tube-g, align-icon: center + top, icon-color: luma(0%), bar: olive, background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-experiment-colored(type: "Experiment", title: none, icon: nf-md-test_tube-g, align-icon: center + top, icon-color: luma(0%), bar: olive, background-color: olive.lighten(80%), border: olive, radius: 1em, inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-snippet(type: "Snippet", title: none, icon: nf-oct-file_code-g, align-icon: center + top, icon-color: luma(0%), bar: eastern, background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-snippet-colored(type: "Snippet", title: none, icon: nf-oct-file_code-g, align-icon: center + top, icon-color: luma(0%), bar: eastern, background-color: eastern.lighten(80%), border: eastern, radius: 1em, inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+
+// custom
+#let adoc-admon-example(type: "Example", title: none, icon: nf-md-file_document_outline-g, align-icon: center + top, icon-color: luma(0%), bar: black, background-color: none, border: (:), radius: (:), inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+#let adoc-admon-example-colored(type: "Example", title: none, icon: nf-md-file_document_outline-g, align-icon: center + top, icon-color: luma(0%), bar: black, background-color: none, border: black, radius: 1em, inset: (:), breakable: true, text-color: luma(0%), text-spacing: 1.2em, body) = adoc-admonition(type: type, title: title, text-spacing: text-spacing, icon: icon, align-icon: align-icon, icon-color: icon-color, bar: bar, background-color: background-color, border: border, radius: radius, inset: inset, breakable: breakable, text-color: text-color, body)
+

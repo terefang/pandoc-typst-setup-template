@@ -160,3 +160,51 @@ children
 
 #wrapper()[MAN #middle_mini_box[_WHAT\ CAN_] I SAY?]
 ```
+
+```
+#let gn(enable:true,word) = if enable {
+  show " ": "-"
+  word
+} else {
+  word
+}
+
+#gn[Cộng hòa] #gn[xã hội chủ nghĩa] #gn[Việt Nam]
+
+#let gn = gn.with(enable:false)
+#gn[Cộng hòa] #gn[xã hội chủ nghĩa] #gn[Việt Nam]
+```
+
+```
+#let to-string(it) = {
+if type(it) == str {
+it
+} else if type(it) != content {
+str(it)
+} else if it.has("text") {
+it.text
+} else if it.has("children") {
+it.children.map(to-string).join()
+} else if it.has("body") {
+to-string(it.body)
+} else if it == [ ] {
+" "
+}
+}
+
+#to-string[This _*cool*_ project] // => "This cool project"
+```
+
+# Registry
+
+* https://www.color.org/registry/index.xalter
+
+### FOGRA51 aka. PSOcoated_v3
+
+* https://www.color.org/registry/PSOcoated_v3.xalter
+* https://www.color.org/registry/profiles/PSOcoated_v3.icc
+
+### FOGRA52 aka. PSOuncoated_v3
+
+* https://www.color.org/registry/PSOuncoated_v3_FOGRA52.xalter
+* https://www.color.org/registry/profiles/PSOuncoated_v3_FOGRA52.icc

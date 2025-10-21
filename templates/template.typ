@@ -1,5 +1,28 @@
 $-- // https://github.com/jomaway/typst-gentle-clues/blob/main/docs.pdf
 #import "@preview/gentle-clues:1.2.0": *
+$-- #import "@preview/cuti:0.3.0": fakesc
+
+#let fakesc(s, scaling: 0.8) = {
+  show regex("\p{Ll}+"): it => {
+    context if (text.size > 9pt) {
+        box(scale(x: 115%, reflow: true, text(scaling * 1em,upper(it))))
+    } else {
+        box(scale(x: 115%, reflow: true, text(scaling * 1em, stroke: 0.001em + text.fill, upper(it))))
+    }
+  }
+  text(s)
+}
+
+$-- ------------------------------------------------------------------
+#let stretchy(text, max: 400%) = layout(container => {
+    for t-line in text.split("\n") {
+       let x-scale = container.width / measure(t-line).width * 100%
+       if max != none { x-scale = calc.min(max, x-scale) }
+       box(scale(x: x-scale, origin: start, reflow: true, t-line))
+    }
+})
+$-- ------------------------------------------------------------------
+
 
 $-- #import "@preview/elembic:1.0.0" as e: field, types
 $--

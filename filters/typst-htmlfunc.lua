@@ -465,6 +465,10 @@ function processRawHtml(elem)
         if(cap1 == 'set' and anum == 2) then
             return pandoc.RawInline('typst', '#set '..(attr['cmd'])..'( '..(attr['arg'])..' )\n')
         end
+        -- generic show
+        if(cap1 == 'show' and anum == 2) then
+            return pandoc.RawInline('typst', '#show '..(attr['cmd'])..': '..(attr['arg'])..' \n')
+        end
         -- generic command
         if(string.sub(cap1,1,1) == '?' and attr['arg'] ~= nil and anum == 1) then
             return pandoc.RawInline('typst', '#'..(string.sub(cap1,2))..'( '..(attr['arg'])..' )')

@@ -9,6 +9,7 @@ PANDOCOPT := ' --from markdown+pipe_tables+grid_tables+raw_attribute+raw_html+fe
         + ' --include-before-body=templates/diceset.typ ' \
         + ' --include-before-body=templates/zapfding.typ ' \
         + ' --include-before-body=templates/nerdfont.typ ' \
+        + ' --include-before-body=templates/notosymbol.typ ' \
         + ' --include-before-body=templates/admons.typ ' \
         + ' --include-before-body=templates/boxes.typ ' \
         + ' --lua-filter=typst-header.lua ' \
@@ -27,11 +28,13 @@ PANDOCOPT := ' --from markdown+pipe_tables+grid_tables+raw_attribute+raw_html+fe
 
 ##         + ' --include-before-body=templates/unicode.typ ' \
 
-PANDOCEXE := XBIN+'/pandoc'
+PANDOCEXE := XBIN+'/pandoc-'+PANDOC_RELEASE+'-'+XBINARCH
 
-TYPSTOPT := '--ignore-system-fonts --font-path '+XFNT
+# --ignore-embedded-fonts
+TYPSTOPT := ' --ignore-system-fonts --font-path '+XFNT
+TYPSTPKGOPT := ' --package-cache-path '+XLIB+'/typst/ '+' --package-path '+XLIB+'/typst/ '
 
-TYPSTEXE := XBIN+'/typst'
+TYPSTEXE := 'HTTPS_PROXY=http://127.0.0.1:666/ '+XBIN+'/typst-'+TYPST_RELEASE+'-'+XBINARCH
 
 default: build
 
@@ -56,20 +59,34 @@ build-typst:
     for x in ./out/*.typ; do
         y=$(basename $x .typ)
         echo "... executing typst with '$y'"
-        time {{TYPSTEXE}} compile {{TYPSTOPT}}  --root {{XDIR}} $x ./out/$y.pdf
+        {{TYPSTEXE}} compile {{TYPSTOPT}} {{TYPSTPKGOPT}}  --root {{XDIR}} $x ./out/$y.pdf
     done
 
-build-pdf _file:
+build-pdf _file: (build-file _file _file+".pdf")
+
+build-dir _dir _out:
     #!/bin/sh
-    mkdir -p {{XDIR}}/out/tmp
-    echo "... executing pandoc {{_file}}"
-    _dir=$(dirname {{_file}})
-    _name=$(basename {{_file}} .md)
-    cp {{_file}} {{XDIR}}/out/tmp/
-    {{PANDOCEXE}} {{PANDOCOPT}} {{XDIR}}/out/tmp/$_name.md -o {{XDIR}}/out/tmp/$_name.typ
-    echo "... executing typst $_name.typ"
-    {{TYPSTEXE}} compile {{TYPSTOPT}}  --root {{XDIR}} {{XDIR}}/out/tmp/$_name.typ $_dir/$_name.pdf
-    rm {{XDIR}}/out/tmp/$_name.md {{XDIR}}/out/tmp/$_name.typ
+    _id=$(uuidgen)
+    _tmp="{{XDIR}}/out/$_id"
+    mkdir -p $_tmp
+    cp {{_dir}}/*.md $_tmp/
+    echo "... executing pandoc $_tmp"
+    {{PANDOCEXE}} {{PANDOCOPT}} $_tmp/*.md -o $_tmp/$_id.typ
+    echo "... executing typst $_id.typ"
+    {{TYPSTEXE}} compile {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
+    rm -rf $_tmp
+
+build-file _file _out:
+    #!/bin/sh
+    _id=$(uuidgen)
+    _tmp="{{XDIR}}/out/$_id"
+    mkdir -p $_tmp
+    cp {{_file}} $_tmp/
+    echo "... executing pandoc $_tmp"
+    {{PANDOCEXE}} {{PANDOCOPT}} $_tmp/*.md -o $_tmp/$_id.typ
+    echo "... executing typst $_id.typ"
+    {{TYPSTEXE}} compile {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
+    rm -rf $_tmp
 
 test-typst:
     #!/bin/sh

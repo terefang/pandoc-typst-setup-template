@@ -93,6 +93,10 @@ local function convert_to( typ, ret, div, tab )
         end
     end
 
+    if (typ == 'table' and div.attributes['hline'] ~= nil) then
+        table.insert(ret, pandoc.RawBlock('typst', "table.hline("..div.attributes['hline'].."),\n"))
+    end
+
     for _, body in ipairs(tab.bodies) do
         for _, bodybody in ipairs(body.body) do
             for _, cell in ipairs(bodybody.cells) do
@@ -117,7 +121,7 @@ local function process(div)
             div.attributes['typst:width'] = '100%'
         end
         -- must wrap a table
-        if (#div.content == 1) and (div.content[1] ~= nil) and (div.content[1].t == "Table") and (div.classes[1] ~= nil) then
+        if (#div.content >= 1) and (div.content[1] ~= nil) and (div.content[1].t == "Table") and (div.classes[1] ~= nil) then
             -- old code
             -- -- set kind to first class, template will take care of the rest
             -- div.content[1].attributes['typst:figure:kind'] = '"'..div.classes[1]..'"'

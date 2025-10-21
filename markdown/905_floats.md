@@ -50,7 +50,7 @@
 
 <lorem s="200" />
 
-::: {.yellowbox .float-bottom font="gillius adf" font-size="9pt" }
+::: {.yellowbox .float-bottom font-size="9pt" }
 **Modifiers due to Size:**
 
 | Size       |Modifier | Health |Size Min|Size Max|Wgt Min|Wgt Max|Space|Reach (Tall)|Reach (Long) |Biped(\*)|Quad(\*)|

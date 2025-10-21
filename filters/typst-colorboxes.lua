@@ -65,6 +65,50 @@ local function process(div)
             return ret
 
         end
+        if div.classes[1] == 'clearbox' then
+            local ret = {}
+
+            if (div.classes[2] == 'float') then
+                table.insert(ret, pandoc.RawBlock('typst', "#place(bottom+left,float:true,[\n"))
+            elseif (div.classes[2] == 'float-right') then
+                table.insert(ret, pandoc.RawBlock('typst', "#place(bottom+right,float:true,[\n"))
+            elseif (div.classes[2] == 'float-top') then
+                table.insert(ret, pandoc.RawBlock('typst', "#place(top+left,scope:\"parent\",float:true,[\n"))
+            elseif (div.classes[2] == 'float-bottom') then
+                table.insert(ret, pandoc.RawBlock('typst', "#place(bottom+left,scope:\"parent\",float:true,[\n"))
+            end
+
+            local type = 'text('
+
+            if div.attributes['font'] ~= nil then
+                type = type .. "font:\"" .. div.attributes['font'] .. "\","
+            end
+
+            if div.attributes['font-size'] ~= nil then
+                type = type .. "size:" .. div.attributes['font-size'] .. ","
+            end
+
+            type = type .. ")"
+
+            table.insert(ret, pandoc.RawBlock('typst', "\n#" .. type .. "["))
+
+            for _, v in ipairs(div.content) do
+                table.insert(ret, v)
+            end
+
+            table.insert(ret, pandoc.RawBlock('typst', "\n]\n"))
+
+            if (div.classes[2] == 'float') then
+                table.insert(ret, pandoc.RawBlock('typst', '])\n'))
+            elseif (div.classes[2] == 'float-top') then
+                table.insert(ret, pandoc.RawBlock('typst', '])\n'))
+            elseif (div.classes[2] == 'float-bottom') then
+                table.insert(ret, pandoc.RawBlock('typst', '])\n'))
+            end
+
+            return ret
+
+        end
         if div.classes[1] == 'colorbox' then
             local type = 'colorbox'
             if div.attributes['type'] == 'outline' then
@@ -133,7 +177,6 @@ local function process(div)
 
             return ret
         end
-
     end
 
     return nil

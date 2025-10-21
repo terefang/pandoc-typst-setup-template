@@ -137,15 +137,35 @@ local function wrapAdmons(_div, _alert)
 	end
 
 	if _div.attributes['color'] ~= nil then
-	_alert = _alert..'color:'..(_div.attributes['color'])..','
+		_alert = _alert..'color:'..(_div.attributes['color'])..','
 	end
 
 	if _div.attributes['foreground-color'] ~= nil then
-	_alert = _alert..'foreground-color:'..(_div.attributes['foreground-color'])..','
+		_alert = _alert..'foreground-color:'..(_div.attributes['foreground-color'])..','
 	end
 
 	if _div.attributes['background-color'] ~= nil then
-	_alert = _alert..'background-color:'..(_div.attributes['background-color'])..','
+		_alert = _alert..'background-color:'..(_div.attributes['background-color'])..','
+	end
+
+	table.insert(ret,pandoc.RawBlock('typst', "\n\n#".._alert..")["))
+
+	for _, v in ipairs(_div.content) do
+		table.insert(ret, v)
+	end
+
+	table.insert(ret,pandoc.RawBlock('typst', "]\n\n"))
+
+	return ret
+end
+
+local function wrapAdocAdmons(_div, _alert)
+	local ret = {}
+
+	_alert = _alert.."("
+
+	for k, v in pairs(_div.attributes) do
+		_alert = _alert..' '..k..':'..v..','
 	end
 
 	table.insert(ret,pandoc.RawBlock('typst', "\n\n#".._alert..")["))
@@ -168,6 +188,10 @@ function Div(d)
 	if(string.sub(alert,1,8) == 'gh-admon') then
 		-- print(alert)
 		return wrapAdmons(d, alert)
+	end
+	if(string.sub(alert,1,10) == 'adoc-admon') then
+		-- print(alert)
+		return wrapAdocAdmons(d, alert)
 	end
 	local customTitle = d.attributes['title']
 	local customIcon = d.attributes['icon']

@@ -17,12 +17,14 @@ ICONS_SET := 'https://github.com/terefang/rpg-icons-font/raw/refs/heads/main/sta
 ## https://github.com/justrajdeep/fonts
 ## 0.2.0/
 
+XBINARCH := arch()+'-'+os()
+
 UTPM_RELEASE := 'v0.2.0'
 UTPM_BASE := 'https://github.com/typst-community/utpm/releases/download/' + UTPM_RELEASE + '/utpm'
 UTPM_ARCH := if arch() == "x86_64" { 'x86_64' } else { 'aarch64' }
 UTPM_OS := if os() == "macos" { 'apple-darwin' } else { 'unknown-linux-musl' }
 
-TYPST_RELEASE := 'v0.13.1'
+TYPST_RELEASE := 'v0.14.0-rc.2'
 TYPST_BASE := if os() == "linux" {
 if arch() == "x86_64" {
   'https://github.com/typst/typst/releases/download/'+TYPST_RELEASE+'/typst-x86_64-unknown-linux-musl.tar.xz'
@@ -37,7 +39,7 @@ if arch() == "x86_64" {
 }
 } else { "." }
 
-PANDOC_RELEASE := '3.8'
+PANDOC_RELEASE := '3.8.2.1'
 PANDOC_BASE := if os() == "linux" {
 if arch() == "x86_64" {
    'https://github.com/jgm/pandoc/releases/download/'+PANDOC_RELEASE+'/pandoc-'+PANDOC_RELEASE+'-linux-amd64.tar.gz'
@@ -83,13 +85,15 @@ fonts-list:
 fonts-variants:
     {{XBIN}}/typst fonts --ignore-system-fonts --font-path {{XFNT}} --variants
 
+fetch-xbin: fetch-utpm fetch-typst fetch-pandoc
+
 fetch-utpm:
     #!/bin/sh
     mkdir -p {{XBIN}}/tmp
     {{CURL}} -o {{XBIN}}/tmp/utpm.tar.xz {{UTPM_BASE}}-{{UTPM_ARCH}}-{{UTPM_OS}}.tar.xz
     cd {{XBIN}}/tmp && tar -xf utpm.tar.xz
-    cp $(find {{XBIN}}/tmp -type f -name utpm) {{XBIN}}/
-    chmod +x {{XBIN}}/utpm
+    cp $(find {{XBIN}}/tmp -type f -name utpm) {{XBIN}}/utpm-{{UTPM_RELEASE}}-{{XBINARCH}}
+    chmod +x {{XBIN}}/utpm-{{UTPM_RELEASE}}-{{XBINARCH}}
     rm -rf {{XBIN}}/tmp
 
 fetch-typst:
@@ -108,15 +112,15 @@ fetch-typst:
     case "{{os()}}" in
         windows)
             cp $(find {{XBIN}}/tmp -type f -name typst.exe) {{XBIN}}/
-            chmod +x {{XBIN}}/typst.exe
+            chmod +x {{XBIN}}/typst.exe && mv {{XBIN}}/typst.exe {{XBIN}}/typst-{{TYPST_RELEASE}}-{{XBINARCH}}.exe
             ;;
         *)
             cp $(find {{XBIN}}/tmp -type f -name typst) {{XBIN}}/
-            chmod +x {{XBIN}}/typst
+            chmod +x {{XBIN}}/typst && mv {{XBIN}}/typst {{XBIN}}/typst-{{TYPST_RELEASE}}-{{XBINARCH}}
         ;;
     esac
     rm -rf {{XBIN}}/tmp
-    {{XBIN}}/typst --version
+    {{XBIN}}/typst-{{TYPST_RELEASE}}-{{XBINARCH}} --version
 
 fetch-pandoc:
     #!/bin/sh
@@ -133,16 +137,16 @@ fetch-pandoc:
     esac
     case "{{os()}}" in
         windows)
-            cp $(find {{XBIN}}/tmp -type f -name pandoc.exe) {{XBIN}}/
-            chmod +x {{XBIN}}/pandoc.exe
+            cp -v $(find {{XBIN}}/tmp -type f -name pandoc.exe) {{XBIN}}/
+            chmod +x {{XBIN}}/pandoc.exe && mv {{XBIN}}/pandoc.exe {{XBIN}}/pandoc-{{PANDOC_RELEASE}}-{{XBINARCH}}.exe
             ;;
         *)
-            cp $(find {{XBIN}}/tmp -type f -name pandoc) {{XBIN}}/
-            chmod +x {{XBIN}}/pandoc
+            cp -v $(find {{XBIN}}/tmp -type f -name pandoc) {{XBIN}}/
+            chmod +x {{XBIN}}/pandoc && mv {{XBIN}}/pandoc {{XBIN}}/pandoc-{{PANDOC_RELEASE}}-{{XBINARCH}}
         ;;
     esac
     rm -rf {{XBIN}}/tmp
-    {{XBIN}}/pandoc --version
+    {{XBIN}}/pandoc-{{PANDOC_RELEASE}}-{{XBINARCH}} --version
 
 fetch-rpgicons:
     #!/bin/sh
@@ -230,6 +234,7 @@ TYPST_PACKAGES := '''
     cetz-plot:0.1.3:
     tiaoma:0.3.0:
     based:0.2.0:
+    cuti:0.3.0:
 '''
 
 fetch-packages:
@@ -260,4 +265,3 @@ install-xbin: fetch-typst fetch-pandoc fetch-utpm
 install-packages: fetch-packages
 
 install-fonts: fetch-noto fetch-luciole  fetch-rpgicons fetch-res
-

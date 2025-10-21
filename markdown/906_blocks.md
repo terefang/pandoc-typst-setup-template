@@ -66,7 +66,7 @@ or Acrobatics roll (DC 15) or be grappled.
 
 <lorem s="100" />
 
-::: {.whitebox .float font="Gillius ADF" font-size="9pt" leading="none"}
+::: {.whitebox .float font-size="9pt" leading="none"}
 
 <uc>**Clockwork Horror**</uc><f/>CL 2 | 450 XP<br/>
 <f/>*Small Construct, Typically Lawful Evil*<br/>
@@ -142,7 +142,7 @@ action, which ends its attunement to the helm.
 
 <lorem s="100" />
 
-::: {.whitebox font="Gillius ADF" font-size="9pt" leading="none"}
+::: {.whitebox font-size="9pt" leading="none"}
 
 <uc>**Clockwork Horror**</uc><f/>CL 2 | 450 XP<br/>
 <f/>*Small Construct, Typically Lawful Evil*<br/>
