@@ -31,5 +31,55 @@
     ..chrs0.map((c) => { str.from-unicode(c) }),
     ..chrs1.map((c) => { str.from-unicode(c) }) 
 );
+
+#let font-panel(f-name) = {
+    box[=== #{f-name}]
+    linebreak()
+    text(font: f-name,fallback:false,size:20pt, chr-grid)
+    pagebreak()
+    page(columns:2,[
+        #{
+
+            for f-style in ("normal","italic") {
+                [*#{f-name} #{f-style}* weights]
+                linebreak()
+                for f-weight in (100,200,300,400,500,600,700,800,900) [
+#{f-weight} : #text(font: f-name,fallback:false,weight: f-weight,style: f-style, lorem(25) ) #linebreak()        
+                ]
+            colbreak()
+            }
+
+            for f-style in ("normal","italic") {
+                [*#{f-name} #{f-style}* fakebold]
+                linebreak()
+                for f-weight in (1.5,2.5,4,6,10,15,25,40,60,100) [
+#{f-weight} : #fakebold(stroke:f-weight)[#text(font: f-name,fallback:false,style: f-style, lorem(25))] #linebreak()        
+                ]
+            colbreak()
+            }
+
+            for f-style in ("normal","italic") {
+                [*#{f-name} #{f-style}* smallcaps]
+                linebreak()
+                for f-weight in (100,200,300,400,500,600,700,800,900) [
+#{f-weight} : #text(font: f-name,fallback:false,weight: f-weight,style: f-style, smallcaps(lorem(25)) ) #linebreak()        
+                ]
+            colbreak()
+            }
+
+            for f-style in ("normal","italic") {
+                [*#{f-name} #{f-style}* fakesmallcaps]
+                linebreak()
+                for f-weight in (100,200,300,400,500,600,700,800,900) [
+#{f-weight} : #text(font: f-name,fallback:false,weight: f-weight,style: f-style, fakesc[ #lorem(25) ] ) #linebreak()        
+                ]
+            colbreak()
+            }
+        }
+    ])
+    pagebreak()
+}
+
 ```
 
+<set cmd="par" arg="spacing:1em, justify:true,justification-limits:(spacing: (min: 90%,max: 120%,),tracking: (min: -0.5pt,max: 1pt,))"/>

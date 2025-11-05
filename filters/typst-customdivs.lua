@@ -6,6 +6,37 @@
 
 local function process(div)
     if FORMAT:match 'typst' then
+        -- a cover container on a separate page
+        if div.classes[1] == 'cover' then
+            local pattr = { }
+            pattr['columns'] = '1'
+            pattr['header'] = 'none'
+            pattr['footer'] = 'none'
+            pattr['margin'] = '72pt'
+
+            for k, v in pairs(div.attributes) do
+                if(string.sub(k,1,5) == 'page-') then
+                    pattr[string.sub(k,6)] = v
+                end
+            end
+
+            local popts = ""
+
+            for k, v in pairs(pattr) do
+                popts = popts..' '..k..':'..v..','
+            end
+
+            local ret = {}
+            table.insert(ret,pandoc.RawBlock('typst',
+                    "\n#page("..popts.."["))
+            for _, v in ipairs(div.content) do
+                table.insert(ret, v)
+            end
+            table.insert(ret,pandoc.RawBlock('typst', "\n])\n"))
+
+            return ret
+        end
+
         -- a credits container on a separate page
         if div.classes[1] == 'credits' then
             local cmargin = "72pt"
@@ -83,6 +114,29 @@ local function process(div)
             table.insert(ret, pandoc.RawBlock('typst', ")\n"))
             table.insert(ret, pandoc.RawBlock('typst', ")\n"))
             table.insert(ret, pandoc.RawBlock('typst', ")\n"))
+
+            return ret
+        end
+
+        -- a sub-chapter head container
+        if div.classes[1] == 'subchapter' then
+            local ret = {}
+            table.insert(ret, pandoc.RawBlock('typst', "#place(top + center,scope: \"parent\",float: true,[\n"))
+            table.insert(ret, pandoc.RawBlock('typst', "#set align(center + horizon)\n"))
+            table.insert(ret, pandoc.RawBlock('typst', "#grid(\n"))
+            table.insert(ret, pandoc.RawBlock('typst', "columns: (1fr,auto,1fr),\n"))
+            table.insert(ret, pandoc.RawBlock('typst', "gutter: 10pt,\n"))
+            table.insert(ret, pandoc.RawBlock('typst', "box[#line(length: 100%, stroke: 2pt + gradient.linear(luma(0,0%), luma(0)))],\n"))
+            table.insert(ret, pandoc.RawBlock('typst', "box[\n"))
+
+            for _, v in ipairs(div.content) do
+                table.insert(ret, v)
+            end
+
+            table.insert(ret, pandoc.RawBlock('typst', "],\n"))
+            table.insert(ret, pandoc.RawBlock('typst', "box[#line(length: 100%, stroke: 2pt + gradient.linear(luma(0), luma(0,0%)))]\n"))
+            table.insert(ret, pandoc.RawBlock('typst', ")\n"))
+            table.insert(ret, pandoc.RawBlock('typst', "])\n"))
 
             return ret
         end

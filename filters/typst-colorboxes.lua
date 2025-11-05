@@ -32,6 +32,13 @@ local function process(div)
             if div.attributes['font-size'] ~= nil then
                 type = type .. "font-size:" .. div.attributes['font-size'] .. ","
             end
+
+            if div.attributes['title'] ~= nil then
+                type = type .. "title:\"" .. div.attributes['title'] .. "\","
+            end
+            if div.attributes['subtitle'] ~= nil then
+                type = type .. "subtitle:\"" .. div.attributes['subtitle'] .. "\","
+            end
             type = type .. ")"
 
             local ret = {}
@@ -76,6 +83,10 @@ local function process(div)
                 table.insert(ret, pandoc.RawBlock('typst', "#place(top+left,scope:\"parent\",float:true,[\n"))
             elseif (div.classes[2] == 'float-bottom') then
                 table.insert(ret, pandoc.RawBlock('typst', "#place(bottom+left,scope:\"parent\",float:true,[\n"))
+            end
+
+            if div.attributes['title'] ~= nil then
+                table.insert(ret, pandoc.RawBlock('typst', "#[" .. div.attributes['title'] .. "] #linebreak()\n"))
             end
 
             local type = 'text('
@@ -174,6 +185,52 @@ local function process(div)
             if (div.classes[2] == 'float') then
                 table.insert(ret, pandoc.RawBlock('typst', '])\n'))
             end
+
+            return ret
+        end
+        if div.classes[1] == 'corner-stroke-block' then
+            local type = 'corner-stroke-block'
+
+            type = type .. "("
+            if div.attributes['radius'] ~= nil then
+                type = type .. "radius:" .. div.attributes['radius'] .. ","
+            end
+            if div.attributes['stroke'] ~= nil then
+                type = type .. "stroke:" .. div.attributes['stroke'] .. ","
+            end
+            if div.attributes['strokewidth'] ~= nil then
+                type = type .. "strokewidth:" .. div.attributes['strokewidth'] .. ","
+            end
+            if div.attributes['fill'] ~= nil then
+                type = type .. "fill:" .. div.attributes['fill'] .. ","
+            end
+            if div.attributes['size'] ~= nil then
+                type = type .. "size:" .. div.attributes['size'] .. ","
+            end
+
+            local text = ''
+
+            if div.attributes['font'] ~= nil then
+                text = text .. "font:\"" .. div.attributes['font'] .. "\","
+            end
+
+            if div.attributes['font-size'] ~= nil then
+                text = text .. "size:" .. div.attributes['font-size'] .. ","
+            end
+
+            if div.attributes['title'] ~= nil then
+                table.insert(ret, pandoc.RawBlock('typst', "#[" .. div.attributes['title'] .. "] #linebreak()\n"))
+            end
+
+            local ret = {}
+
+            table.insert(ret, pandoc.RawBlock('typst', "\n#" .. type .. "text("..text.."["))
+
+            for _, v in ipairs(div.content) do
+                table.insert(ret, v)
+            end
+
+            table.insert(ret, pandoc.RawBlock('typst', "\n]))\n"))
 
             return ret
         end

@@ -8,11 +8,13 @@ XDIR := justfile_directory()
 XBIN := XDIR+"/xbin"
 XLIB := XDIR+"/lib"
 ABIN := XBIN+"/"+arch()+"-"+os()
+XTMP := XDIR+"/temp"
 XFNT := XDIR+"/fonts"
 XTMPL := XDIR+"/templates"
 
 ICONS_FONT := 'https://github.com/terefang/rpg-icons-font/raw/refs/heads/main/static/RpgGameIcons.otf'
 ICONS_SET := 'https://github.com/terefang/rpg-icons-font/raw/refs/heads/main/static/diceset.typ'
+ICONS_NAMES := 'https://github.com/terefang/rpg-icons-font/raw/refs/heads/main/static/diceset.names'
 
 ## https://github.com/justrajdeep/fonts
 ## 0.2.0/
@@ -24,33 +26,39 @@ UTPM_BASE := 'https://github.com/typst-community/utpm/releases/download/' + UTPM
 UTPM_ARCH := if arch() == "x86_64" { 'x86_64' } else { 'aarch64' }
 UTPM_OS := if os() == "macos" { 'apple-darwin' } else { 'unknown-linux-musl' }
 
-TYPST_RELEASE := 'v0.14.0-rc.2'
-TYPST_BASE := if os() == "linux" {
+TYPST_RELEASE := 'v0.14.0'
+TYPST_RELEASE_N1 := 'v0.13.1'
+TYPST_RELEASE_N2 := 'v0.12.0'
+TYPST_BASE := 'https://github.com/typst/typst/releases/download'
+TYPST_PKG := if os() == "linux" {
 if arch() == "x86_64" {
-  'https://github.com/typst/typst/releases/download/'+TYPST_RELEASE+'/typst-x86_64-unknown-linux-musl.tar.xz'
+  'typst-x86_64-unknown-linux-musl.tar.xz'
 } else {
- 'https://github.com/typst/typst/releases/download/'+TYPST_RELEASE+'/typst-aarch64-unknown-linux-musl.tar.xz'
+ 'typst-aarch64-unknown-linux-musl.tar.xz'
 }
 } else if os() == "macos" {
 if arch() == "x86_64" {
-  'https://github.com/typst/typst/releases/download/'+TYPST_RELEASE+'/typst-x86_64-apple-darwin.tar.xz'
+  'typst-x86_64-apple-darwin.tar.xz'
 } else {
- 'https://github.com/typst/typst/releases/download/'+TYPST_RELEASE+'/typst-aarch64-apple-darwin.tar.xz'
+ 'typst-aarch64-apple-darwin.tar.xz'
 }
 } else { "." }
 
 PANDOC_RELEASE := '3.8.2.1'
-PANDOC_BASE := if os() == "linux" {
+PANDOC_RELEASE_N1 := '3.7.0.2'
+PANDOC_RELEASE_N2 := '3.6.4'
+PANDOC_BASE := 'https://github.com/jgm/pandoc/releases/download'
+PANDOC_PKG := if os() == "linux" {
 if arch() == "x86_64" {
-   'https://github.com/jgm/pandoc/releases/download/'+PANDOC_RELEASE+'/pandoc-'+PANDOC_RELEASE+'-linux-amd64.tar.gz'
+   '-linux-amd64.tar.gz'
 } else {
-  'https://github.com/jgm/pandoc/releases/download/'+PANDOC_RELEASE+'/pandoc-'+PANDOC_RELEASE+'-linux-arm64.tar.gz'
+  '-linux-arm64.tar.gz'
 }
 } else if os() == "macos" {
 if arch() == "x86_64" {
-   'https://github.com/jgm/pandoc/releases/download/'+PANDOC_RELEASE+'/pandoc-'+PANDOC_RELEASE+'-x86_64-macOS.zip'
+   '-x86_64-macOS.zip'
 } else {
-  'https://github.com/jgm/pandoc/releases/download/'+PANDOC_RELEASE+'/pandoc-'+PANDOC_RELEASE+'-arm64-macOS.zip'
+  '-arm64-macOS.zip'
 }
 } else { "." }
 
@@ -96,63 +104,78 @@ fetch-utpm:
     chmod +x {{XBIN}}/utpm-{{UTPM_RELEASE}}-{{XBINARCH}}
     rm -rf {{XBIN}}/tmp
 
-fetch-typst:
+fetch-typst: (fetch-typst-version TYPST_RELEASE)
+
+fetch-typst-known: \
+    (fetch-typst-version TYPST_RELEASE) \
+    (fetch-typst-version TYPST_RELEASE_N1) \
+    (fetch-typst-version TYPST_RELEASE_N2)
+
+fetch-typst-version _VERSION:
     #!/bin/sh
     mkdir -p {{XBIN}}/tmp
-    case "{{TYPST_BASE}}" in
+    case "{{TYPST_PKG}}" in
         *.tar.*)
-            {{CURL}} -o {{XBIN}}/tmp/typst.tar.xz {{TYPST_BASE}}
+            {{CURL}} -o {{XBIN}}/tmp/typst.tar.xz "{{TYPST_BASE}}/{{_VERSION}}/{{TYPST_PKG}}"
             (cd {{XBIN}}/tmp && tar -xf typst.tar.xz)
             ;;
         *.zip)
-            {{CURL}} -o {{XBIN}}/tmp/typst.zip  {{TYPST_BASE}}
+            {{CURL}} -o {{XBIN}}/tmp/typst.zip  "{{TYPST_BASE}}/{{_VERSION}}/{{TYPST_PKG}}"
             (cd {{XBIN}}/tmp && unzip -o -j typst.zip)
         ;;
     esac
     case "{{os()}}" in
         windows)
             cp $(find {{XBIN}}/tmp -type f -name typst.exe) {{XBIN}}/
-            chmod +x {{XBIN}}/typst.exe && mv {{XBIN}}/typst.exe {{XBIN}}/typst-{{TYPST_RELEASE}}-{{XBINARCH}}.exe
+            chmod +x {{XBIN}}/typst.exe && mv {{XBIN}}/typst.exe {{XBIN}}/typst-{{_VERSION}}-{{XBINARCH}}.exe
             ;;
         *)
             cp $(find {{XBIN}}/tmp -type f -name typst) {{XBIN}}/
-            chmod +x {{XBIN}}/typst && mv {{XBIN}}/typst {{XBIN}}/typst-{{TYPST_RELEASE}}-{{XBINARCH}}
+            chmod +x {{XBIN}}/typst && mv {{XBIN}}/typst {{XBIN}}/typst-{{_VERSION}}-{{XBINARCH}}
         ;;
     esac
     rm -rf {{XBIN}}/tmp
-    {{XBIN}}/typst-{{TYPST_RELEASE}}-{{XBINARCH}} --version
+    {{XBIN}}/typst-{{_VERSION}}-{{XBINARCH}} --version
 
-fetch-pandoc:
+fetch-pandoc: (fetch-pandoc-version PANDOC_RELEASE)
+
+fetch-pandoc-known: \
+    (fetch-pandoc-version PANDOC_RELEASE) \
+    (fetch-pandoc-version PANDOC_RELEASE_N1) \
+    (fetch-pandoc-version PANDOC_RELEASE_N2)
+
+fetch-pandoc-version _VERSION:
     #!/bin/sh
     mkdir -p {{XBIN}}/tmp
-    case "{{PANDOC_BASE}}" in
+    case "{{PANDOC_PKG}}" in
         *.tar.*)
-            {{CURL}} -o {{XBIN}}/tmp/pandoc.tar.gz {{PANDOC_BASE}}
+            {{CURL}} -o {{XBIN}}/tmp/pandoc.tar.gz "{{PANDOC_BASE}}/{{_VERSION}}/pandoc-{{_VERSION}}{{PANDOC_PKG}}"
             (cd {{XBIN}}/tmp && tar -xf pandoc.tar.gz)
             ;;
         *.zip)
-            {{CURL}} -o {{XBIN}}/tmp/pandoc.zip {{PANDOC_BASE}}
+            {{CURL}} -o {{XBIN}}/tmp/pandoc.zip "{{PANDOC_BASE}}/{{_VERSION}}/pandoc-{{_VERSION}}{{PANDOC_PKG}}"
             (cd {{XBIN}}/tmp && unzip -o -j pandoc.zip)
         ;;
     esac
     case "{{os()}}" in
         windows)
             cp -v $(find {{XBIN}}/tmp -type f -name pandoc.exe) {{XBIN}}/
-            chmod +x {{XBIN}}/pandoc.exe && mv {{XBIN}}/pandoc.exe {{XBIN}}/pandoc-{{PANDOC_RELEASE}}-{{XBINARCH}}.exe
+            chmod +x {{XBIN}}/pandoc.exe && mv {{XBIN}}/pandoc.exe {{XBIN}}/pandoc-{{_VERSION}}-{{XBINARCH}}.exe
             ;;
         *)
             cp -v $(find {{XBIN}}/tmp -type f -name pandoc) {{XBIN}}/
-            chmod +x {{XBIN}}/pandoc && mv {{XBIN}}/pandoc {{XBIN}}/pandoc-{{PANDOC_RELEASE}}-{{XBINARCH}}
+            chmod +x {{XBIN}}/pandoc && mv {{XBIN}}/pandoc {{XBIN}}/pandoc-{{_VERSION}}-{{XBINARCH}}
         ;;
     esac
     rm -rf {{XBIN}}/tmp
-    {{XBIN}}/pandoc-{{PANDOC_RELEASE}}-{{XBINARCH}} --version
+    {{XBIN}}/pandoc-{{_VERSION}}-{{XBINARCH}} --version
 
 fetch-rpgicons:
     #!/bin/sh
     rm -f {{XFNT}}/RpgGameIcons.otf {{XTMPL}}/diceset.typ
     {{CURL}} -o {{XFNT}}/RpgGameIcons.otf {{ICONS_FONT}}
     {{CURL}} -o {{XTMPL}}/diceset.typ {{ICONS_SET}}
+    {{CURL}} {{ICONS_NAMES}} |grep -v '^#'|awk '{print $1}' > {{XLIB}}/diceset.txt
 
 fetch-noto:
     #!/bin/sh
@@ -175,16 +198,16 @@ fetch-luciole:
     (cd {{XFNT}}/luciole/tmp && cp *.ttf {{XFNT}}/luciole/)
     rm -rvf {{XFNT}}/luciole/tmp
 
-fetch-res:
+fetch-to _listfile _prefix:
     #!/bin/sh -x
-    for x in $(grep -v '^#' < {{XDIR}}/resources.fonts); do
+    for x in $(grep -v '^#' < {{_listfile}}); do
         url=${x%%,*}
         name=${x##*,}
         match=${x%,*}
         match=${match#*,}
-        match=${match:-?[tT][fF]}
+        match=.${match:-?[tT][fF]}
         file=
-        mkdir -p {{XFNT}}/$name/tmp
+        mkdir -p {{_prefix}}/$name/tmp
         case "$url" in
              *.zip)
                  ext=.zip
@@ -207,23 +230,29 @@ fetch-res:
                  file=$(basename $url)
                  ;;
              *)
-                 ext=.none
+                 ext=
+                 file=$(basename $url)
                  ;;
         esac
         file=${file:-$name$ext}
-        {{CURL}} -o {{XFNT}}/$name/tmp/$file "$url"
+        {{CURL}} -o {{_prefix}}/$name/tmp/$file "$url"
         case "$ext" in
               .zip)
-                  (cd {{XFNT}}/$name/tmp/ && unzip -o -j $name$ext)
+                  (cd {{_prefix}}/$name/tmp/ && unzip -o -j $name$ext)
                   ;;
               .tar*)
-                  (cd {{XFNT}}/$name/tmp/ && tar -xvf $name$ext)
+                  (cd {{_prefix}}/$name/tmp/ && tar -xvf $name$ext)
                   ;;
         esac
-        (cd {{XFNT}}/$name/tmp/ && detox -rv *)
-        cp -v $(find {{XFNT}}/$name/tmp/ -name '*.'$match |fgrep -v -- -Variable) {{XFNT}}/$name/
-        rm -rf {{XFNT}}/$name/tmp
+        (cd {{_prefix}}/$name/tmp/ && detox -rv *)
+        cp -v $(find {{_prefix}}/$name/tmp/ -name '*'$match ) {{_prefix}}/$name/
+        rm -rf {{_prefix}}/$name/tmp
     done
+
+
+fetch-res: (fetch-to XDIR+'/resources.fonts' XFNT)
+
+fetch-lib: (fetch-to XDIR+'/resources.lib' XLIB)
 
 TYPST_PACKAGES := '''
     gentle-clues:1.2.0:
@@ -235,22 +264,25 @@ TYPST_PACKAGES := '''
     tiaoma:0.3.0:
     based:0.2.0:
     cuti:0.3.0:
+    typsy:0.2.0:
 '''
 
 fetch-packages:
     #!/bin/sh
     _START=$(date)
+    _TPATH={{XLIB}}/mirror/typst/preview
     ## {{CURL}} https://packages.typst.org/preview/index.json |jq -c -r '.[] | .name+":"+.version+":"+((.categories|tostring) // "")'
     echo "{{TYPST_PACKAGES}}" | \
     while read -r line; do
         _NAME=$(echo "$line"|cut -f1 -d:)
         _VER=$(echo "$line"|cut -f2 -d:)
+        _PPATH=$_TPATH/$_NAME/$_VER/
         if [ ! -z $_NAME ]; then
             _FILE="$_NAME-$_VER.tar.gz"
             echo "$line"
-            mkdir -p {{XLIB}}/typst/preview/$_NAME/$_VER/
-            cd {{XLIB}}/typst/preview/ && [ -f $_FILE ] || {{CURL}} -o $_FILE https://packages.typst.org/preview/$_FILE
-            cd {{XLIB}}/typst/preview/$_NAME/$_VER/ && tar -xf {{XLIB}}/typst/preview/$_FILE -C {{XLIB}}/typst/preview/$_NAME/$_VER/
+            mkdir -p $_PPATH
+            cd $_TPATH && [ -f $_FILE ] || {{CURL}} -o $_FILE https://packages.typst.org/preview/$_FILE
+            #cd $_PPATH && tar -xf $_TPATH/$_FILE -C $_PPATH/
         fi
     done
     _END=$(date)

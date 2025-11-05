@@ -40,13 +40,11 @@
 <lorem s="6"/>
 :::
 
-<cbr/>
-
 ::: {.colorbox title="this is se Custom Title" font="TeX Gyre Heros" font-size="9pt"}
 <lorem s="10"/>
 :::
 
-<cbr/>
+### TITLE-LESS BOXES
 
 <f:fnt name="Open Sans">
 
@@ -91,3 +89,34 @@
 :::
 
 </f:fnt>
+
+### CORNER STROKE
+
+::: {.corner-stroke-block}
+<lorem s="10"/>
+:::
+
+::: {.corner-stroke-block stroke='red'}
+<lorem s="10"/>
+:::
+
+::: {.corner-stroke-block strokewidth='2pt' stroke='red'}
+<lorem s="10"/>
+:::
+
+::: {.corner-stroke-block strokewidth='2pt' stroke='green' size='10pt'}
+<lorem s="10"/>
+:::
+
+::: {.corner-stroke-block stroke='blue' size='10pt' radius='5pt'}
+<lorem s="10"/>
+:::
+
+::: {.corner-stroke-block stroke='blue' fill="luma(90%)"}
+<lorem s="10"/>
+:::
+
+::: {.corner-stroke-block stroke='blue' fill="luma(90%)" font="Open Sans" radius='5pt'}
+<lorem s="10"/>
+:::
+

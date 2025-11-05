@@ -42,6 +42,22 @@ local function convert_to_cell( typ, ret, cell)
 end
 
 local function convert_to( typ, ret, div, tab )
+
+    if(typ=='table' and div.attributes[typ..'-stroke']==nil) then
+        table.insert(ret, pandoc.RawBlock('typst', "#set "..typ.."(stroke: (x, y) => { if y == 0{(bottom: 1pt + black)} } )\n"))
+    end
+
+    for _, attr in ipairs( {'gutter', "column-gutter", "row-gutter",'rows','inset','align','fill','stroke'} ) do
+        if(div.attributes[typ..'-'..attr]~=nil) then
+    table.insert(ret, pandoc.RawBlock('typst', "#set "..typ.."("..attr..":"..(div.attributes[typ..'-'..attr])..")\n"))
+        end
+    end
+    for _, attr in ipairs( {'inset','align','fill','stroke'} ) do
+        if(div.attributes[typ..'-cell-'..attr]~=nil) then
+            table.insert(ret, pandoc.RawBlock('typst', "#set "..typ..".cell("..attr..":"..(div.attributes[typ..'-'..attr])..")\n"))
+        end
+    end
+
     table.insert(ret, pandoc.RawBlock('typst', "#"..typ.."(\n"))
     local attrspec = "columns:"
     if div.attributes['columns'] ~= nil then
@@ -131,6 +147,10 @@ local function process(div)
 
             if findval(div.classes,'float') then
                 table.insert(ret, pandoc.RawBlock('typst', "#place(bottom+left,float:true,[\n"))
+            elseif findval(div.classes,'float-top') then
+                table.insert(ret, pandoc.RawBlock('typst', "#place(top+left,scope:\"parent\",float:true,[\n"))
+            elseif findval(div.classes,'float-bottom') then
+                table.insert(ret, pandoc.RawBlock('typst', "#place(bottom+left,scope:\"parent\",float:true,[\n"))
             end
 
             local close_font = false
@@ -154,6 +174,8 @@ local function process(div)
                 close_font = true
             end
 
+            table.insert(ret, pandoc.RawBlock('typst', "#set par(spacing:0.4em)\n"))
+
             if findval(div.classes,'grid') then
                 convert_to('grid', ret, div, div.content[1])
             elseif findval(div.classes,'table') then
@@ -169,6 +191,10 @@ local function process(div)
             end
 
             if findval(div.classes,'float') then
+                table.insert(ret, pandoc.RawBlock('typst', '])\n'))
+            elseif findval(div.classes,'float-top') then
+                table.insert(ret, pandoc.RawBlock('typst', '])\n'))
+            elseif findval(div.classes,'float-bottom') then
                 table.insert(ret, pandoc.RawBlock('typst', '])\n'))
             end
 

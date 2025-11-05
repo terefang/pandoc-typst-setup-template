@@ -63,7 +63,7 @@ local function e2u(s)
     return s
 end
 
-local HTML_SPANS = pandoc.List({'/smallcaps', '/sc', '/uc', '/lc', '/page', '/place', '/block', '/box', '/align', '/scale', '/par'})
+local HTML_SPANS = pandoc.List({'/smallcaps', '/super', '/sup', '/sub', '/sc', '/fsc', '/fb', '/uc', '/lc', '/page', '/place', '/block', '/box', '/align', '/scale', '/par'})
 
 local VERBATIM_ATTR = pandoc.List({'block','box','scale','par'})
 
@@ -296,6 +296,47 @@ function processFontElements(elem)
     return pandoc.RawInline('typst', '')
 end
 
+function processTypstElements(elem)
+    local i,j,cap1,cap2,n,v
+
+    -- tag end
+    i,j,cap1 = string.find(elem.text, '^</[typst]+%:([%-%w]+)>$')
+    if (i ~= nil) then
+        return pandoc.RawInline('typst', ']')
+    end
+
+    -- tag single
+    i,j,cap1,cap2 = string.find(elem.text, '^<[typst]+%:([%-%w]+)%s+(%w+.*)%s*%/>$')
+    if (i ~= nil) then
+        local attr, anum = extractAttributes(cap2)
+        local opts = concatenateAttributes(attr)
+        if(attr['arg'] ~= nil) then
+            opts = attr['arg']
+        end
+        return pandoc.RawInline('typst', '#'..cap1..'('.. opts..')')
+    end
+
+    -- tag start no attr
+    i,j,cap1 = string.find(elem.text, '^<[typst]+%:([%-%w]+)%s*>$')
+    if (i ~= nil) then
+        return pandoc.RawInline('typst', '#'..cap1..'[')
+    end
+
+    -- tag start
+    i,j,cap1,cap2 = string.find(elem.text, '^<[typst]+%:([%-%w]+)%s+(%w+.*)%s*>$')
+    if (i ~= nil) then
+        local attr, anum = extractAttributes(cap2)
+        local opts = concatenateAttributes(attr)
+        if(attr['arg'] ~= nil) then
+            opts = attr['arg']
+        end
+        return pandoc.RawInline('typst', '#'..cap1..'('.. opts..')[')
+    end
+
+    print('(F) WARN: discarding unmatched',elem.text)
+    return pandoc.RawInline('typst', '\n// (F) WARN: discarding unmatched -- '..elem.text)
+end
+
 function processRawHtml(elem)
     local i,j,cap1,cap2,n,v
     -- discard html comments
@@ -312,6 +353,9 @@ function processRawHtml(elem)
     end
     if(cap1 == 'g') then
         return processGridElements(elem)
+    end
+    if(cap1 == 'typ' or cap1 == 'typst') then
+        return processTypstElements(elem)
     end
 
     i,j,cap1 = string.find(elem.text, '^<([%:%-%w]+)/?>$')
@@ -361,6 +405,22 @@ function processRawHtml(elem)
         if(cap1 == 'smallcaps' or cap1 == 'sc') then
             return pandoc.RawInline('typst', '#smallcaps([')
         end
+        -- fake small caps
+        if(cap1 == 'fsc') then
+            return pandoc.RawInline('typst', '#fakesc([')
+        end
+        -- fake bold
+        if(cap1 == 'fb') then
+            return pandoc.RawInline('typst', '#fakebold(stroke:50,[')
+        end
+        -- subscript
+        if(cap1 == 'sub') then
+            return pandoc.RawInline('typst', '#sub([')
+        end
+        -- superscript
+        if(cap1 == 'super' or cap1 == 'sup') then
+            return pandoc.RawInline('typst', '#super([')
+        end
         -- toc/outline
         if(cap1 == 'outline' or cap1 == 'toc') then
             return pandoc.RawInline('typst', '#outline()')
@@ -382,6 +442,16 @@ function processRawHtml(elem)
         -- extract the attributes
         local attr, anum = extractAttributes(cap2)
 
+        -- var
+        if(cap1 == 'var') then
+            _, v = firstpair(attr)
+            return pandoc.RawInline('typst', '#{'..(v)..'}')
+        end
+        -- eval
+        if(cap1 == 'eval') then
+            _, v = firstpair(attr)
+            return pandoc.RawInline('typst', '#eval('..(v)..')')
+        end
         -- lorem ipsum
         if(cap1 == 'lorem') then
             _, v = firstpair(attr)

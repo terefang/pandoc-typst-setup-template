@@ -38,7 +38,7 @@
   cyan: (stroke: rgb(0, 238, 238), fill: rgb(221, 255, 255), title: black),
   magenta: (stroke: rgb(255, 0, 128), fill: rgb(255, 192, 221), title: white),
   orange: (stroke: rgb(255, 115, 0), fill: rgb(255, 221, 204), title: white),
-  white: (stroke: rgb(0, 0, 0), fill: white, title: black),
+  white: (stroke: rgb(0, 0, 0), fill: white, title: white),
 )
 
 #let colorbox(
@@ -46,7 +46,7 @@
   font: none,
   font-size: none,
   leading: none,
-  subtitle: "subtitle",
+  subtitle: none,
   box-colors: box-colors,
   color: "default",
   stroke: 1pt,
@@ -57,6 +57,7 @@
 ) = {
   if title != none {
     return block(
+      breakable: false,
       fill: box-colors.at(color).fill,
       stroke: stroke + box-colors.at(color).stroke,
       radius: radius,
@@ -82,6 +83,7 @@
           set text(font: font) if(font!=none)
           set text(size: font-size) if(font-size!=none)
           set par(leading: leading) if(leading!=none)
+          if subtitle != none { [*#subtitle*]; linebreak() }
           body
           }
         ),
@@ -89,6 +91,7 @@
     )
   }
   return block(
+    breakable: false,
     fill: box-colors.at(color).fill,
     stroke: stroke + box-colors.at(color).stroke,
     inset: inset,
@@ -98,6 +101,7 @@
   #set text(font: font) if(font!=none)
   #set text(size: font-size) if(font-size!=none)
   #set par(leading: leading) if(leading!=none)
+  #if subtitle != none { [*#subtitle*]; linebreak() }
   #body
   ]
 }
@@ -114,6 +118,7 @@
   body,
 ) = {
   return block(
+    breakable: false,
     fill: box-colors.at(color).fill,
     stroke: stroke + box-colors.at(color).stroke,
     radius: radius,
@@ -168,3 +173,9 @@
 // #mybox(icon:"X", title:"Example", radius: 5pt)[
 // #lorem(20)
 // ]
+
+#let corner-stroke-block(body, inset: 10pt, size: 5pt, radius: 0pt, strokewidth: 1pt, stroke: black, fill: white, ..args) = {
+  block(width: 100%, radius: radius, stroke: stroke+strokewidth, fill: fill, ..args,
+    block(width: 100%, fill: fill, outset: (x: -size, y: strokewidth),
+      block(width: 100%, fill: fill, outset: (x: strokewidth, y: -size), inset: inset, body)))
+}

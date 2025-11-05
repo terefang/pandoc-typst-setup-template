@@ -32,7 +32,9 @@ PANDOCEXE := XBIN+'/pandoc-'+PANDOC_RELEASE+'-'+XBINARCH
 
 # --ignore-embedded-fonts
 TYPSTOPT := ' --ignore-system-fonts --font-path '+XFNT
-TYPSTPKGOPT := ' --package-cache-path '+XLIB+'/typst/ '+' --package-path '+XLIB+'/typst/ '
+TYPSTPKGOPT := ' --package-cache-path '+XLIB+'/typst-cache/ '+' --package-path '+XLIB+'/typst/ '
+#TYPSTCOMPILEOPT := ' --no-pdf-tags --pdf-standard a-4 '
+TYPSTCOMPILEOPT := ' --no-pdf-tags  --pdf-standard 1.7 '
 
 TYPSTEXE := 'HTTPS_PROXY=http://127.0.0.1:666/ '+XBIN+'/typst-'+TYPST_RELEASE+'-'+XBINARCH
 
@@ -59,7 +61,7 @@ build-typst:
     for x in ./out/*.typ; do
         y=$(basename $x .typ)
         echo "... executing typst with '$y'"
-        {{TYPSTEXE}} compile {{TYPSTOPT}} {{TYPSTPKGOPT}}  --root {{XDIR}} $x ./out/$y.pdf
+        {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}} {{TYPSTPKGOPT}}  --root {{XDIR}} $x ./out/$y.pdf
     done
 
 build-pdf _file: (build-file _file _file+".pdf")
@@ -73,7 +75,20 @@ build-dir _dir _out:
     echo "... executing pandoc $_tmp"
     {{PANDOCEXE}} {{PANDOCOPT}} $_tmp/*.md -o $_tmp/$_id.typ
     echo "... executing typst $_id.typ"
-    {{TYPSTEXE}} compile {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
+    {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
+    rm -rf $_tmp
+
+build-dir-debug _dir _out:
+    #!/bin/sh
+    _id=$(uuidgen)
+    _tmp="{{XDIR}}/out/$_id"
+    mkdir -p $_tmp
+    cp {{_dir}}/*.md $_tmp/
+    echo "... executing pandoc $_tmp"
+    {{PANDOCEXE}} {{PANDOCOPT}} $_tmp/*.md -o $_tmp/$_id.typ
+    echo "... executing typst $_id.typ"
+    {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
+    cp $_tmp/$_id.typ {{_out}}.typ
     rm -rf $_tmp
 
 build-file _file _out:
@@ -85,7 +100,20 @@ build-file _file _out:
     echo "... executing pandoc $_tmp"
     {{PANDOCEXE}} {{PANDOCOPT}} $_tmp/*.md -o $_tmp/$_id.typ
     echo "... executing typst $_id.typ"
-    {{TYPSTEXE}} compile {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
+    {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
+    rm -rf $_tmp
+
+build-file-debug _file _out:
+    #!/bin/sh
+    _id=$(uuidgen)
+    _tmp="{{XDIR}}/out/$_id"
+    mkdir -p $_tmp
+    cp {{_file}} $_tmp/
+    echo "... executing pandoc $_tmp"
+    {{PANDOCEXE}} {{PANDOCOPT}} $_tmp/*.md -o $_tmp/$_id.typ
+    echo "... executing typst $_id.typ"
+    {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
+    cp $_tmp/$_id.typ {{_out}}.typ
     rm -rf $_tmp
 
 test-typst:
@@ -94,7 +122,7 @@ test-typst:
     for x in {{XDIR}}/out/*.typ; do
         y=$(basename $x .typ)
         echo "... executing typst with '$y'"
-        {{TYPSTEXE}} compile {{TYPSTOPT}}  --root {{XDIR}} --timings ./out/$y.time.json $x ./out/$y.pdf
+        {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}}  --root {{XDIR}} --timings ./out/$y.time.json $x ./out/$y.pdf
     done
 
 bootstrap:
@@ -104,11 +132,60 @@ bootstrap:
 #dump-template:
 #    {{PANDOCEXE}} --print-default-template=typst > ./template/default.typ
 
+list-font-files:
+    #!/bin/sh
+    mkdir -p {{XTMP}}
+    find {{XFNT}} -type f -name '*.?tf' |sort -u > {{XTMP}}/fonts.list
+    n=$(wc -l {{XTMP}}/fonts.list)
+
+    for x in $(cat {{XTMP}}/fonts.list); do
+        otfinfo -f $x | awk '{print $1}'
+    done | sort -u > {{XTMP}}/fea.list
+
+    rm -f {{XTMP}}/fonts.fea.jsonl
+
+    for x in $(cat {{XTMP}}/fonts.list); do
+        y=$(basename $x)
+        otfinfo -f $x | awk '{print $1}' > {{XTMP}}/fea.list.font
+
+        echo -n '{ font:"'$y'"'
+        for z in $(cat {{XTMP}}/fea.list |sort -u); do
+            echo -n ', "'$z'":'
+            if fgrep -w $z {{XTMP}}/fea.list.font 1>/dev/null 2>/dev/null; then
+                echo -n '1'
+            else
+                echo -n '0'
+            fi
+        done
+        echo '}'
+    done > {{XTMP}}/fea.jsonl
+
+    qsv jsonl {{XTMP}}/fea.jsonl > {{XTMP}}/fea.csv
+
+    #rm -rf {{XTMP}}
+
+list-otfinfo-dir _dir:
+    #!/bin/sh
+    for x in $(find {{_dir}} -name '*.?tf'|sort); do
+        f=$(basename "$x")
+        echo "$f psname=[$(otfinfo -p "$x")] family=[$(otfinfo -a $x)]"
+        #echo "$f"
+        #otfinfo -i $x
+    done
+
+list-otfinfo-dir-detail _dir:
+    #!/bin/sh
+    for x in $(find {{_dir}} -name '*.?tf'|sort); do
+        f=$(basename "$x")
+        echo "$f"
+        otfinfo -i $x
+    done
+
 list-font-dir _dir:
-    {{TYPSTEXE}} fonts --ignore-system-fonts --font-path {{_dir}}
+    {{TYPSTEXE}} fonts --ignore-embedded-fonts --ignore-system-fonts --font-path {{_dir}}
 
 list-font-dir-variants _dir:
-    {{TYPSTEXE}} fonts --ignore-system-fonts --font-path {{_dir}} --variants
+    {{TYPSTEXE}} fonts --ignore-embedded-fonts --ignore-system-fonts --font-path {{_dir}} --variants
 
 list-fonts:
     {{TYPSTEXE}} fonts {{TYPSTOPT}}

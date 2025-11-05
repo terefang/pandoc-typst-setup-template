@@ -1,0 +1,16 @@
+#
+https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt,txt,unicode
+#
+https://github.com/bartbes/inifile/raw/refs/heads/develop/inifile.lua,lua,lua
+#
+https://github.com/LuaDist/dkjson/raw/refs/heads/master/dkjson.lua,lua,lua
+#
+https://github.com/jonstoler/lua-toml/raw/refs/heads/master/toml.lua,lua,lua
+#
+https://github.com/Olivine-Labs/lustache/raw/refs/heads/master/src/lustache.lua,lua,lua
+https://github.com/Olivine-Labs/lustache/raw/refs/heads/master/src/lustache/context.lua,lua,lua/lustache
+https://github.com/Olivine-Labs/lustache/raw/refs/heads/master/src/lustache/renderer.lua,lua,lua/lustache
+https://github.com/Olivine-Labs/lustache/raw/refs/heads/master/src/lustache/scanner.lua,lua,lua/lustache
+#
+https://github.com/mfrigerio17/lua-template-engine/raw/refs/heads/master/src/template-text.lua,lua,lua
+#
