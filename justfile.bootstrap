@@ -26,7 +26,10 @@ UTPM_BASE := 'https://github.com/typst-community/utpm/releases/download/' + UTPM
 UTPM_ARCH := if arch() == "x86_64" { 'x86_64' } else { 'aarch64' }
 UTPM_OS := if os() == "macos" { 'apple-darwin' } else { 'unknown-linux-musl' }
 
-TYPST_RELEASE := 'v0.14.0'
+TYPST_NEXT := 'https://github.com/typst-community/dev-builds/releases/download/typst-main.2025-11-14.0da0165/typst-x86_64-unknown-linux-musl.tar.xz'
+
+#TYPST_RELEASE := 'v0.14.1'
+TYPST_RELEASE := 'v0.14.1'
 TYPST_RELEASE_N1 := 'v0.13.1'
 TYPST_RELEASE_N2 := 'v0.12.0'
 TYPST_BASE := 'https://github.com/typst/typst/releases/download'
@@ -107,9 +110,36 @@ fetch-utpm:
 fetch-typst: (fetch-typst-version TYPST_RELEASE)
 
 fetch-typst-known: \
+    fetch-typst-next \
     (fetch-typst-version TYPST_RELEASE) \
     (fetch-typst-version TYPST_RELEASE_N1) \
     (fetch-typst-version TYPST_RELEASE_N2)
+
+fetch-typst-next:
+    #!/bin/sh
+    mkdir -p {{XBIN}}/tmp
+    case "{{TYPST_NEXT}}" in
+        *.tar.*)
+            {{CURL}} -o {{XBIN}}/tmp/typst.tar.xz "{{TYPST_NEXT}}"
+            (cd {{XBIN}}/tmp && tar -xf typst.tar.xz)
+            ;;
+        *.zip)
+            {{CURL}} -o {{XBIN}}/tmp/typst.zip  "{{TYPST_NEXT}}"
+            (cd {{XBIN}}/tmp && unzip -o -j typst.zip)
+        ;;
+    esac
+    case "{{os()}}" in
+        windows)
+            cp $(find {{XBIN}}/tmp -type f -name typst.exe) {{XBIN}}/
+            chmod +x {{XBIN}}/typst.exe && mv {{XBIN}}/typst.exe {{XBIN}}/typst-next.exe
+            ;;
+        *)
+            cp $(find {{XBIN}}/tmp -type f -name typst) {{XBIN}}/
+            chmod +x {{XBIN}}/typst && mv {{XBIN}}/typst {{XBIN}}/typst-next
+        ;;
+    esac
+    rm -rf {{XBIN}}/tmp
+    {{XBIN}}/typst-next --version
 
 fetch-typst-version _VERSION:
     #!/bin/sh
@@ -254,26 +284,12 @@ fetch-res: (fetch-to XDIR+'/resources.fonts' XFNT)
 
 fetch-lib: (fetch-to XDIR+'/resources.lib' XLIB)
 
-TYPST_PACKAGES := '''
-    gentle-clues:1.2.0:
-    linguify:0.4.2:
-    elembic:1.0.0:
-    cetz:0.4.2:
-    oxifmt:1.0.0:
-    cetz-plot:0.1.3:
-    tiaoma:0.3.0:
-    based:0.2.0:
-    cuti:0.3.0:
-    typsy:0.2.0:
-'''
-
 fetch-packages:
-    #!/bin/sh
+    #!/bin/sh -x
     _START=$(date)
     _TPATH={{XLIB}}/mirror/typst/preview
     ## {{CURL}} https://packages.typst.org/preview/index.json |jq -c -r '.[] | .name+":"+.version+":"+((.categories|tostring) // "")'
-    echo "{{TYPST_PACKAGES}}" | \
-    while read -r line; do
+    for line in $(grep -v '^#' < {{XDIR}}/resources.typst ); do
         _NAME=$(echo "$line"|cut -f1 -d:)
         _VER=$(echo "$line"|cut -f2 -d:)
         _PPATH=$_TPATH/$_NAME/$_VER/

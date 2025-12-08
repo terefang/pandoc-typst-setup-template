@@ -52,7 +52,7 @@
             for f-style in ("normal","italic") {
                 [*#{f-name} #{f-style}* fakebold]
                 linebreak()
-                for f-weight in (1.5,2.5,4,6,10,15,25,40,60,100) [
+                for f-weight in (0,10,20,30,40,50,60,70,80) [
 #{f-weight} : #fakebold(stroke:f-weight)[#text(font: f-name,fallback:false,style: f-style, lorem(25))] #linebreak()        
                 ]
             colbreak()
@@ -67,14 +67,20 @@
             colbreak()
             }
 
-            for f-style in ("normal","italic") {
-                [*#{f-name} #{f-style}* fakesmallcaps]
+                [*#{f-name}* fakesmallcaps]
                 linebreak()
                 for f-weight in (100,200,300,400,500,600,700,800,900) [
-#{f-weight} : #text(font: f-name,fallback:false,weight: f-weight,style: f-style, fakesc[ #lorem(25) ] ) #linebreak()        
+#{f-weight} : #text(font: f-name,fallback:false,weight: f-weight, fakesc[ #lorem(25) ] ) #linebreak()        
                 ]
             colbreak()
-            }
+
+            
+                [*#{f-name}* fakebold+sc]
+                linebreak()
+                for f-weight in (0,10,20,30,40,50,60,70,80) [
+#{f-weight} : #fakebold(stroke:f-weight)[#text(font: f-name,weight:400,fallback:false, fakesc[ #lorem(25) ])] #linebreak()        
+                ]
+            colbreak()
         }
     ])
     pagebreak()

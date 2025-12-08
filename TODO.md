@@ -208,3 +208,98 @@ to-string(it.body)
 
 * https://www.color.org/registry/PSOuncoated_v3_FOGRA52.xalter
 * https://www.color.org/registry/profiles/PSOuncoated_v3_FOGRA52.icc
+
+# tables
+
+make macros for special types of table/grid cells
+
+### spec
+
+```
+#let breaks = state("_table_breaks", (0, ))
+#let breakcell(body, ..args) = table.cell(colspan: 4, stroke:none, align:center,inset:0.6em,fill: rgb("FFFFFF"), ..args, { body })
+#show table.cell: it => {
+if it.colspan == 4 {
+breaks.update(arr => arr + (it.y, ))
+}
+it
+}
+#context [
+#let break-y = breaks.final()
+#pad(x:-6em)[#figure(
+table(
+columns:(1fr,auto,auto,3.5fr),
+inset: (y: 4.95pt),
+fill: (_, y) => {
+let last-break = break-y.filter(elt => elt <= y).last()
+if calc.odd(y - last-break) { rgb("D3D3D3") }
+},
+align: (left+horizon,center+horizon,center+horizon,left+horizon),
+stroke: (x: none, y:none),
+table.header(
+table.cell(fill: gray,align:left)[*Special Effect*],
+table.cell(fill: gray,align:left)[*Offense*],
+table.cell(fill: gray,align:left)[*Defense*],
+table.cell(fill: gray, align:center)[*Description*]
+),
+
+breakcell[_0-Point Special Effects_],
+table.hline(stroke:0.05em),
+
+[*Brace*], [X], [X], [*Brace*, as the Proactive Action.],
+
+[*Communicate*], [X], [X], [Verbally or somatically communicate with others.],
+
+[*Prepare Counter*], [X], [X], [Mark a Special Effect in secret. If used against you, it is cancelled.],
+
+[*Ward Location*], [X], [X], [With a Shield, *Passive Block* one or more Hit Locations.],
+
+table.hline(stroke:0.05em),
+breakcell[_1-Point Special Effects_],
+table.hline(stroke:0.05em),
+
+[*Arise*], [], [X], [Stand up from a Prone position.],
+
+[*Bash*], [X], [], [Shield or Bludgeoning weapon. Knock your target backwards.],
+table.hline(stroke:0.05em),
+breakcell[_2-Point Special Effects_],
+table.hline(stroke:0.05em),
+
+[*Choose Location*], [X], [], [Choose a specific Hit Location to strike. Costs 4 for Ranged Weapons.],
+))]
+]
+
+```
+
+## new chapter marking
+
+```
+#set heading(numbering: "1.1")
+#show heading.where(level: 1): it => {
+pagebreak(weak: true, to: "odd")
+set text(2em)
+{
+set align(right)
+set text(white)
+show: block.with(
+fill: blue.darken(20%),
+inset: (x: 6pt, top: 1cm, bottom: 8pt),
+// guessed, doesn't really matter if it overflows
+outset: (top: 2.5cm)
+)
+counter(heading).display()
+}
+show: block.with(
+below: 1em,
+)
+it.body
+}
+
+= Fundamentals
+
+#lorem(30)
+
+== Overview
+
+#lorem(30)
+```

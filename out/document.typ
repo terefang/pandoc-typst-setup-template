@@ -9,20 +9,18 @@
   ))
 }
 
-#let fakesc(s, scaling: 0.8) = {
+#let fakesc(s, scaling: 0.8, expansion:1.1) = {
   show regex("\p{Ll}+"): it => {
-    context if (text.size > 9pt) {
-        box(scale(x: 115%, reflow: true, text(scaling * 1em,upper(it))))
-    } else {
-        box(scale(x: 115%, reflow: true, text(scaling * 1em, stroke: 0.001em + text.fill, upper(it))))
+    context {
+        box(scale(x: expansion * 100%, reflow: true, text(scaling * 1em,upper(it))))
     }
   }
   text(s)
 }
 
-#let fakebold(txt,stroke: 1,track: 0) = {
+#let fakebold(txt,stroke: 1,track: 0.5) = {
   show regex(".+"): it => context {
-    text(tracking:(track * 0.001em),stroke: (stroke * 0.001em) + text.fill, it)
+    text(tracking:(track * stroke * 0.001em),stroke: (stroke * 1.5 *  0.001em) + text.fill, it)
   }
   text(txt)
 }
@@ -46280,7 +46278,7 @@
 /* page */ #page(paper:"a4",flipped:false,margin:0pt,columns:1,[
 
 /* place */ #place(top + left,scope:"parent",float:true,dx:50pt,dy:50pt,[
-/* box */ #box(height:100pt,stroke:red,width:495pt,[
+/* box */ #box(stroke:red,height:100pt,width:495pt,[
 #align(top + center,[
 #text(weight:700,size:120pt,fill:white,stroke:0.1pt,font:"TeX Gyre Heros",[
 /* scale */ #scale(reflow:true,x:60%,[
@@ -46289,7 +46287,7 @@
 ]) /* /place */
 
 /* place */ #place(bottom + left,scope:"parent",float:true,dx:50pt,dy:-50pt,[
-/* box */ #box(height:100pt,stroke:none,width:495pt,[
+/* box */ #box(stroke:none,height:100pt,width:495pt,[
 #align(top + center,[
 #text(weight:700,size:60pt,fill:white,stroke:0.1pt,font:"TeX Gyre Heros",[
 /* par */ #par(leading:10pt,[ And Here Goes The Author
@@ -47167,7 +47165,7 @@ this will insert bottom floating cross-column
 
 /* page */ #page(columns:2,[
 
-#block(width:100%,stroke:(bottom:1pt),inset:(bottom:5pt),[
+#block(width:100%,inset:(bottom:5pt),stroke:(bottom:1pt),[
 = BLOCKS
 <blocks>
 
@@ -47307,7 +47305,7 @@ Horror]]) /* /uc */#box(width: 1fr) CL 2 | 450
 XP#linebreak() #box(width: 1fr) #emph[Small Construct,
 Typically Lawful Evil]#linebreak()
 
-#grid(columns:(100%,),row-gutter:8pt,inset:(top:8pt,bottom:3pt), 
+#grid(inset:(top:8pt,bottom:3pt),row-gutter:8pt,columns:(100%,), 
 
 grid.hline(), grid.cell([
 
@@ -47632,7 +47630,7 @@ d6
 )
 ==== xml grid
 <xml-grid>
-#grid(columns:(1fr,1fr,1fr,1fr,1fr,1fr,1fr,1fr,1fr,),inset:0.5em, 
+#grid(inset:0.5em,columns:(1fr,1fr,1fr,1fr,1fr,1fr,1fr,1fr,1fr,), 
 grid.cell([ #strong[St] ]), grid.cell([ #strong[Ag] ]),
 grid.cell([ #strong[To]]), grid.cell([ #strong[In]]),
 grid.cell([ #strong[Aw]]), grid.cell([ #strong[Wp]]),
@@ -47644,7 +47642,7 @@ grid.cell([ d6 ]), grid.cell([ d6 ]), )
 
 ==== xml table
 <xml-table>
-/* begin */ #table(columns:(1fr,1fr,1fr,1fr,1fr,1fr,1fr,1fr,1fr,),inset:0.5em, 
+/* begin */ #table(inset:0.5em,columns:(1fr,1fr,1fr,1fr,1fr,1fr,1fr,1fr,1fr,), 
 table.header( [ #strong[St] ], [ #strong[Ag] ], [
 #strong[To]], [ #strong[In]], [ #strong[Aw]], [
 #strong[Wp]], [ #strong[Pr]], [ #strong[Fe]], [
@@ -47809,7 +47807,7 @@ test~test
             for f-style in ("normal","italic") {
                 [*#{f-name} #{f-style}* fakebold]
                 linebreak()
-                for f-weight in (1.5,2.5,4,6,10,15,25,40,60,100) [
+                for f-weight in (0,10,20,30,40,50,60,70,80) [
 #{f-weight} : #fakebold(stroke:f-weight)[#text(font: f-name,fallback:false,style: f-style, lorem(25))] #linebreak()        
                 ]
             colbreak()
@@ -47824,14 +47822,20 @@ test~test
             colbreak()
             }
 
-            for f-style in ("normal","italic") {
-                [*#{f-name} #{f-style}* fakesmallcaps]
+                [*#{f-name}* fakesmallcaps]
                 linebreak()
                 for f-weight in (100,200,300,400,500,600,700,800,900) [
-#{f-weight} : #text(font: f-name,fallback:false,weight: f-weight,style: f-style, fakesc[ #lorem(25) ] ) #linebreak()        
+#{f-weight} : #text(font: f-name,fallback:false,weight: f-weight, fakesc[ #lorem(25) ] ) #linebreak()        
                 ]
             colbreak()
-            }
+
+            
+                [*#{f-name}* fakebold+sc]
+                linebreak()
+                for f-weight in (0,10,20,30,40,50,60,70,80) [
+#{f-weight} : #fakebold(stroke:f-weight)[#text(font: f-name,weight:400,fallback:false, fakesc[ #lorem(25) ])] #linebreak()        
+                ]
+            colbreak()
         }
     ])
     pagebreak()
@@ -47841,7 +47845,7 @@ test~test
 = Other Fonts
 <other-fonts>
 
-#for f-name-var in ("Agave Nerd Font","Agave Nerd Font Mono","Agave Nerd Font Propo","DejaVu Sans Mono","Libertinus Serif","Luciole","Atkinson Hyperlegible","B612","B612 Mono","Charis SIL","Chivo","Chivo Mono","Fantasma","Gidole","Gidolinya","Helmet Neue","Hubot Sans","Mona Sans","Optician Sans","Saira","Saira Stencil One","Techna Sans","Bodoni Moda","Zalando Sans","Inria Sans","Inria Serif","JuliaMono","Grandstander","League Spartan","Pennstander") [
+#for f-name-var in ("DejaVu Sans Mono","Libertinus Serif","Luciole","Atkinson Hyperlegible","B612","B612 Mono","Charis SIL","Chivo","Chivo Mono","Fantasma","Gidole","Gidolinya","Helmet Neue","Hubot Sans","Mona Sans","Optician Sans","Saira","Saira Stencil One","Techna Sans","Bodoni Moda","Zalando Sans","Inria Sans","Inria Serif","JuliaMono","Grandstander","League Spartan","Pennstander") [
 #font-panel(f-name-var)
 
 ]
@@ -47849,6 +47853,20 @@ test~test
 <ibm-plex-fonts>
 
 #for f-name-var in ("IBM Plex Mono","IBM Plex Mono Medm","IBM Plex Mono SmBld","IBM Plex Mono Text","IBM Plex Sans","IBM Plex Sans Medm","IBM Plex Sans SmBld","IBM Plex Sans Text","IBM Plex Serif","IBM Plex Serif Medm","IBM Plex Serif SmBld","IBM Plex Serif Text") [
+#font-panel(f-name-var)
+
+]
+= Gotico Antiqua Fonts
+<gotico-antiqua-fonts>
+
+#for f-name-var in ("Fust & Schoeffer","Hamlet","Jessen","Parix","Ptolemy","Rot","Rusch","Soufflet Vert","Spira","Sweynheim & Pannartz","Zainer") [
+#font-panel(f-name-var)
+
+]
+= Baskervville Fonts
+<baskervville-fonts>
+
+#for f-name-var in ("Baskervville","Baskervville SC") [
 #font-panel(f-name-var)
 
 ]
@@ -47877,6 +47895,13 @@ test~test
 <tex-gyre-fonts>
 
 #for f-name-var in ("TeX Gyre Adventor","TeX Gyre Bonum","TeX Gyre Bonum Math","TeX Gyre Chorus","TeX Gyre Cursor","TeX Gyre DejaVu Math","TeX Gyre Heros","TeX Gyre Pagella","TeX Gyre Pagella Math","TeX Gyre Schola","TeX Gyre Schola Math","TeX Gyre Termes","TeX Gyre Termes Math") [
+#font-panel(f-name-var)
+
+]
+= Nerd Fonts
+<nerd-fonts>
+
+#for f-name-var in ("Agave Nerd Font","Agave Nerd Font Mono","Agave Nerd Font Propo","MonaspiceAr NF","MonaspiceAr NFM","MonaspiceAr NFP","MonaspiceKr NF","MonaspiceKr NFM","MonaspiceKr NFP","MonaspiceNe NF","MonaspiceNe NFM","MonaspiceNe NFP","MonaspiceRn NF","MonaspiceRn NFM","MonaspiceRn NFP","MonaspiceXe NF","MonaspiceXe NFM","MonaspiceXe NFP") [
 #font-panel(f-name-var)
 
 ]
@@ -68531,8 +68556,16 @@ test~test
 #text(size: 32pt, [#{str.from-unicode(0x30BA)}])#box(width: 1fr, repeat(". ")) zukatakana #linebreak();
 #text(size: 32pt, [#{str.from-unicode(0x200b)}])#box(width: 1fr, repeat(". ")) zwsp #linebreak();
 
+== OK
+<ok>
+
 #text(fallback:false,font:"UniFont")[
 #text(size: 32pt, [#{str.from-unicode(0xF6C9)}])#box(width: 1fr, repeat(". ")) f6c9 #linebreak();
 #text(size: 32pt, [#{str.from-unicode(0xF7B4)}])#box(width: 1fr, repeat(". ")) f7b4 #linebreak();
 ]
+== NOK
+<nok>
+
+#text(size: 32pt, [#{str.from-unicode(0xF6C9)}])#box(width: 1fr, repeat(". ")) f6c9 #linebreak();
+#text(size: 32pt, [#{str.from-unicode(0xF7B4)}])#box(width: 1fr, repeat(". ")) f7b4 #linebreak();
 

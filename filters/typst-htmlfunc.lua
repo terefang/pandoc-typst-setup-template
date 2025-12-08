@@ -39,6 +39,10 @@
 -- <g:hl .../> -> wraps the typst /grid.hline/ function
 -- <g:vl .../> -> wraps the typst /grid.vline/ function
 
+package.path = os.getenv("PANDOC_LUA_LIB")..';'..package.path
+local _ENTITY = require("entities")
+local _SYM = require("symbols")
+
 local function startswith(text, start)
     if(text == nil) then
         return false
@@ -360,6 +364,32 @@ function processRawHtml(elem)
 
     i,j,cap1 = string.find(elem.text, '^<([%:%-%w]+)/?>$')
     if (i ~= nil) then
+        -- entity dumper
+        if(cap1 == 'dump-entities') then
+            local tkeys = {}
+            -- populate the table that holds the keys
+            for k in pairs(_ENTITY) do table.insert(tkeys, k) end
+            -- sort the keys
+            table.sort(tkeys)
+            local _ret = ''
+            for _,kk in ipairs(tkeys) do
+                _ret = _ret .. '#text(size: 32pt, ['..(_ENTITY[kk])..'])#box(width: 1fr, repeat(". ")) '..kk..' #linebreak();\n'
+            end
+            return pandoc.RawInline('typst', _ret)
+        end
+        -- symbols dumper
+        if(cap1 == 'dump-symbols') then
+            local tkeys = {}
+            -- populate the table that holds the keys
+            for k in pairs(_SYM) do table.insert(tkeys, k) end
+            -- sort the keys
+            table.sort(tkeys)
+            local _ret = ''
+            for _,kk in ipairs(tkeys) do
+                _ret = _ret .. '#text(size: 32pt, ['..(_SYM[kk])..'])#box(width: 1fr, repeat(". ")) '..kk..' #linebreak();\n'
+            end
+            return pandoc.RawInline('typst', _ret)
+        end
         -- typst linebreaks
         if( cap1 == 'br' ) then
             return pandoc.RawInline('typst', '#linebreak()')
@@ -429,6 +459,12 @@ function processRawHtml(elem)
         if(cap1 == 'fill' or cap1 == 'f') then
             return pandoc.RawInline('typst', '#box(width: 1fr) ')
         end
+        if (cap1=='tcell') then
+            return pandoc.RawInline('typst', 'table.cell()[')
+        end
+        if(cap1 == 'thd') then
+            return pandoc.RawInline('typst', 'table.header(')
+        end
     end
     i,j,cap1 = string.find(elem.text, '^<(/[%-%w]+)>$')
     if (i ~= nil) then
@@ -436,12 +472,38 @@ function processRawHtml(elem)
         if HTML_SPANS:includes(cap1) then
             return pandoc.RawInline('typst', ']) /* '..cap1..' */')
         end
+        if (cap1=='/tbl') then
+            return pandoc.RawInline('typst', ') /* '..cap1..' */')
+        end
+        if (cap1=='/thd') then
+            return pandoc.RawInline('typst', '),')
+        end
+        if (cap1=='/tcell') then
+            return pandoc.RawInline('typst', '],')
+        end
     end
     i,j,cap1,cap2 = string.find(elem.text, '^<(%??[%:%-%w]+)%s+(%w+.*)%s*/?>$')
     if (i ~= nil) then
         -- extract the attributes
         local attr, anum = extractAttributes(cap2)
 
+        if(cap1 == 'thd') then
+            return pandoc.RawInline('typst', 'table.header(')
+        end
+        if(cap1 == 'tbl') then
+            local opts = ""
+            for k, v in pairs(attr) do
+                opts = opts .. k..':' .. v .. ','
+            end
+            return pandoc.RawInline('typst', '#table('..opts..'\n')
+        end
+        if (cap1=='tcell') then
+            local opts = ""
+            for k, v in pairs(attr) do
+                opts = opts .. k..':' .. v .. ','
+            end
+            return pandoc.RawInline('typst', 'table.cell('..opts..')[')
+        end
         -- var
         if(cap1 == 'var') then
             _, v = firstpair(attr)
@@ -456,6 +518,11 @@ function processRawHtml(elem)
         if(cap1 == 'lorem') then
             _, v = firstpair(attr)
             return pandoc.RawInline('typst', '#lorem('..(v)..')')
+        end
+        -- declare-entity
+        if(cap1 == 'declare-entity') then
+            _, v = firstpair(attr)
+            return pandoc.RawInline('typst', '\n#let '..(v)..'-g = ['.._ENTITY[v]..']\n')
         end
         -- align
         if(cap1 == 'align') then
@@ -475,8 +542,14 @@ function processRawHtml(elem)
         if(cap1 == 'icon' or cap1 == 'i') then
             if(anum == 1) then
                 _, v = firstpair(attr)
+                if(_ENTITY[v] ~= nil) then
+                    return pandoc.RawInline('typst', _ENTITY[v])
+                end
                 return pandoc.RawInline('typst', '#{'..v..'-g}')
             else
+                if(_ENTITY[attr['name']] ~= nil) then
+                    return pandoc.RawInline('typst', '#text(size: '..(attr['size'])..', ['..(_ENTITY[attr['name']])..'])')
+                end
                 return pandoc.RawInline('typst', '#text(size: '..(attr['size'])..', [#{'..(attr['name'])..'-g}])')
             end
         end

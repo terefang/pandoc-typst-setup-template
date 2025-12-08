@@ -3480,7 +3480,7 @@
 #let nsy-segmented-digit-eight-g = text(font:"Noto Sans Symbols 2",str.from-unicode(0x1fbf8));
 #let nsy-segmented-digit-nine-g = text(font:"Noto Sans Symbols 2",str.from-unicode(0x1fbf9));
 
-#let nsy-icons = (:)
+#let nsy-icons = (:);
 
 #nsy-icons.insert("accordion",nsy-accordion-g);
 #nsy-icons.insert("ac-current",nsy-ac-current-g);

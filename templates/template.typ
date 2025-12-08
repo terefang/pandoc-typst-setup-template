@@ -10,20 +10,18 @@ $-- // https://github.com/jomaway/typst-gentle-clues/blob/main/docs.pdf
   ))
 }
 
-#let fakesc(s, scaling: 0.8) = {
+#let fakesc(s, scaling: 0.8, expansion:1.1) = {
   show regex("\p{Ll}+"): it => {
-    context if (text.size > 9pt) {
-        box(scale(x: 115%, reflow: true, text(scaling * 1em,upper(it))))
-    } else {
-        box(scale(x: 115%, reflow: true, text(scaling * 1em, stroke: 0.001em + text.fill, upper(it))))
+    context {
+        box(scale(x: expansion * 100%, reflow: true, text(scaling * 1em,upper(it))))
     }
   }
   text(s)
 }
 
-#let fakebold(txt,stroke: 1,track: 0) = {
+#let fakebold(txt,stroke: 1,track: 0.5) = {
   show regex(".+"): it => context {
-    text(tracking:(track * 0.001em),stroke: (stroke * 0.001em) + text.fill, it)
+    text(tracking:(track * stroke * 0.001em),stroke: (stroke * 1.5 *  0.001em) + text.fill, it)
   }
   text(txt)
 }

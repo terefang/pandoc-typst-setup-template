@@ -7,7 +7,6 @@ PANDOCOPT := ' --from markdown+pipe_tables+grid_tables+raw_attribute+raw_html+fe
         + ' --data-dir='+XDIR+' ' \
         + ' --resource-path='+XDIR+' ' \
         + ' --include-before-body=templates/diceset.typ ' \
-        + ' --include-before-body=templates/zapfding.typ ' \
         + ' --include-before-body=templates/nerdfont.typ ' \
         + ' --include-before-body=templates/notosymbol.typ ' \
         + ' --include-before-body=templates/admons.typ ' \
@@ -36,7 +35,7 @@ TYPSTPKGOPT := ' --package-cache-path '+XLIB+'/typst-cache/ '+' --package-path '
 #TYPSTCOMPILEOPT := ' --no-pdf-tags --pdf-standard a-4 '
 TYPSTCOMPILEOPT := ' --no-pdf-tags  --pdf-standard 1.7 '
 
-TYPSTEXE := 'HTTPS_PROXY=http://127.0.0.1:666/ '+XBIN+'/typst-'+TYPST_RELEASE+'-'+XBINARCH
+TYPSTEXE := 'HTTPS_PROXY=http://127.0.0.1:666/ time '+XBIN+'/typst-'+TYPST_RELEASE+'-'+XBINARCH
 
 default: build
 
@@ -47,12 +46,14 @@ build-pandoc:
     #!/bin/sh
     mkdir -p ./out
     echo "... executing pandoc"
+    export PANDOC_LUA_LIB="{{XDIR}}/filters/?.lua;{{XDIR}}/lib/lua/?.lua"
     {{PANDOCEXE}} {{PANDOCOPT}} ./markdown/*.md -o ./out/document.typ
 
 debug-pandoc:
     #!/bin/sh
     mkdir -p ./out
     echo "... debug pandoc"
+    export PANDOC_LUA_LIB="{{XDIR}}/filters/?.lua;{{XDIR}}/lib/lua/?.lua"
     {{PANDOCEXE}} {{PANDOCOPT}} ./markdown/*.md -t native -o ./out/document.native
 
 build-typst:
@@ -73,6 +74,7 @@ build-dir _dir _out:
     mkdir -p $_tmp
     cp {{_dir}}/*.md $_tmp/
     echo "... executing pandoc $_tmp"
+    export PANDOC_LUA_LIB="{{XDIR}}/filters/?.lua;{{XDIR}}/lib/lua/?.lua"
     {{PANDOCEXE}} {{PANDOCOPT}} $_tmp/*.md -o $_tmp/$_id.typ
     echo "... executing typst $_id.typ"
     {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
@@ -85,6 +87,7 @@ build-dir-debug _dir _out:
     mkdir -p $_tmp
     cp {{_dir}}/*.md $_tmp/
     echo "... executing pandoc $_tmp"
+    export PANDOC_LUA_LIB="{{XDIR}}/filters/?.lua;{{XDIR}}/lib/lua/?.lua"
     {{PANDOCEXE}} {{PANDOCOPT}} $_tmp/*.md -o $_tmp/$_id.typ
     echo "... executing typst $_id.typ"
     {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
@@ -98,10 +101,17 @@ build-file _file _out:
     mkdir -p $_tmp
     cp {{_file}} $_tmp/
     echo "... executing pandoc $_tmp"
+    export PANDOC_LUA_LIB="{{XDIR}}/filters/?.lua;{{XDIR}}/lib/lua/?.lua"
     {{PANDOCEXE}} {{PANDOCOPT}} $_tmp/*.md -o $_tmp/$_id.typ
+    cp $_tmp/$_id.typ {{_file}}.typ
     echo "... executing typst $_id.typ"
     {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
     rm -rf $_tmp
+
+build-typst-file _file _out _input:
+    #!/bin/sh
+    echo "... executing typst {{_file}}"
+    {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}}  --input "{{_input}}" {{_file}}  {{_out}}
 
 build-file-debug _file _out:
     #!/bin/sh
@@ -110,6 +120,7 @@ build-file-debug _file _out:
     mkdir -p $_tmp
     cp {{_file}} $_tmp/
     echo "... executing pandoc $_tmp"
+    export PANDOC_LUA_LIB="{{XDIR}}/filters/?.lua;{{XDIR}}/lib/lua/?.lua"
     {{PANDOCEXE}} {{PANDOCOPT}} $_tmp/*.md -o $_tmp/$_id.typ
     echo "... executing typst $_id.typ"
     {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
