@@ -45822,6 +45822,53 @@
 #nsy-icons.insert("z-notation-spot",nsy-z-notation-spot-g);
 
 
+#let cc-sym-uni00A9-g = text(font:"CCSymbols",str.from-unicode(0x00a9))
+#let cc-sym-uni229C-g = text(font:"CCSymbols",str.from-unicode(0x229c))
+#let cc-sym-u1F10D-g = text(font:"CCSymbols",str.from-unicode(0x1f10d))
+#let cc-sym-u1F10E-g = text(font:"CCSymbols",str.from-unicode(0x1f10e))
+#let cc-sym-u1F10F-g = text(font:"CCSymbols",str.from-unicode(0x1f10f))
+#let cc-sym-u1F16D-g = text(font:"CCSymbols",str.from-unicode(0x1f16d))
+#let cc-sym-u1F16E-g = text(font:"CCSymbols",str.from-unicode(0x1f16e))
+#let cc-sym-u1F16F-g = text(font:"CCSymbols",str.from-unicode(0x1f16f))
+
+#let cc-sym-copyright-sign-g = text(font:"CCSymbols",str.from-unicode(0x00a9))
+#let cc-sym-cicled-equals-g = text(font:"CCSymbols",str.from-unicode(0x229c))
+#let cc-sym-cicled-zero-with-slash-g = text(font:"CCSymbols",str.from-unicode(0x1f10d))
+#let cc-sym-cicled-anticlockwise-arrow-g = text(font:"CCSymbols",str.from-unicode(0x1f10e))
+#let cc-sym-cicled-dollar-sign-with-overlaid-backslash-g = text(font:"CCSymbols",str.from-unicode(0x1f10f))
+#let cc-sym-cicled-cc-g = text(font:"CCSymbols",str.from-unicode(0x1f16d))
+#let cc-sym-cicled-c-with-overlaid-backslash-g = text(font:"CCSymbols",str.from-unicode(0x1f16e))
+#let cc-sym-cicled-human-figure-g = text(font:"CCSymbols",str.from-unicode(0x1f16f))
+
+#let cc-sym-nd-g = text(font:"CCSymbols",str.from-unicode(0x229c))
+#let cc-sym-zero-g = text(font:"CCSymbols",str.from-unicode(0x1f10d))
+#let cc-sym-sa-g = text(font:"CCSymbols",str.from-unicode(0x1f10e))
+#let cc-sym-nc-g = text(font:"CCSymbols",str.from-unicode(0x1f10f))
+#let cc-sym-cc-g = text(font:"CCSymbols",str.from-unicode(0x1f16d))
+#let cc-sym-public-g = text(font:"CCSymbols",str.from-unicode(0x1f16e))
+#let cc-sym-by-g = text(font:"CCSymbols",str.from-unicode(0x1f16f))
+
+#let cc-symbols = (:)
+
+#cc-symbols.insert("copyright-sign",cc-sym-copyright-sign-g);
+#cc-symbols.insert("cicled-equals",cc-sym-cicled-equals-g);
+#cc-symbols.insert("cicled-zero-with-slash",cc-sym-cicled-zero-with-slash-g);
+#cc-symbols.insert("cicled-anticlockwise-arrow",cc-sym-cicled-anticlockwise-arrow-g);
+#cc-symbols.insert("cicled-dollar-sign-with-overlaid-backslash",cc-sym-cicled-dollar-sign-with-overlaid-backslash-g);
+#cc-symbols.insert("cicled-cc",cc-sym-cicled-cc-g);
+#cc-symbols.insert("cicled-c-with-overlaid-backslash",cc-sym-cicled-c-with-overlaid-backslash-g);
+#cc-symbols.insert("cicled-human-figure",cc-sym-cicled-human-figure-g);
+
+#cc-symbols.insert("nd",cc-sym-cicled-equals-g);
+#cc-symbols.insert("zero",cc-sym-cicled-zero-with-slash-g);
+#cc-symbols.insert("sa",cc-sym-cicled-anticlockwise-arrow-g);
+#cc-symbols.insert("nc",cc-sym-cicled-dollar-sign-with-overlaid-backslash-g);
+#cc-symbols.insert("cc",cc-sym-cicled-cc-g);
+#cc-symbols.insert("public",cc-sym-cicled-c-with-overlaid-backslash-g);
+#cc-symbols.insert("by",cc-sym-cicled-human-figure-g);
+
+
+
 // various admonition boxes
 
 // --- special utilities to make it standalone
@@ -46278,16 +46325,16 @@
 /* page */ #page(paper:"a4",flipped:false,margin:0pt,columns:1,[
 
 /* place */ #place(top + left,scope:"parent",float:true,dx:50pt,dy:50pt,[
-/* box */ #box(stroke:red,height:100pt,width:495pt,[
+/* box */ #box(width:495pt,height:100pt,stroke:red,[
 #align(top + center,[
 #text(weight:700,size:120pt,fill:white,stroke:0.1pt,font:"TeX Gyre Heros",[
-/* scale */ #scale(reflow:true,x:60%,[
+/* scale */ #scale(x:60%,reflow:true,[
 /* par */ #par(leading:10pt,[ Sample Document. ]) /* /par */
 ]) /* /scale */ ])  ]) /* /align */ ]) /* /box */
 ]) /* /place */
 
 /* place */ #place(bottom + left,scope:"parent",float:true,dx:50pt,dy:-50pt,[
-/* box */ #box(stroke:none,height:100pt,width:495pt,[
+/* box */ #box(width:495pt,height:100pt,stroke:none,[
 #align(top + center,[
 #text(weight:700,size:60pt,fill:white,stroke:0.1pt,font:"TeX Gyre Heros",[
 /* par */ #par(leading:10pt,[ And Here Goes The Author
@@ -47165,7 +47212,7 @@ this will insert bottom floating cross-column
 
 /* page */ #page(columns:2,[
 
-#block(width:100%,inset:(bottom:5pt),stroke:(bottom:1pt),[
+#block(stroke:(bottom:1pt),inset:(bottom:5pt),width:100%,[
 = BLOCKS
 <blocks>
 
@@ -47305,7 +47352,7 @@ Horror]]) /* /uc */#box(width: 1fr) CL 2 | 450
 XP#linebreak() #box(width: 1fr) #emph[Small Construct,
 Typically Lawful Evil]#linebreak()
 
-#grid(inset:(top:8pt,bottom:3pt),row-gutter:8pt,columns:(100%,), 
+#grid(columns:(100%,),row-gutter:8pt,inset:(top:8pt,bottom:3pt), 
 
 grid.hline(), grid.cell([
 
@@ -47715,6 +47762,197 @@ d6 ]), table.cell([ d6 ]), table.cell([ d6 ]), )
 
 ]) /* /page */
 
+#pagebreak(weak:false)
+
+#set page( columns:1 )
+
+= Tests for Archiviist
+<tests-for-archiviist>
+
+
+#question(title: "Selection",)[
+#text(size:9pt,[
+#set par(spacing:0.4em)
+#grid(
+columns:(18%,16%,22%,22%,22%,),align:(left,left,left,left,left,),inset:0.5em,
+grid.cell(
+[
+vehicles
+]),
+grid.cell(
+[
+truck #super[\+~+]
+]),
+grid.cell(
+[
+5-ton ^+ + +^
+]),
+grid.cell(
+[
+2.5 ton ^+ + 0^
+]),
+grid.cell(
+[
+technical ^+ + -^
+]),
+grid.cell(
+[
+]),
+grid.cell(
+[
+car ^+ 0^
+]),
+grid.cell(
+[
+Land Rover ^+ 0 +^
+]),
+grid.cell(
+[
+armored limo ^+ 0 0^
+]),
+grid.cell(
+[
+sedan ^+ 0 -^
+]),
+grid.cell(
+[
+]),
+grid.cell(
+[
+motorcycle ^+ -^
+]),
+grid.cell(
+[
+street bike ^+ - +^
+]),
+grid.cell(
+[
+enduro ^+ - 0^
+]),
+grid.cell(
+[
+dirt bike ^+ - -^
+]),
+grid.cell(
+[
+provisions #super[0]
+]),
+grid.cell(
+[
+gear ^0 +^
+]),
+grid.cell(
+[
+packs ^0 + +^
+]),
+grid.cell(
+[
+ammo vests ^0 + 0^
+]),
+grid.cell(
+[
+helmets ^0 + -^
+]),
+grid.cell(
+[
+]),
+grid.cell(
+[
+clothes ^0 0^
+]),
+grid.cell(
+[
+jackets ^0 0 +^
+]),
+grid.cell(
+[
+shirts/pants ^0 0 0^
+]),
+grid.cell(
+[
+footwear ^0 0 -^
+]),
+grid.cell(
+[
+]),
+grid.cell(
+[
+food/drink ^0 -^
+]),
+grid.cell(
+[
+water/coffee ^0 - +^
+]),
+grid.cell(
+[
+rice ^0 - 0^
+]),
+grid.cell(
+[
+vegetable/fruit ^0 - -^
+]),
+grid.cell(
+[
+weapons #super[\-]
+]),
+grid.cell(
+[
+firearms ^- +^
+]),
+grid.cell(
+[
+sniper rifle ^- + +^
+]),
+grid.cell(
+[
+assault rifle ^- + 0^
+]),
+grid.cell(
+[
+side arm ^- + -^
+]),
+grid.cell(
+[
+]),
+grid.cell(
+[
+blades #super[\-0]
+]),
+grid.cell(
+[
+machete ^- 0 +^
+]),
+grid.cell(
+[
+bayonet ^- 0 0^
+]),
+grid.cell(
+[
+dagger ^- 0 -^
+]),
+grid.cell(
+[
+]),
+grid.cell(
+[
+clubs #super[\--]
+]),
+grid.cell(
+[
+baseball bat #super[\--+]
+]),
+grid.cell(
+[
+pool stick handle #super[\--0]
+]),
+grid.cell(
+[
+billy club #super[\---]
+]),
+)
+])
+]
+
 = GFX
 <gfx>
 test#{str.from-unicode(0x200b)}test
@@ -47845,7 +48083,7 @@ test~test
 = Other Fonts
 <other-fonts>
 
-#for f-name-var in ("DejaVu Sans Mono","Libertinus Serif","Luciole","Atkinson Hyperlegible","B612","B612 Mono","Charis SIL","Chivo","Chivo Mono","Fantasma","Gidole","Gidolinya","Helmet Neue","Hubot Sans","Mona Sans","Optician Sans","Saira","Saira Stencil One","Techna Sans","Bodoni Moda","Zalando Sans","Inria Sans","Inria Serif","JuliaMono","Grandstander","League Spartan","Pennstander") [
+#for f-name-var in ("DejaVu Sans Mono","Libertinus Serif","STIX Two Text","STIX Two Math","Luciole","Atkinson Hyperlegible","B612","B612 Mono","Charis SIL","Chivo","Chivo Mono","Fantasma","Gidole","Gidolinya","Helmet Neue","Hubot Sans","Mona Sans","Optician Sans","Saira","Saira Stencil One","Techna Sans","Bodoni Moda","Zalando Sans","Inria Sans","Inria Serif","JuliaMono","Grandstander","League Spartan","Pennstander","Reforma 1918","Reforma 1969","Reforma 2018","XCharter") [
 #font-panel(f-name-var)
 
 ]
@@ -62500,6 +62738,21 @@ test~test
 #text(size:32pt,[#{ds-icons.at(icon)}]) #box(width: 1fr, repeat(" .")) #{icon}#linebreak()
 
 ]
+#pagebreak(weak:false)
+
+#set page( columns:1 )
+
+= CC Symbols
+<cc-symbols>
+#text(size:32pt)[#{cc-sym-copyright-sign-g}]#box(width: 1fr, repeat(" .")) cc-sym-copyright-sign#linebreak()
+#text(size:32pt)[#{cc-sym-cicled-equals-g}]#box(width: 1fr, repeat(" .")) cc-sym-nd#linebreak()
+#text(size:32pt)[#{cc-sym-cicled-zero-with-slash-g}]#box(width: 1fr, repeat(" .")) cc-sym-zero#linebreak()
+#text(size:32pt)[#{cc-sym-cicled-anticlockwise-arrow-g}]#box(width: 1fr, repeat(" .")) cc-sym-sa#linebreak()
+#text(size:32pt)[#{cc-sym-cicled-dollar-sign-with-overlaid-backslash-g}]#box(width: 1fr, repeat(" .")) cc-sym-nc#linebreak()
+#text(size:32pt)[#{cc-sym-cicled-cc-g}]#box(width: 1fr, repeat(" .")) cc-sym-cc#linebreak()
+#text(size:32pt)[#{cc-sym-cicled-c-with-overlaid-backslash-g}]#box(width: 1fr, repeat(" .")) cc-sym-public#linebreak()
+#text(size:32pt)[#{cc-sym-cicled-human-figure-g}]#box(width: 1fr, repeat(" .")) cc-sym-by#linebreak()
+
 #pagebreak(weak:false)
 
 #set page( columns:3 )

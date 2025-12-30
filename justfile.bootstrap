@@ -21,15 +21,10 @@ ICONS_NAMES := 'https://github.com/terefang/rpg-icons-font/raw/refs/heads/main/s
 
 XBINARCH := arch()+'-'+os()
 
-UTPM_RELEASE := 'v0.2.0'
-UTPM_BASE := 'https://github.com/typst-community/utpm/releases/download/' + UTPM_RELEASE + '/utpm'
-UTPM_ARCH := if arch() == "x86_64" { 'x86_64' } else { 'aarch64' }
-UTPM_OS := if os() == "macos" { 'apple-darwin' } else { 'unknown-linux-musl' }
-
 TYPST_NEXT := 'https://github.com/typst-community/dev-builds/releases/download/typst-main.2025-11-14.0da0165/typst-x86_64-unknown-linux-musl.tar.xz'
 
 #TYPST_RELEASE := 'v0.14.1'
-TYPST_RELEASE := 'v0.14.1'
+TYPST_RELEASE := 'v0.14.2'
 TYPST_RELEASE_N1 := 'v0.13.1'
 TYPST_RELEASE_N2 := 'v0.12.0'
 TYPST_BASE := 'https://github.com/typst/typst/releases/download'
@@ -47,9 +42,10 @@ if arch() == "x86_64" {
 }
 } else { "." }
 
-PANDOC_RELEASE := '3.8.2.1'
-PANDOC_RELEASE_N1 := '3.7.0.2'
-PANDOC_RELEASE_N2 := '3.6.4'
+PANDOC_RELEASE := '3.8.3'
+PANDOC_RELEASE_N1 := '3.8.2.1'
+PANDOC_RELEASE_N2 := '3.7.0.2'
+PANDOC_RELEASE_N3 := '3.6.4'
 PANDOC_BASE := 'https://github.com/jgm/pandoc/releases/download'
 PANDOC_PKG := if os() == "linux" {
 if arch() == "x86_64" {
@@ -64,8 +60,6 @@ if arch() == "x86_64" {
   '-arm64-macOS.zip'
 }
 } else { "." }
-
-LUCIOLE_BASE := 'https://luciole-vision.com/fonts/Luciole.zip'
 
 NOTO_BASE := 'https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSans-v2.015/NotoSans-v2.015.zip'
 NOTO_LIST := 'NotoSans-BoldItalic.ttf ' \
@@ -96,16 +90,7 @@ fonts-list:
 fonts-variants:
     {{XBIN}}/typst fonts --ignore-system-fonts --font-path {{XFNT}} --variants
 
-fetch-xbin: fetch-utpm fetch-typst fetch-pandoc
-
-fetch-utpm:
-    #!/bin/sh
-    mkdir -p {{XBIN}}/tmp
-    {{CURL}} -o {{XBIN}}/tmp/utpm.tar.xz {{UTPM_BASE}}-{{UTPM_ARCH}}-{{UTPM_OS}}.tar.xz
-    cd {{XBIN}}/tmp && tar -xf utpm.tar.xz
-    cp $(find {{XBIN}}/tmp -type f -name utpm) {{XBIN}}/utpm-{{UTPM_RELEASE}}-{{XBINARCH}}
-    chmod +x {{XBIN}}/utpm-{{UTPM_RELEASE}}-{{XBINARCH}}
-    rm -rf {{XBIN}}/tmp
+fetch-xbin: fetch-typst fetch-pandoc
 
 fetch-typst: (fetch-typst-version TYPST_RELEASE)
 
@@ -218,19 +203,14 @@ fetch-noto:
     done
     rm -rf {{XFNT}}/noto/tmp
 
-fetch-luciole:
-    #!/bin/sh
-    echo "{{XDIR}}"
-    mkdir -p {{XFNT}}/luciole/tmp
-    for x in {{LUCIOLE_BASE}}; do
-        (cd {{XFNT}}/luciole/tmp && {{CURL}} $x -o $(basename $x) && unzip -o -j *.zip L*.ttf)
-    done
-    (cd {{XFNT}}/luciole/tmp && cp *.ttf {{XFNT}}/luciole/)
-    rm -rvf {{XFNT}}/luciole/tmp
-
-fetch-to _listfile _prefix:
+fetch-to _listfile _prefix _grep:
     #!/bin/sh -x
-    for x in $(grep -v '^#' < {{_listfile}}); do
+    if [ -z "{{_grep}}" ]; then
+        RESLIST=$(grep -v '^#' < {{_listfile}})
+    else
+        RESLIST=$(grep -v '^#' < {{_listfile}} |grep -P '{{_grep}}')
+    fi
+    for x in $RESLIST; do
         url=${x%%,*}
         name=${x##*,}
         match=${x%,*}
@@ -275,14 +255,17 @@ fetch-to _listfile _prefix:
                   ;;
         esac
         (cd {{_prefix}}/$name/tmp/ && detox -rv *)
+        rm -v $(find {{_prefix}}/$name/tmp/ -name '.*'$match )
         cp -v $(find {{_prefix}}/$name/tmp/ -name '*'$match ) {{_prefix}}/$name/
         rm -rf {{_prefix}}/$name/tmp
     done
 
 
-fetch-res: (fetch-to XDIR+'/resources.fonts' XFNT)
+fetch-res: (fetch-to XDIR+'/resources.fonts' XFNT '')
 
-fetch-lib: (fetch-to XDIR+'/resources.lib' XLIB)
+fetch-res-match _grep: (fetch-to XDIR+'/resources.fonts' XFNT _grep)
+
+fetch-lib: (fetch-to XDIR+'/resources.lib' XLIB '')
 
 fetch-packages:
     #!/bin/sh -x
@@ -308,8 +291,8 @@ fetch-packages:
 
 install: install-xbin install-fonts install-packages
 
-install-xbin: fetch-typst fetch-pandoc fetch-utpm
+install-xbin: fetch-xbin
 
 install-packages: fetch-packages
 
-install-fonts: fetch-noto fetch-luciole  fetch-rpgicons fetch-res
+install-fonts: fetch-noto fetch-rpgicons fetch-res

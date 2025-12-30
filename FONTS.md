@@ -66,7 +66,7 @@ $ fc-list | cut -f1 -d: | sort
 | Courier New       | Courier                   | Nimbus Mono               | TeX Gyre Cursor   | CrOS Cousine      | Free/Liberation Mono   |
 | Arial             | Helvetica                 | Nimbus Sans               | TeX Gyre Heros    | CrOS Arimo        | Free/Liberation Sans   |
 | Times New Roman   | Times                     | Nimbus Roman              | TeX Gyre Termes   | CrOS Tinos        | Free/Liberation Serif  |
-| --                | ITC Avant Garde           | URW Gothic                | TeX Gyre Adventor |                   |                        |
+| --                | ITC Avant Garde           | URW Gothic                | TeX Gyre Adventor | STIX Two          |                        |
 | Old Style Antique | ITC Bookman               | URW Bookman L             | TeX Gyre Bonum    |                   |                        |
 | --                | ITC Zapf Chancery         | Chancery (Z003)           | TeX Gyre Chorus   |                   |                        |
 | Palatino Linotype | Palatino                  | Palladio (P052)           | TeX Gyre Pagella  |                   |                        |
@@ -110,99 +110,99 @@ $ fc-list | cut -f1 -d: | sort
 
 # list of Microsoft Fonts
 
-Family		Font Name	File Name	Version
-Arial		Arial	Arial.ttf	7.00
-Arial Italic	Ariali.ttf	7.00
-Arial Bold	Arialbd.ttf	7.00
-Arial Bold Italic	Arialbi.ttf	7.00
-Arial Black	Arial Black	Ariblk.ttf	5.23
-Bahnschrift	Bahnschrift *	Bahnschrift.ttf	2.06
-Calibri		Calibri Light	Calibril.ttf	6.23
-Calibri Light Italic	Calibrili.ttf	6.23
-Calibri	Calibri.ttf	6.23
-Calibri Italic	Calibrii.ttf	6.23
-Calibri Bold	Calibrib.ttf	6.23
-Calibri Bold Italic	Calibriz.ttf	6.23
-Cambria		Cambria	Cambria.ttc	6.99
-Cambria Italic	Cambriai.ttf	6.98
-Cambria Bold	Cambriab.ttf	6.98
-Cambria Bold Italic	Cambriaz.ttf	6.98
-Cambria Math	Cambria Math	Cambria.ttc	6.99
-Candara		Candara Light *	Candaral.ttf	5.63
-Candara Light Italic *	Candarali.ttf	5.63
-Candara	Candara.ttf	5.62
-Candara Italic	Candarai.ttf	5.62
-Candara Bold	Candarab.ttf	5.62
-Candara Bold Italic	Candaraz.ttf	5.62
-Comic Sans MS	Comic Sans MS	Comic.ttf	5.14
-Comic Sans MS Italic	Comici.ttf	5.14
-Comic Sans MS Bold	Comicbd.ttf	5.14
-Comic Sans MS Bold Italic	Comicz.ttf	5.14
-Consolas	Consolas	Consola.ttf	7.00
-Consolas Italic	Consolai.ttf	7.00
-Consolas Bold	Consolab.ttf	7.00
-Consolas Bold Italic	Consolaz.ttf	7.00
-Constantia	Constantia	Constan.ttf	5.93
-Constantia Italic	Constani.ttf	5.93
-Constantia Bold	Constanb.ttf	5.93
-Constantia Bold Italic	Constanz.ttf	5.93
-Corbel	Corbel Light *	Corbell.ttf	6.01
-Corbel Light Italic *	Corbelli.ttf	6.01
-Corbel	Corbel.ttf	6.01
-Corbel Italic	Corbeli.ttf	6.01
-Corbel Bold	Corbelb.ttf	6.01
-Corbel Bold Italic	Corbelz.ttf	6.01
-Courier New	Courier New	Cour.ttf	6.92
-Courier New Italic	Couri.ttf	6.91
-Courier New Bold	Courbd.ttf	6.92
-Courier New Bold Italic	Courbi.ttf	6.91
-Franklin Gothic Medium	Franklin Gothic Medium	Framd.ttf	5.02
-Franklin Gothic Medium Italic	Framdit.ttf	5.01
-Georgia		Georgia	Georgia.ttf	5.59
-Georgia Italic	Georgiai.ttf	5.59
-Georgia Bold	Georgiab.ttf	5.59
-Georgia Bold Italic	Georgiaz.ttf	5.59
-Impact		Impact	Impact.ttf	5.11
-Palatino Linotype	Palatino Linotype	Pala.ttf	5.03
-Palatino Linotype Italic	Palai.ttf	5.03
-Palatino Linotype Bold	Palab.ttf	5.03
-Palatino Linotype Bold Italic	Palabi.ttf	5.03
-Segoe Print	Segoe Print	Segoepr.ttf	5.04
-Segoe Print Bold	Segoeprb.ttf	5.04
-Segoe Script	Segoe Script	Segoesc.ttf	5.02
-Segoe Script Bold	Segoescb.ttf	5.02
-Segoe UI	Segoe UI Light	Segoeuil.ttf	5.62
-Segoe UI Light Italic	Seguili.ttf	5.32
-Segoe UI Semilight	Segoeuisl.ttf	5.62
-Segoe UI Semilight Italic	Seguisli.ttf	5.32
-Segoe UI	Segoeui.ttf	5.62
-Segoe UI Italic	Segoeuii.ttf	5.32
-Segoe UI Semibold	Seguisb.ttf	5.62
-Segoe UI Semibold Italic	Seguisbi.ttf	5.32
-Segoe UI Bold	Segoeuib.ttf	5.62
-Segoe UI Bold Italic	Segoeuiz.ttf	5.32
-Segoe UI Black	Seguibl.ttf	2.02
-Segoe UI Black Italic	Seguibli.ttf	2.02
-Segoe UI Historic	Segoe UI Historic *	Seguihis.ttf	1.03
-Segoe UI Emoji	Segoe UI Emoji	Seguiemj.ttf	1.29
-Segoe UI Symbol	Segoe UI Symbol	Seguisym.ttf	6.23
-Symbol		Symbol	Symbol.ttf	5.01
-Tahoma		Tahoma	Tahoma.ttf	7.00
-Tahoma Bold	Tahomabd.ttf	7.00
-Times New Roman	Times New Roman	Times.ttf	7.01
-Times New Roman Italic	Timesi.ttf	7.01
-Times New Roman Bold	Timesbd.ttf	7.01
-Times New Roman Bold Italic	Timesbi.ttf	7.01
-Trebuchet MS	Trebuchet MS	Trebuc.ttf	5.15
-Trebuchet MS Italic	Trebucit.ttf	5.15
-Trebuchet MS Bold	Trebucbd.ttf	5.15
-Trebuchet MS Bold Italic	Trebucbi.ttf	5.15
-Verdana		Verdana	Verdana.ttf	5.33
-Verdana Italic	Verdanai.ttf	5.33
-Verdana Bold	Verdanab.ttf	5.33
-Verdana Bold Italic	Verdanaz.ttf	5.33
-Webdings	Webdings	Webdings.ttf	5.01
-Wingdings	Wingdings	Wingding.ttf	5.01
+Family                  Font Name         File Name         Version
+Arial                  Arial         Arial.ttf         7.00
+Arial Italic         Ariali.ttf         7.00
+Arial Bold         Arialbd.ttf         7.00
+Arial Bold Italic         Arialbi.ttf         7.00
+Arial Black         Arial Black         Ariblk.ttf         5.23
+Bahnschrift         Bahnschrift *         Bahnschrift.ttf         2.06
+Calibri                  Calibri Light         Calibril.ttf         6.23
+Calibri Light Italic         Calibrili.ttf         6.23
+Calibri         Calibri.ttf         6.23
+Calibri Italic         Calibrii.ttf         6.23
+Calibri Bold         Calibrib.ttf         6.23
+Calibri Bold Italic         Calibriz.ttf         6.23
+Cambria                  Cambria         Cambria.ttc         6.99
+Cambria Italic         Cambriai.ttf         6.98
+Cambria Bold         Cambriab.ttf         6.98
+Cambria Bold Italic     Cambriaz.ttf     6.98
+Cambria Math     Cambria Math     Cambria.ttc     6.99
+Candara          Candara Light *     Candaral.ttf     5.63
+Candara Light Italic *     Candarali.ttf     5.63
+Candara     Candara.ttf     5.62
+Candara Italic     Candarai.ttf     5.62
+Candara Bold     Candarab.ttf     5.62
+Candara Bold Italic     Candaraz.ttf     5.62
+Comic Sans MS     Comic Sans MS     Comic.ttf     5.14
+Comic Sans MS Italic     Comici.ttf     5.14
+Comic Sans MS Bold     Comicbd.ttf     5.14
+Comic Sans MS Bold Italic     Comicz.ttf     5.14
+Consolas     Consolas     Consola.ttf     7.00
+Consolas Italic     Consolai.ttf     7.00
+Consolas Bold     Consolab.ttf     7.00
+Consolas Bold Italic     Consolaz.ttf     7.00
+Constantia     Constantia     Constan.ttf     5.93
+Constantia Italic     Constani.ttf     5.93
+Constantia Bold     Constanb.ttf     5.93
+Constantia Bold Italic     Constanz.ttf     5.93
+Corbel     Corbel Light *     Corbell.ttf     6.01
+Corbel Light Italic *     Corbelli.ttf     6.01
+Corbel     Corbel.ttf     6.01
+Corbel Italic     Corbeli.ttf     6.01
+Corbel Bold     Corbelb.ttf     6.01
+Corbel Bold Italic     Corbelz.ttf         6.01
+Courier New         Courier New         Cour.ttf         6.92
+Courier New Italic         Couri.ttf         6.91
+Courier New Bold         Courbd.ttf         6.92
+Courier New Bold Italic         Courbi.ttf         6.91
+Franklin Gothic Medium         Franklin Gothic Medium         Framd.ttf         5.02
+Franklin Gothic Medium Italic         Framdit.ttf         5.01
+Georgia                  Georgia         Georgia.ttf         5.59
+Georgia Italic         Georgiai.ttf         5.59
+Georgia Bold         Georgiab.ttf         5.59
+Georgia Bold Italic         Georgiaz.ttf         5.59
+Impact                  Impact         Impact.ttf         5.11
+Palatino Linotype         Palatino Linotype         Pala.ttf         5.03
+Palatino Linotype Italic         Palai.ttf         5.03
+Palatino Linotype Bold         Palab.ttf         5.03
+Palatino Linotype Bold Italic         Palabi.ttf         5.03
+Segoe Print         Segoe Print         Segoepr.ttf         5.04
+Segoe Print Bold         Segoeprb.ttf         5.04
+Segoe Script         Segoe Script         Segoesc.ttf         5.02
+Segoe Script Bold         Segoescb.ttf         5.02
+Segoe UI         Segoe UI Light         Segoeuil.ttf         5.62
+Segoe UI Light Italic         Seguili.ttf         5.32
+Segoe UI Semilight         Segoeuisl.ttf         5.62
+Segoe UI Semilight Italic         Seguisli.ttf         5.32
+Segoe UI         Segoeui.ttf         5.62
+Segoe UI Italic         Segoeuii.ttf         5.32
+Segoe UI Semibold         Seguisb.ttf         5.62
+Segoe UI Semibold Italic         Seguisbi.ttf         5.32
+Segoe UI Bold         Segoeuib.ttf         5.62
+Segoe UI Bold Italic         Segoeuiz.ttf         5.32
+Segoe UI Black         Seguibl.ttf         2.02
+Segoe UI Black Italic         Seguibli.ttf         2.02
+Segoe UI Historic         Segoe UI Historic *         Seguihis.ttf         1.03
+Segoe UI Emoji         Segoe UI Emoji         Seguiemj.ttf         1.29
+Segoe UI Symbol         Segoe UI Symbol         Seguisym.ttf         6.23
+Symbol                  Symbol         Symbol.ttf         5.01
+Tahoma                  Tahoma         Tahoma.ttf         7.00
+Tahoma Bold         Tahomabd.ttf         7.00
+Times New Roman         Times New Roman         Times.ttf         7.01
+Times New Roman Italic         Timesi.ttf         7.01
+Times New Roman Bold         Timesbd.ttf         7.01
+Times New Roman Bold Italic         Timesbi.ttf         7.01
+Trebuchet MS         Trebuchet MS         Trebuc.ttf         5.15
+Trebuchet MS Italic         Trebucit.ttf         5.15
+Trebuchet MS Bold         Trebucbd.ttf         5.15
+Trebuchet MS Bold Italic         Trebucbi.ttf         5.15
+Verdana                  Verdana         Verdana.ttf         5.33
+Verdana Italic         Verdanai.ttf         5.33
+Verdana Bold         Verdanab.ttf         5.33
+Verdana Bold Italic         Verdanaz.ttf         5.33
+Webdings         Webdings         Webdings.ttf         5.01
+Wingdings         Wingdings         Wingding.ttf         5.01
 
 
 
@@ -255,14 +255,14 @@ Here’s a list of **free, open-source substitute fonts** for the most common **
 
 ### 🧩 Summary of Closest Metric-Compatible Substitutes
 
-| Microsoft Font                     | Drop-in Replacement |
-| ---------------------------------- | ------------------- |
-| Arial → Liberation Sans            |                     |
-| Calibri → Carlito                  |                     |
-| Cambria → Caladea                  |                     |
-| Times New Roman → Liberation Serif |                     |
-| Courier New → Liberation Mono      |                     |
-| Consolas → Cousine                 |                     |
+| Microsoft Font   | Drop-in Replacement   |
+| ---------------- | --------------------- |
+| Arial            | Liberation Sans       |
+| Calibri          | Carlito               |
+| Cambria          | Caladea               |
+| Times New Roman  | Liberation Serif      |
+| Courier New      | Liberation Mono       |
+| Consolas         | Cousine               |
 
 ---
 

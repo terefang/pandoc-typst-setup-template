@@ -4,6 +4,7 @@
 
    Copyright (C) 2024 – Alfred Reibenschuh
 ]]
+local stringify = pandoc.utils.stringify
 
 local function findval( arr, val, init ) --> v, i
     init = init or 1
@@ -66,15 +67,21 @@ local function convert_to( typ, ret, div, tab )
         attrspec = attrspec.."("
         local wdiv = 0
         for _, colspec in ipairs(tab.colspecs) do
-            wdiv = wdiv + colspec[2]
+            if colspec ~= nil and #colspec > 1 then
+                wdiv = wdiv + colspec[2]
+            end
         end
         wdiv = 100/wdiv
         local cwit = {}
         local cw = 100
         for _, colspec in ipairs(tab.colspecs) do
-            local w = math.floor(colspec[2]*wdiv)
-            cw = cw - w
-            table.insert(cwit, w)
+            if colspec ~= nil and #colspec > 1 then
+                local w = math.floor(colspec[2]*wdiv)
+                cw = cw - w
+                table.insert(cwit, w)
+            else
+                table.insert(cwit, 0)
+            end
         end
         cwit[1] = cwit[1] + cw
         for _, c in ipairs(cwit) do

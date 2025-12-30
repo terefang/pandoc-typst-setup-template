@@ -2,13 +2,14 @@
 
 import 'justfile.bootstrap'
 
-PANDOCOPT := ' --from markdown+pipe_tables+grid_tables+raw_attribute+raw_html+fenced_divs+yaml_metadata_block-tex_math_dollars ' \
+PANDOCOPT := ' --from markdown+pipe_tables+grid_tables+raw_attribute+raw_html+fenced_divs+yaml_metadata_block-tex_math_dollars-smart ' \
         + ' --columns=60 ' \
         + ' --data-dir='+XDIR+' ' \
         + ' --resource-path='+XDIR+' ' \
         + ' --include-before-body=templates/diceset.typ ' \
         + ' --include-before-body=templates/nerdfont.typ ' \
         + ' --include-before-body=templates/notosymbol.typ ' \
+        + ' --include-before-body=templates/ccsymbols.typ ' \
         + ' --include-before-body=templates/admons.typ ' \
         + ' --include-before-body=templates/boxes.typ ' \
         + ' --lua-filter=typst-header.lua ' \
@@ -39,6 +40,9 @@ TYPSTEXE := 'HTTPS_PROXY=http://127.0.0.1:666/ time '+XBIN+'/typst-'+TYPST_RELEA
 
 default: build
 
+build-sub: \
+    (build-dir XDIR+'/markdown/test1/' XDIR+'/out/test1.pdf')
+
 build: build-pandoc build-typst
     @echo "{{ABIN}}"
 
@@ -68,7 +72,7 @@ build-typst:
 build-pdf _file: (build-file _file _file+".pdf")
 
 build-dir _dir _out:
-    #!/bin/sh
+    #!/bin/sh -x
     _id=$(uuidgen)
     _tmp="{{XDIR}}/out/$_id"
     mkdir -p $_tmp
@@ -77,6 +81,7 @@ build-dir _dir _out:
     export PANDOC_LUA_LIB="{{XDIR}}/filters/?.lua;{{XDIR}}/lib/lua/?.lua"
     {{PANDOCEXE}} {{PANDOCOPT}} $_tmp/*.md -o $_tmp/$_id.typ
     echo "... executing typst $_id.typ"
+    cp $_tmp/$_id.typ {{_out}}.typ
     {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}}  --root {{XDIR}} $_tmp/$_id.typ {{_out}}
     rm -rf $_tmp
 
