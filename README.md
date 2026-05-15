@@ -81,4 +81,8 @@ i DMd laurmaedje and posted ():
 >   A good conversation is therefore not defined by uniformity of opinion, but by openness,
 >   tolerance, and the willingness to engage with differing viewpoints.
 
-i will cool-down but not shut-down
+no, reply to this as of yet (2026-05-15 17:05 CET)
+
+i will cool-down but not let me shut-down.
+
+
