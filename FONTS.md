@@ -266,6 +266,9 @@ Here’s a list of **free, open-source substitute fonts** for the most common **
 
 ---
 
+```
+curl -L 'https://fonts.google.com/download/list?family=Google%20Sans'|tail +2|jq -r -c '.manifest.fileRefs[] | [ .url, .filename ] | @csv'|fgrep static/|tr -d '"'|tr ',' '?'
+```
 
 https://mirrors.ctan.org/fonts/urw/classico/opentype/URWClassico-Bold.otf
 https://mirrors.ctan.org/fonts/urw/classico/opentype/URWClassico-BoldItalic.otf

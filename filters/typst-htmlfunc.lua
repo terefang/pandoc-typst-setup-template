@@ -67,7 +67,7 @@ local function e2u(s)
     return s
 end
 
-local HTML_SPANS = pandoc.List({'/smallcaps', '/super', '/sup', '/sub', '/sc', '/fsc', '/fb', '/uc', '/lc', '/page', '/place', '/block', '/box', '/align', '/scale', '/par'})
+local HTML_SPANS = pandoc.List({'/smallcaps', '/super', '/sup', '/sub', '/sc', '/fsc', '/fb', '/fac', '/fbc', '/uc', '/lc', '/page', '/place', '/block', '/box', '/align', '/scale', '/par'})
 
 local VERBATIM_ATTR = pandoc.List({'block','box','scale','par'})
 
@@ -337,7 +337,7 @@ function processTypstElements(elem)
         return pandoc.RawInline('typst', '#'..cap1..'('.. opts..')[')
     end
 
-    print('(F) WARN: discarding unmatched',elem.text)
+    print('(TYPST) WARN: discarding unmatched',elem.text)
     return pandoc.RawInline('typst', '\n// (F) WARN: discarding unmatched -- '..elem.text)
 end
 
@@ -438,6 +438,14 @@ function processRawHtml(elem)
         -- fake small caps
         if(cap1 == 'fsc') then
             return pandoc.RawInline('typst', '#fakesc([')
+        end
+        -- fake all caps
+        if(cap1 == 'fac') then
+            return pandoc.RawInline('typst', '#fakeac([')
+        end
+        -- fake bold all caps
+        if(cap1 == 'fbc') then
+            return pandoc.RawInline('typst', '#fakebc([')
         end
         -- fake bold
         if(cap1 == 'fb') then

@@ -49,7 +49,7 @@
 |  d10  |   >   | <f c="_"/> |
 
 ::::
- 
+
 
 ::::{.table inset="0.5em" hline="stroke:1pt"}
 
@@ -147,4 +147,68 @@
 | 1d12+1d12 |4.16  |  6.25  | 93.75 | 85.41  | 74.30 | 60.41 | 43.75 | 28.47 | 17.36 | 9.02 | 3.47 | 0.69 |
 
 </page>
+<page columns="2" >
 
+
+|   SPD |   1   |   2   |   3   |   4   |   5   |
+|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+|  1    |   -   |   -   |   X   |   -   |   -   |
+|  2    |   -   |   X   |   -   |   X   |   -   |
+|  3    |   X   |   -   |   X   |   -   |   X   |
+|  4    |   -   |   X   |   X   |   X   |   X   |
+|  5    |   X   |   X   |   X   |   X   |   X   |
+|  6    |   X   |   X   |  X+X  |   X   |   X   |
+|  7    |   X   |  X+X  |   X   |  X+X  |   X   |
+|  8    |  X+X  |   X   |  X+X  |   X   |  X+X  |
+|  9    |   X   |  X+X  |  X+X  |  X+X  |  X+X  |
+|  10   |  X+X  |  X+X  |  X+X  |  X+X  |  X+X  |
+|  11   |  X+X  |  X+X  | X+X+X |  X+X  |  X+X  |
+|  12   |  X+X  | X+X+X |  X+X  | X+X+X |  X+X  |
+|  13   | X+X+X |  X+X  | X+X+X |  X+X  | X+X+X |
+|  14   |  X+X  | X+X+X | X+X+X | X+X+X | X+X+X |
+|  15   | X+X+X | X+X+X | X+X+X | X+X+X | X+X+X |
+
+
+| Ethoi            | Alignment |
+|------------------|-----------|
+| Gloomy Darkness  | (LE/N)    |
+| Shadowy Darkness | (CE/N)    |
+| Balance          | (N)       |
+| Moonlight        | (CG)      |
+| Sunlight         | (LG)      |
+|                  |           |
+|                  |           |
+                                   
+| Outlook           |                                                |
+|-------------------|------------------------------------------------|
+| Benign            | generally beneficent in dealings with mortals  |
+| Malign            | generally malevolent                           |
+| Agathocacological | either indifferent or exhibiting both strongly |
+|                   |                                                |
+| Ordered           |                                                |
+| Neutral           |                                                |
+| Chaotic           |                                                |
+
+
+| cosmic hierarchy              |
+|-------------------------------|
+| Quasi-deity - Godling         |
+| Demipower - Patron            |
+| Minor Deity - Passion         |
+| Lesser Deity                  |
+| Major/Intermediate Deity      |
+| Greater Deity - Great/Old One |
+| Primordial - Great Old One    |
+| Titan - Other God             |
+| Aeon - Elder God              |
+
+
+
+
+
+
+:::{.table inset="0.5em" hline="stroke:1pt"}
+
+:::
+
+</page>

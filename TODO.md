@@ -1,5 +1,40 @@
 # TODO
 
+## Typst Patches
+
+[_] #185 | Support variable fonts 
+[_] #2098 | Also select font via unprettified family name 
+[_] #2469 | Load fonts / font families from files or bytes
+    #7491 | Feature Request: allow using fonts by filename
+[_] #3488 | Add a font function
+[_] #4393 | Select font glyph by name
+[_] #4773 | Inconsistent font resolution: standalone vs fallback
+[_] #7009 | Simulate fake small caps 
+[_] #7180 | Allow font size to be set relative to one of fonts typographic parameters 
+[_] #7283 | Ability to use a different font for italic
+[_] #7417 | Not all font family variants grouped correctly (not recognized as one family) 
+[_] #7468 | Also select font via localized family name
+[x] #7490 | Show full font file path in typst fonts --variants
+    #6943 | Allow fonts subcommand to also display the full filename path 
+[_] #7531 | Warn when requested font variant is missing and report fallback target 
+[_] #7582 | typst-kit: Allow adding custom fonts from bytes, similar to default embedded fonts
+[?] #7586 | tyspst-cli fonts --variants doesn't seem to look at fonts metadata to list all available styles
+
+# pandoc features
+
+## Extension: table_attributes±
+
+Attributes may be attached to tables by including them at the end of the caption.
+
+```
+(table)
+
+: Here's the caption. {#ident .class key="value"}
+```
+
+
+## Code
+
 ```
 -- tex booktabs table
 --

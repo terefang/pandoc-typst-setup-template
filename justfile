@@ -36,7 +36,8 @@ TYPSTPKGOPT := ' --package-cache-path '+XLIB+'/typst-cache/ '+' --package-path '
 #TYPSTCOMPILEOPT := ' --no-pdf-tags --pdf-standard a-4 '
 TYPSTCOMPILEOPT := ' --no-pdf-tags  --pdf-standard 1.7 '
 
-TYPSTEXE := 'HTTPS_PROXY=http://127.0.0.1:666/ time '+XBIN+'/typst-'+TYPST_RELEASE+'-'+XBINARCH
+#TYPSTEXE := 'HTTPS_PROXY=http://127.0.0.1:666/ time '+XBIN+'/typst-'+TYPST_RELEASE+'-'+XBINARCH
+TYPSTEXE := XBIN+'/typst-'+TYPST_RELEASE+'-'+XBINARCH
 
 default: build
 
@@ -67,6 +68,7 @@ build-typst:
         y=$(basename $x .typ)
         echo "... executing typst with '$y'"
         {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}} {{TYPSTPKGOPT}}  --root {{XDIR}} $x ./out/$y.pdf
+        open ./out/$y.pdf
     done
 
 build-pdf _file: (build-file _file _file+".pdf")

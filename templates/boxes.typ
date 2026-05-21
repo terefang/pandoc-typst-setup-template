@@ -179,3 +179,14 @@
     block(width: 100%, fill: fill, outset: (x: -size, y: strokewidth),
       block(width: 100%, fill: fill, outset: (x: strokewidth, y: -size), inset: inset, body)))
 }
+
+///-------------------------------------------------------------------------------
+// #simplebox(note:[**Note Head**])[
+// #lorem(50)
+// ]
+
+#let simplebox(body, note: [Author's Notes], inset: 1em) = block(stroke: black, width: 100%, inset: inset, {
+  place(top, dx: 0.3in - inset, dy: -0.05in - inset, block(fill: white, inset: (x: 0.05in), note))
+  body
+})
+

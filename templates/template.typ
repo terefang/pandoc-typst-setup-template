@@ -19,6 +19,20 @@ $-- // https://github.com/jomaway/typst-gentle-clues/blob/main/docs.pdf
   text(s)
 }
 
+#let fakeac(s, scaling: 0.9, expansion:1.1) = {
+  show regex("\w+"): it => {
+    context {
+        box(scale(x: expansion * 100%, reflow: true, text(scaling * 1em,upper(it))))
+    }
+  }
+  text(s)
+}
+
+#let fakebc(s, weight:700, scaling: 0.9, expansion:1.1) = {
+  set text(weight:weight)
+  text(fakeac(s,scaling:scaling,expansion:expansion))
+}
+
 #let fakebold(txt,stroke: 1,track: 0.5) = {
   show regex(".+"): it => context {
     text(tracking:(track * stroke * 0.001em),stroke: (stroke * 1.5 *  0.001em) + text.fill, it)

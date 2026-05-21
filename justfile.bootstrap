@@ -42,8 +42,8 @@ if arch() == "x86_64" {
 }
 } else { "." }
 
-PANDOC_RELEASE := '3.8.3'
-PANDOC_RELEASE_N1 := '3.8.2.1'
+PANDOC_RELEASE := '3.9.0.2'
+PANDOC_RELEASE_N1 := '3.8.3'
 PANDOC_RELEASE_N2 := '3.7.0.2'
 PANDOC_RELEASE_N3 := '3.6.4'
 PANDOC_BASE := 'https://github.com/jgm/pandoc/releases/download'

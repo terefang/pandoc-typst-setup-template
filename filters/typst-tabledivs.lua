@@ -151,6 +151,7 @@ local function process(div)
             -- return div.content
             table.insert(div.content[1].classes, 'typst:no-figure')
             local ret = {}
+            table.insert(ret, pandoc.RawBlock('typst', '#[\n'))
 
             if findval(div.classes,'float') then
                 table.insert(ret, pandoc.RawBlock('typst', "#place(bottom+left,float:true,[\n"))
@@ -205,6 +206,7 @@ local function process(div)
                 table.insert(ret, pandoc.RawBlock('typst', '])\n'))
             end
 
+            table.insert(ret, pandoc.RawBlock('typst', ']\n'))
             return ret
         end
     end

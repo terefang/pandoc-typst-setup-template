@@ -18,6 +18,20 @@
   text(s)
 }
 
+#let fakeac(s, scaling: 0.9, expansion:1.1) = {
+  show regex("\w+"): it => {
+    context {
+        box(scale(x: expansion * 100%, reflow: true, text(scaling * 1em,upper(it))))
+    }
+  }
+  text(s)
+}
+
+#let fakebc(s, weight:700, scaling: 0.9, expansion:1.1) = {
+  set text(weight:weight)
+  text(fakeac(s,scaling:scaling,expansion:expansion))
+}
+
 #let fakebold(txt,stroke: 1,track: 0.5) = {
   show regex(".+"): it => context {
     text(tracking:(track * stroke * 0.001em),stroke: (stroke * 1.5 *  0.001em) + text.fill, it)
@@ -46325,16 +46339,16 @@
 /* page */ #page(paper:"a4",flipped:false,margin:0pt,columns:1,[
 
 /* place */ #place(top + left,scope:"parent",float:true,dx:50pt,dy:50pt,[
-/* box */ #box(width:495pt,height:100pt,stroke:red,[
+/* box */ #box(height:100pt,width:495pt,stroke:red,[
 #align(top + center,[
 #text(weight:700,size:120pt,fill:white,stroke:0.1pt,font:"TeX Gyre Heros",[
-/* scale */ #scale(x:60%,reflow:true,[
+/* scale */ #scale(reflow:true,x:60%,[
 /* par */ #par(leading:10pt,[ Sample Document. ]) /* /par */
 ]) /* /scale */ ])  ]) /* /align */ ]) /* /box */
 ]) /* /place */
 
 /* place */ #place(bottom + left,scope:"parent",float:true,dx:50pt,dy:-50pt,[
-/* box */ #box(width:495pt,height:100pt,stroke:none,[
+/* box */ #box(height:100pt,width:495pt,stroke:none,[
 #align(top + center,[
 #text(weight:700,size:60pt,fill:white,stroke:0.1pt,font:"TeX Gyre Heros",[
 /* par */ #par(leading:10pt,[ And Here Goes The Author
@@ -47049,6 +47063,7 @@ usually go into the `template.typ` file.
 <floats>
 #pagebreak(weak:false)
 
+#[
 #place(top+left,scope:"parent",float:true,[
 #set par(spacing:0.4em)
 #table(
@@ -47080,8 +47095,10 @@ usually go into the `template.typ` file.
 \(this float will be inserted top spanning all columns)
 
 ])
+]
 #lorem(200)
 
+#[
 #place(bottom+left,float:true,[
 #set par(spacing:0.4em)
 #table(
@@ -47113,6 +47130,7 @@ usually go into the `template.typ` file.
 \(this float will be inserted inline trailing/bottom)
 
 ])
+]
 #lorem(200)
 
 #place(bottom+left,scope:"parent",float:true,[
@@ -47212,7 +47230,7 @@ this will insert bottom floating cross-column
 
 /* page */ #page(columns:2,[
 
-#block(stroke:(bottom:1pt),inset:(bottom:5pt),width:100%,[
+#block(width:100%,stroke:(bottom:1pt),inset:(bottom:5pt),[
 = BLOCKS
 <blocks>
 
@@ -47352,7 +47370,7 @@ Horror]]) /* /uc */#box(width: 1fr) CL 2 | 450
 XP#linebreak() #box(width: 1fr) #emph[Small Construct,
 Typically Lawful Evil]#linebreak()
 
-#grid(columns:(100%,),row-gutter:8pt,inset:(top:8pt,bottom:3pt), 
+#grid(columns:(100%,),inset:(top:8pt,bottom:3pt),row-gutter:8pt, 
 
 grid.hline(), grid.cell([
 
@@ -47431,6 +47449,7 @@ Horror]]) /* /uc */#box(width: 1fr) CL 2 | 450
 XP#linebreak() #box(width: 1fr) #emph[Small Construct,
 Typically Lawful Evil]#linebreak()
 
+#[
 #set par(spacing:0.4em)
 #table(
   columns: (11.11%, 11.11%, 11.11%, 11.11%, 11.11%, 11.11%, 11.11%, 11.11%, 11.11%),
@@ -47439,6 +47458,7 @@ Typically Lawful Evil]#linebreak()
   table.hline(),
   [d10], [d10], [d12+1], [d8], [d10], [d10], [d6], [d6], [d6],
 )
+]
 
 ]
 #lorem(100)
@@ -47464,6 +47484,7 @@ Typically Lawful Evil]#linebreak()
 
 ==== header-less grid
 <header-less-grid>
+#[
 #text(font:"Open Sans",size:8pt,weight:"bold",[
 #set par(spacing:0.4em)
 #grid(
@@ -47494,6 +47515,8 @@ Centered
 ]),
 )
 ])
+]
+#[
 #set par(spacing:0.4em)
 #grid(
 columns:(1fr,1fr,2fr,),align:(right,left,center,),stroke:red + 1pt,inset:0.5em,
@@ -47522,6 +47545,8 @@ grid.cell(
 #box(width: 1fr, repeat("_")) 
 ]),
 )
+]
+#[
 #set par(spacing:0.4em)
 #grid(
 columns:(1fr,1fr,2fr,),align:(right,left,center,),stroke:1pt,inset:0.5em,
@@ -47550,6 +47575,8 @@ grid.cell(
 #box(width: 1fr, repeat("_")) 
 ]),
 )
+]
+#[
 #set par(spacing:0.4em)
 #grid(
 columns:(1fr,1fr,2fr,),align:(center,center,center,),stroke:1pt,inset:0.5em,
@@ -47587,6 +47614,8 @@ colspan:2,
 #box(width: 1fr, repeat("_")) 
 ]),
 )
+]
+#[
 #set par(spacing:0.4em)
 #set table(stroke: (x, y) => { if y == 0{(bottom: 1pt + black)} } )
 #table(
@@ -47665,8 +47694,10 @@ table.cell(
 d6
 ]),
 )
+]
 ==== fenced table:
 <fenced-table>
+#[
 #set par(spacing:0.4em)
 #table(
   columns: (11.11%, 11.11%, 11.11%, 11.11%, 11.11%, 11.11%, 11.11%, 11.11%, 11.11%),
@@ -47675,6 +47706,7 @@ d6
   table.hline(),
   [d10], [d10], [d12+1], [d8], [d10], [d10], [d6], [d6], [d6],
 )
+]
 ==== xml grid
 <xml-grid>
 #grid(inset:0.5em,columns:(1fr,1fr,1fr,1fr,1fr,1fr,1fr,1fr,1fr,), 
@@ -47730,6 +47762,90 @@ d6 ]), table.cell([ d6 ]), table.cell([ d6 ]), )
   , kind: table
   )
 
+]) /* /page */ /* page */ #page(columns:2,[
+
+#figure(
+  align(center)[#table(
+    columns: 6,
+    align: (center,center,center,center,center,center,),
+    table.header([SPD], [1], [2], [3], [4], [5],),
+    table.hline(),
+    [1], [-], [-], [X], [-], [-],
+    [2], [-], [X], [-], [X], [-],
+    [3], [X], [-], [X], [-], [X],
+    [4], [-], [X], [X], [X], [X],
+    [5], [X], [X], [X], [X], [X],
+    [6], [X], [X], [X+X], [X], [X],
+    [7], [X], [X+X], [X], [X+X], [X],
+    [8], [X+X], [X], [X+X], [X], [X+X],
+    [9], [X], [X+X], [X+X], [X+X], [X+X],
+    [10], [X+X], [X+X], [X+X], [X+X], [X+X],
+    [11], [X+X], [X+X], [X+X+X], [X+X], [X+X],
+    [12], [X+X], [X+X+X], [X+X], [X+X+X], [X+X],
+    [13], [X+X+X], [X+X], [X+X+X], [X+X], [X+X+X],
+    [14], [X+X], [X+X+X], [X+X+X], [X+X+X], [X+X+X],
+    [15], [X+X+X], [X+X+X], [X+X+X], [X+X+X], [X+X+X],
+  )]
+  , kind: table
+  )
+
+#figure(
+  align(center)[#table(
+    columns: 2,
+    align: (auto,auto,),
+    table.header([Ethoi], [Alignment],),
+    table.hline(),
+    [Gloomy Darkness], [\(LE/N)],
+    [Shadowy Darkness], [\(CE/N)],
+    [Balance], [\(N)],
+    [Moonlight], [\(CG)],
+    [Sunlight], [\(LG)],
+    [], [],
+    [], [],
+  )]
+  , kind: table
+  )
+
+#figure(
+  align(center)[#table(
+    columns: (28.36%, 71.64%),
+    align: (auto,auto,),
+    table.header([Outlook], [],),
+    table.hline(),
+    [Benign], [generally beneficent in dealings with
+    mortals],
+    [Malign], [generally malevolent],
+    [Agathocacological], [either indifferent or exhibiting
+    both strongly],
+    [], [],
+    [Ordered], [],
+    [Neutral], [],
+    [Chaotic], [],
+  )]
+  , kind: table
+  )
+
+#figure(
+  align(center)[#table(
+    columns: 1,
+    align: (auto,),
+    table.header([cosmic hierarchy],),
+    table.hline(),
+    [Quasi-deity - Godling],
+    [Demipower - Patron],
+    [Minor Deity - Passion],
+    [Lesser Deity],
+    [Major/Intermediate Deity],
+    [Greater Deity - Great/Old One],
+    [Primordial - Great Old One],
+    [Titan - Other God],
+    [Aeon - Elder God],
+  )]
+  , kind: table
+  )
+
+#block[
+]
 ]) /* /page */
 
 /* page */ #page(columns:2,[
@@ -47762,6 +47878,20 @@ d6 ]), table.cell([ d6 ]), table.cell([ d6 ]), )
 
 ]) /* /page */
 
+/* page */ #page(columns:2,[
+
+= INLINE
+<inline>
+#smallcaps([#lorem(20)]) /* /sc */
+
+#fakesc([#lorem(20)]) /* /fsc */
+
+#fakeac([#lorem(20)]) /* /fac */
+
+#fakebc([#lorem(20)]) /* /fbc */
+
+]) /* /page */
+
 #pagebreak(weak:false)
 
 #set page( columns:1 )
@@ -47771,6 +47901,7 @@ d6 ]), table.cell([ d6 ]), table.cell([ d6 ]), )
 
 
 #question(title: "Selection",)[
+#[
 #text(size:9pt,[
 #set par(spacing:0.4em)
 #grid(
@@ -47952,6 +48083,7 @@ billy club #super[\---]
 )
 ])
 ]
+]
 
 = GFX
 <gfx>
@@ -48083,7 +48215,7 @@ test~test
 = Other Fonts
 <other-fonts>
 
-#for f-name-var in ("DejaVu Sans Mono","Libertinus Serif","STIX Two Text","STIX Two Math","Luciole","Atkinson Hyperlegible","B612","B612 Mono","Charis SIL","Chivo","Chivo Mono","Fantasma","Gidole","Gidolinya","Helmet Neue","Hubot Sans","Mona Sans","Optician Sans","Saira","Saira Stencil One","Techna Sans","Bodoni Moda","Zalando Sans","Inria Sans","Inria Serif","JuliaMono","Grandstander","League Spartan","Pennstander","Reforma 1918","Reforma 1969","Reforma 2018","XCharter") [
+#for f-name-var in ("Maple Mono Normal NL","DejaVu Sans Mono","Libertinus Serif","STIX Two Text","STIX Two Math","Luciole","Atkinson Hyperlegible","B612","B612 Mono","Charis SIL","Chivo","Chivo Mono","Fantasma","Gidole","Gidolinya","Helmet Neue","Hubot Sans","Mona Sans","Optician Sans","Saira","Saira Stencil One","Techna Sans","Bodoni Moda","Zalando Sans","Inria Sans","Inria Serif","JuliaMono","Grandstander","League Spartan","Pennstander","Reforma 1918","Reforma 1969","Reforma 2018","XCharter","Comic Neue","Comic Neue Angular","Prodigy Sans","Work Sans","M PLUS 1","M PLUS 1 Code","M PLUS 2","M PLUS Code Latin 50","M PLUS Code Latin 60","Source Sans 3","Roadgeek 2014 Series B","Roadgeek 2014 Series C","Roadgeek 2014 Series D","Roadgeek 2014 Series E","Roadgeek 2014 Series EEM","Roadgeek 2014 Series EM","Roadgeek 2014 Series F","Monocraft") [
 #font-panel(f-name-var)
 
 ]
@@ -48125,7 +48257,7 @@ test~test
 = Google Fonts
 <google-fonts>
 
-#for f-name-var in ("Crimson Text","Crimson","Mozilla Text","Mozilla Headline","Alumni Sans","Alumni Sans SC","Bebas Neue","Bona Nova","Bona Nova SC","Buenard","Junicode","Montserrat","Noto Sans","Noto Sans Symbols","Noto Sans Symbols 2","Open Sans","Overpass","Sofia Sans") [
+#for f-name-var in ("Crimson Text","Crimson","Mozilla Text","Mozilla Headline","Alumni Sans","Alumni Sans SC","Bebas Neue","Bona Nova","Bona Nova SC","Buenard","Junicode","Montserrat","Noto Sans","Noto Sans Symbols","Noto Sans Symbols 2","Open Sans","Overpass","Sofia Sans","Miranda Sans","Google Sans","Google Sans 17pt","Averia Gruesa Libre","Averia Libre","Averia Sans Libre","Averia Serif Libre","REM") [
 #font-panel(f-name-var)
 
 ]
