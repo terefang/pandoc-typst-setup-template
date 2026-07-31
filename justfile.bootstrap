@@ -21,12 +21,10 @@ ICONS_NAMES := 'https://github.com/terefang/rpg-icons-font/raw/refs/heads/main/s
 
 XBINARCH := arch()+'-'+os()
 
-TYPST_NEXT := 'https://github.com/typst-community/dev-builds/releases/download/typst-main.2025-11-14.0da0165/typst-x86_64-unknown-linux-musl.tar.xz'
-
-#TYPST_RELEASE := 'v0.14.1'
-TYPST_RELEASE := 'v0.14.2'
-TYPST_RELEASE_N1 := 'v0.13.1'
-TYPST_RELEASE_N2 := 'v0.12.0'
+TYPST_RELEASE := 'v0.15.1'
+TYPST_NEXT := 'v0.15.0-rc.1'
+TYPST_RELEASE_N1 := 'v0.14.2'
+TYPST_RELEASE_N2 := 'v0.13.1'
 TYPST_BASE := 'https://github.com/typst/typst/releases/download'
 TYPST_PKG := if os() == "linux" {
 if arch() == "x86_64" {
@@ -42,10 +40,10 @@ if arch() == "x86_64" {
 }
 } else { "." }
 
-PANDOC_RELEASE := '3.9.0.2'
-PANDOC_RELEASE_N1 := '3.8.3'
-PANDOC_RELEASE_N2 := '3.7.0.2'
-PANDOC_RELEASE_N3 := '3.6.4'
+PANDOC_RELEASE := '3.10.1'
+PANDOC_RELEASE_N1 := '3.9.0.2'
+PANDOC_RELEASE_N2 := '3.8.3'
+PANDOC_RELEASE_N3 := '3.7.0.2'
 PANDOC_BASE := 'https://github.com/jgm/pandoc/releases/download'
 PANDOC_PKG := if os() == "linux" {
 if arch() == "x86_64" {
@@ -100,31 +98,7 @@ fetch-typst-known: \
     (fetch-typst-version TYPST_RELEASE_N1) \
     (fetch-typst-version TYPST_RELEASE_N2)
 
-fetch-typst-next:
-    #!/bin/sh
-    mkdir -p {{XBIN}}/tmp
-    case "{{TYPST_NEXT}}" in
-        *.tar.*)
-            {{CURL}} -o {{XBIN}}/tmp/typst.tar.xz "{{TYPST_NEXT}}"
-            (cd {{XBIN}}/tmp && tar -xf typst.tar.xz)
-            ;;
-        *.zip)
-            {{CURL}} -o {{XBIN}}/tmp/typst.zip  "{{TYPST_NEXT}}"
-            (cd {{XBIN}}/tmp && unzip -o -j typst.zip)
-        ;;
-    esac
-    case "{{os()}}" in
-        windows)
-            cp $(find {{XBIN}}/tmp -type f -name typst.exe) {{XBIN}}/
-            chmod +x {{XBIN}}/typst.exe && mv {{XBIN}}/typst.exe {{XBIN}}/typst-next.exe
-            ;;
-        *)
-            cp $(find {{XBIN}}/tmp -type f -name typst) {{XBIN}}/
-            chmod +x {{XBIN}}/typst && mv {{XBIN}}/typst {{XBIN}}/typst-next
-        ;;
-    esac
-    rm -rf {{XBIN}}/tmp
-    {{XBIN}}/typst-next --version
+fetch-typst-next: (fetch-typst-version TYPST_NEXT)
 
 fetch-typst-version _VERSION:
     #!/bin/sh

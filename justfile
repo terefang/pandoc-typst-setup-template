@@ -38,13 +38,17 @@ TYPSTCOMPILEOPT := ' --no-pdf-tags  --pdf-standard 1.7 '
 
 #TYPSTEXE := 'HTTPS_PROXY=http://127.0.0.1:666/ time '+XBIN+'/typst-'+TYPST_RELEASE+'-'+XBINARCH
 TYPSTEXE := XBIN+'/typst-'+TYPST_RELEASE+'-'+XBINARCH
+TYPSTNEXE := XBIN+'/typst-'+TYPST_NEXT+'-'+XBINARCH
 
 default: build
 
 build-sub: \
     (build-dir XDIR+'/markdown/test1/' XDIR+'/out/test1.pdf')
 
-build: build-pandoc build-typst
+build-next: build-pandoc build-typst-next
+    @echo "{{ABIN}}"
+
+build: build-pandoc build-typst-release
     @echo "{{ABIN}}"
 
 build-pandoc:
@@ -61,15 +65,19 @@ debug-pandoc:
     export PANDOC_LUA_LIB="{{XDIR}}/filters/?.lua;{{XDIR}}/lib/lua/?.lua"
     {{PANDOCEXE}} {{PANDOCOPT}} ./markdown/*.md -t native -o ./out/document.native
 
-build-typst:
+build-typst _VERSION :
     #!/bin/sh
     mkdir -p ./out
     for x in ./out/*.typ; do
         y=$(basename $x .typ)
         echo "... executing typst with '$y'"
-        {{TYPSTEXE}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}} {{TYPSTPKGOPT}}  --root {{XDIR}} $x ./out/$y.pdf
-        open ./out/$y.pdf
+        {{XBIN}}/typst-{{_VERSION}}-{{XBINARCH}} compile {{TYPSTCOMPILEOPT}} {{TYPSTOPT}} {{TYPSTPKGOPT}}  --root {{XDIR}} $x ./out/$y.pdf
+        open ./out/$y.pdf >/dev/null 2>&1
     done
+
+build-typst-next: (build-typst TYPST_NEXT)
+
+build-typst-release: (build-typst TYPST_RELEASE)
 
 build-pdf _file: (build-file _file _file+".pdf")
 

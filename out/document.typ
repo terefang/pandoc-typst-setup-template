@@ -46334,12 +46334,23 @@
       block(width: 100%, fill: fill, outset: (x: strokewidth, y: -size), inset: inset, body)))
 }
 
+///-------------------------------------------------------------------------------
+// #simplebox(note:[**Note Head**])[
+// #lorem(50)
+// ]
+
+#let simplebox(body, note: [Author's Notes], inset: 1em) = block(stroke: black, width: 100%, inset: inset, {
+  place(top, dx: 0.3in - inset, dy: -0.05in - inset, block(fill: white, inset: (x: 0.05in), note))
+  body
+})
+
+
 
 
 /* page */ #page(paper:"a4",flipped:false,margin:0pt,columns:1,[
 
 /* place */ #place(top + left,scope:"parent",float:true,dx:50pt,dy:50pt,[
-/* box */ #box(height:100pt,width:495pt,stroke:red,[
+/* box */ #box(width:495pt,stroke:red,height:100pt,[
 #align(top + center,[
 #text(weight:700,size:120pt,fill:white,stroke:0.1pt,font:"TeX Gyre Heros",[
 /* scale */ #scale(reflow:true,x:60%,[
@@ -46348,7 +46359,7 @@
 ]) /* /place */
 
 /* place */ #place(bottom + left,scope:"parent",float:true,dx:50pt,dy:-50pt,[
-/* box */ #box(height:100pt,width:495pt,stroke:none,[
+/* box */ #box(width:495pt,stroke:none,height:100pt,[
 #align(top + center,[
 #text(weight:700,size:60pt,fill:white,stroke:0.1pt,font:"TeX Gyre Heros",[
 /* par */ #par(leading:10pt,[ And Here Goes The Author
@@ -46371,14 +46382,14 @@ Cover Design: Alfred Reibenschuh
 ==== FONTS
 <fonts>
 - Nerd Fonts ---
-  https:\/\/github.com/ryanoasis/nerd-fonts/#linebreak()
-  used under MIT License
+  https:/\/github.com/ryanoasis/nerd-fonts/#linebreak() used
+  under MIT License
 
 - TeX Gyre Fonts ---
-  http:\/\/www.gust.org.pl/projects/e-foundry/tex-gyre/#linebreak()
+  http:/\/www.gust.org.pl/projects/e-foundry/tex-gyre/#linebreak()
   used under the GUST Font License (GFL)
 
-- Google Fonts --- https:\/\/fonts.google.com/#linebreak()
+- Google Fonts --- https:/\/fonts.google.com/#linebreak()
   used under the SIL Open Font License
 
 ==== RIGHTS
@@ -46396,15 +46407,41 @@ Where applicable, the text contents of this document are
 published under#linebreak() Creative Commons
 Attribution-ShareAlike 4.0 International (CC
 BY-SA)#linebreak()
-https:\/\/creativecommons.org/licenses/by-sa/4.0#linebreak()
+https:/\/creativecommons.org/licenses/by-sa/4.0#linebreak()
 
 ==== TYPESETTING
 <typesetting>
-- Pandoc -- https:\/\/github.com/jgm/pandoc
+- Pandoc -- https:/\/github.com/jgm/pandoc
 
-- Typst -- https:\/\/github.com/typst/typst
+- Typst -- https:/\/github.com/typst/typst
 
 ]))
+= DICE TABLE
+<dice-table>
+#[
+#place(bottom+left,scope:"parent",float:true,[
+#text(font:"Open Sans",size:8pt,[
+#set par(spacing:0.4em)
+#table(
+  columns: (6.31%, 13.51%, 13.51%, 6.31%, 6.31%, 5.41%, 5.41%, 5.41%, 5.41%, 5.41%, 5.41%, 5.41%, 5.41%, 5.41%, 5.41%),
+  align: (center,left,left,center,center,center,center,center,center,center,center,center,center,center,center,),
+  table.header([Level], [Stat], [Skill], [Dice], [Fail], [1], [2], [3], [4], [5], [6], [7], [8], [9], [10],),
+  table.hline(),
+  [0], [-], [Untrained], [-], [-], [-], [-], [-], [-], [-], [-], [-], [-], [-], [-],
+  [1], [Poor], [Apprentice], [d4], [75%], [25%], [-], [-], [-], [-], [-], [-], [-], [-], [-],
+  [2], [Average], [Trained], [d6], [50%], [50%], [16%], [-], [-], [-], [-], [-], [-], [-], [-],
+  [3], [Good], [Journeyman], [d8], [37%], [62%], [37%], [12%], [-], [-], [-], [-], [-], [-], [-],
+  [4], [Exceptional], [Adept], [d10], [30%], [70%], [50%], [30%], [10%], [-], [-], [-], [-], [-], [-],
+  [5], [Heroic], [Expert], [d12], [25%], [75%], [58%], [41%], [25%], [8%], [-], [-], [-], [-], [-],
+  [6], [-], [Master], [d12+d4], [18%], [81%], [62%], [45%], [29%], [12%], [2%], [-], [-], [-], [-],
+  [7], [-], [Grandmaster], [d12+d6], [12%], [87%], [70%], [52%], [36%], [19%], [6%], [1%], [-], [-], [-],
+  [8], [-], [Paragon], [d12+d8], [9%], [90%], [78%], [61%], [43%], [27%], [13%], [5%], [1%], [-], [-],
+  [9], [-], [Legendary], [d12+d10], [7%], [92%], [82%], [69%], [52%], [35%], [20%], [10%], [4%], [1%], [-],
+  [10], [-], [Epic], [2d12], [6%], [93%], [85%], [74%], [60%], [43%], [28%], [17%], [9%], [3%], [1%],
+)
+])
+])
+]
 
 #for l-n in (100,80,60,40,20,10) [
 #pagebreak(weak:false)
@@ -47002,6 +47039,20 @@ lorem ipsum
 
 ]
 
+#pagebreak(weak:true)
+
+:::note\[docusaurus admonition\]
+
+#lorem(35)
+
+:::
+
+:::notedocusaurus admonition
+
+#lorem(35)
+
+:::
+
 /* page */ #page(columns:2,numbering:"1",header:text(font: "TeX Gyre Heros",)[ #context{ if calc.even(here().page()) [_Lisa Strassners Thesis_ #h(1fr)] else [#h(1fr) National Academy of Sciences] } ],[
 
 #show heading: it => [
@@ -47230,7 +47281,7 @@ this will insert bottom floating cross-column
 
 /* page */ #page(columns:2,[
 
-#block(width:100%,stroke:(bottom:1pt),inset:(bottom:5pt),[
+#block(stroke:(bottom:1pt),inset:(bottom:5pt),width:100%,[
 = BLOCKS
 <blocks>
 
@@ -47370,7 +47421,7 @@ Horror]]) /* /uc */#box(width: 1fr) CL 2 | 450
 XP#linebreak() #box(width: 1fr) #emph[Small Construct,
 Typically Lawful Evil]#linebreak()
 
-#grid(columns:(100%,),inset:(top:8pt,bottom:3pt),row-gutter:8pt, 
+#grid(row-gutter:8pt,inset:(top:8pt,bottom:3pt),columns:(100%,), 
 
 grid.hline(), grid.cell([
 
@@ -47731,7 +47782,7 @@ table.cell([ d10 ]), table.cell([ d12+1 ]), table.cell([ d8
 d6 ]), table.cell([ d6 ]), table.cell([ d6 ]), )
 
 === dice table
-<dice-table>
+<dice-table-1>
 #figure(
   align(center)[#table(
     columns: (11.83%, 6.45%, 8.6%, 7.53%, 8.6%, 7.53%, 7.53%, 7.53%, 7.53%, 7.53%, 6.45%, 6.45%, 6.45%),
@@ -48066,19 +48117,19 @@ grid.cell(
 ]),
 grid.cell(
 [
-clubs #super[\--]
+clubs #super[\-\-]
 ]),
 grid.cell(
 [
-baseball bat #super[\--+]
+baseball bat #super[\-\-+]
 ]),
 grid.cell(
 [
-pool stick handle #super[\--0]
+pool stick handle #super[\-\-0]
 ]),
 grid.cell(
 [
-billy club #super[\---]
+billy club #super[\-\-\-]
 ]),
 )
 ])
@@ -48219,6 +48270,20 @@ test~test
 #font-panel(f-name-var)
 
 ]
+= justSeeds Fonts
+<justseeds-fonts>
+
+#for f-name-var in ("Accion Modular","Amandla","Anarch Encycl","Anarchist Encyclopedia","Anarchist Encyclopedia Hand","Anarcho Encyclopedia","Antianticommunism","Attraverso","Avoid Grotesk","Bilbao AMA","Brix","Busted Knuckles","CNT upright","COMMITTEE","Communard","CrassExpanded","Documentacion","Dual Unionist","Exuberance","Fly Legs","Fraktion","Freeman","Grace","Green Bans","Interkosmos","Kiki","Labour","Leftdings","LIBERTARIO","Madrid AMA","Madrid ML","Mai","MANIFESTO","Maternidad ML","Medicine","Melodie Jazz","Mujeres Libres","OTTO","PARALELISMO ML","Pasionaria","PELIGRO","Persons Unknown","RANSOME","RANSOME Ransome","RANSONE","RANSONE Ransome","RENT STRIKE","Respect","RISE UP","RosaBlanca","Slogan Sharp","SQUAT","SYNDICALISTA","TompkinsSquareRiot","UMBRAL","Upright Citizen","Valencia AMA","Valencia AMA Ir") [
+#font-panel(f-name-var)
+
+]
+= Variable Fonts
+<variable-fonts>
+
+#for f-name-var in ("Fraunces","Pliant") [
+#font-panel(f-name-var)
+
+]
 = IBM Plex Fonts
 <ibm-plex-fonts>
 
@@ -48257,7 +48322,7 @@ test~test
 = Google Fonts
 <google-fonts>
 
-#for f-name-var in ("Crimson Text","Crimson","Mozilla Text","Mozilla Headline","Alumni Sans","Alumni Sans SC","Bebas Neue","Bona Nova","Bona Nova SC","Buenard","Junicode","Montserrat","Noto Sans","Noto Sans Symbols","Noto Sans Symbols 2","Open Sans","Overpass","Sofia Sans","Miranda Sans","Google Sans","Google Sans 17pt","Averia Gruesa Libre","Averia Libre","Averia Sans Libre","Averia Serif Libre","REM") [
+#for f-name-var in ("Crimson Text","Crimson","Mozilla Text","Mozilla Headline","Alumni Sans","Alumni Sans SC","Bebas Neue","Bona Nova","Bona Nova SC","Buenard","Junicode","Montserrat","Noto Sans","Noto Sans Symbols","Noto Sans Symbols 2","Open Sans","Overpass","Sofia Sans","Miranda Sans","Google Sans","Google Sans 17pt","Averia Gruesa Libre","Averia Libre","Averia Sans Libre","Averia Serif Libre","REM","Cochineal","LG Smart","Sekuya") [
 #font-panel(f-name-var)
 
 ]
@@ -48271,7 +48336,14 @@ test~test
 = Nerd Fonts
 <nerd-fonts>
 
-#for f-name-var in ("Agave Nerd Font","Agave Nerd Font Mono","Agave Nerd Font Propo","MonaspiceAr NF","MonaspiceAr NFM","MonaspiceAr NFP","MonaspiceKr NF","MonaspiceKr NFM","MonaspiceKr NFP","MonaspiceNe NF","MonaspiceNe NFM","MonaspiceNe NFP","MonaspiceRn NF","MonaspiceRn NFM","MonaspiceRn NFP","MonaspiceXe NF","MonaspiceXe NFM","MonaspiceXe NFP") [
+#for f-name-var in ("Agave Nerd Font","Agave Nerd Font Mono","Agave Nerd Font Propo","EnvyCodeR Nerd Font","EnvyCodeR Nerd Font Mono","EnvyCodeR Nerd Font Propo","MonaspiceAr NF","MonaspiceAr NFM","MonaspiceAr NFP","MonaspiceKr NF","MonaspiceKr NFM","MonaspiceKr NFP","MonaspiceNe NF","MonaspiceNe NFM","MonaspiceNe NFP","MonaspiceRn NF","MonaspiceRn NFM","MonaspiceRn NFP","MonaspiceXe NF","MonaspiceXe NFM","MonaspiceXe NFP") [
+#font-panel(f-name-var)
+
+]
+= WebOS Fonts
+<webos-fonts>
+
+#for f-name-var in ("Agate-icons","Moonstone","Miso","Museo Sans","Silicon-icons") [
 #font-panel(f-name-var)
 
 ]

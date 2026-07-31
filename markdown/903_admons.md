@@ -226,3 +226,16 @@
 
 :::
 
+<pbr/>
+
+:::note[docusaurus admonition]
+
+<lorem s="35"/>
+
+:::
+
+:::note[docusaurus admonition]{ a="b" }
+
+<lorem s="35"/>
+
+:::

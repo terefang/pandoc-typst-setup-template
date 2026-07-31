@@ -1,18 +1,22 @@
 -- convert html/xml entities to typst
 
 package.path = os.getenv("PANDOC_LUA_LIB")..';'..package.path
+local stringify = pandoc.utils.stringify
 local _ENTITY = require("entities")
 local _SYM = require("symbols")
 
 function Str(elem)
     local _capture = {}
     local _offset = 1
+    local i,j
     while _offset ~= nil do
 
         i,j,cap0 = string.find(elem.text, "&([^;]+);", _offset)
 
         -- bail out of none found
-        if (i == nil) then break end
+        if (i == nil) then
+            break
+        end
 
         -- prefix
         if (_offset < i) then
@@ -42,11 +46,12 @@ function Str(elem)
         end
 
         _offset=j+1
+
     end
 
     -- suffix
-    if (_offset ~= nil and _offset < #elem.text) then
-        --print(">"..string.sub(elem.text,_offset).."<",_offset , #elem.text)
+    if((#_capture>=1) and (#elem.text >= _offset)) then
+        -- collect the suffix
         table.insert(_capture, pandoc.Str(string.sub(elem.text,_offset)))
     end
 

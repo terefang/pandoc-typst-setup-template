@@ -4,6 +4,9 @@
 
    Copyright (C) 2024 – Alfred Reibenschuh
 ]]
+
+package.path = os.getenv("PANDOC_LUA_LIB")..';'..package.path
+
 local stringify = pandoc.utils.stringify
 
 local function findval( arr, val, init ) --> v, i
@@ -50,7 +53,7 @@ local function convert_to( typ, ret, div, tab )
 
     for _, attr in ipairs( {'gutter', "column-gutter", "row-gutter",'rows','inset','align','fill','stroke'} ) do
         if(div.attributes[typ..'-'..attr]~=nil) then
-    table.insert(ret, pandoc.RawBlock('typst', "#set "..typ.."("..attr..":"..(div.attributes[typ..'-'..attr])..")\n"))
+            table.insert(ret, pandoc.RawBlock('typst', "#set "..typ.."("..attr..":"..(div.attributes[typ..'-'..attr])..")\n"))
         end
     end
     for _, attr in ipairs( {'inset','align','fill','stroke'} ) do
@@ -161,6 +164,10 @@ local function process(div)
                 table.insert(ret, pandoc.RawBlock('typst', "#place(bottom+left,scope:\"parent\",float:true,[\n"))
             end
 
+            if findval(div.classes,'nobreak') then
+                table.insert(ret, pandoc.RawBlock('typst', '#block(breakable:false,[\n'))
+            end
+
             local close_font = false
             if(div.attributes['font']~=nil) or (div.attributes['font-size']~=nil)
                     or (div.attributes['font-weight']~=nil) or (div.attributes['font-stretch']~=nil) then
@@ -195,6 +202,10 @@ local function process(div)
             end
 
             if close_font then
+                table.insert(ret, pandoc.RawBlock('typst', '])\n'))
+            end
+
+            if findval(div.classes,'nobreak') then
                 table.insert(ret, pandoc.RawBlock('typst', '])\n'))
             end
 

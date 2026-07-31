@@ -6,9 +6,9 @@ Alert types: note, tip, important, warning, caution
 For Typst, #import "@preview/gentle-clues:1.2.0": *
 
 :::note
-Fenced Div. 
+Fenced Div.
 
-Some note content. 
+Some note content.
 More *content*.
 :::
 
@@ -45,8 +45,8 @@ specialStyles['magenta'] = "header-color:cmyk(0%, 100%, 0%, 0%).lighten(60%), bo
 
 local alerts = pandoc.List({'note', 'tip', 'important', 'warning', 'caution', 'clue'})
 local gentleClues = pandoc.List{'idea','abstract', 'info', 'question', 'memo', 'task',
-	'tip', 'success', 'warning', 'error', 'example', 'experiment', 'conclusion', 'quotation', 
-    'goal', 'notify', 'code', 'danger'}
+								'tip', 'success', 'warning', 'error', 'example', 'experiment', 'conclusion', 'quotation',
+								'goal', 'notify', 'code', 'danger'}
 
 -- Convert the given string to title case using gsub
 --
@@ -110,16 +110,38 @@ end
 -- @param alert the alert name
 -- @param customTitle the [optional] custom title
 -- @return the wrapped content
-local function wrapTypst(content, alert, customTitle, customStyle, customIcon)
+local function wrapTypst(_div, content, alert, customTitle, customStyle, customIcon)
 	local prefix = createTypstPrefix(alert, customTitle, customStyle, customIcon)
 	-- local rawcontent = pandoc.write(pandoc.Pandoc(content),'typst'):gsub("\n$","")
 	-- return pandoc.RawBlock('typst', prefix .. rawcontent .. "]\n\n")
 	local ret = {}
 	table.insert(ret,pandoc.RawBlock('typst', prefix))
+
+	local close_font = false
+	local fopts = "#text("
+	for _, attr in ipairs( {'','-size','-weight','-stretch','-style','-fill'} ) do
+		if(_div.attributes['font'..attr]~=nil) then
+			close_font = true
+			aname = string.sub(attr,2)
+			if (attr == '') then
+				aname = 'font'
+			end
+			fopts = fopts..aname..':'.._div.attributes['font'..attr]..','
+		end
+	end
+	if close_font then
+		table.insert(ret, pandoc.RawBlock('typst', fopts..'['))
+	end
+
 	for _, v in ipairs(content) do
 		table.insert(ret, v)
 	end
-    table.insert(ret,pandoc.RawBlock('typst', "]\n\n"))
+
+	if close_font then
+		table.insert(ret, pandoc.RawBlock('typst', '])\n'))
+	end
+
+	table.insert(ret,pandoc.RawBlock('typst', "]\n\n"))
 	return ret
 end
 
@@ -201,5 +223,5 @@ function Div(d)
 		d.content:remove(1) -- remove title paragraph to give us more flexibility
 	end
 
-	return wrapTypst(d.content, alert, customTitle, d.attributes['style'], customIcon)
+	return wrapTypst(d, d.content, alert, customTitle, d.attributes['style'], customIcon)
 end
